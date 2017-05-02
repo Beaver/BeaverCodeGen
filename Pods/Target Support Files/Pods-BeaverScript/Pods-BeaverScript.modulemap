@@ -1,0 +1,6 @@
+framework module Pods_BeaverScript {
+  umbrella header "Pods-BeaverScript-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,10 @@
+framework module BeaverCodeGen {
+  umbrella header "BeaverCodeGen-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module BeaverCodeGen.Swift {
+    header "BeaverCodeGen-Swift.h"
+}
