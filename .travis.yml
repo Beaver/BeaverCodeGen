@@ -10,10 +10,11 @@ env:
   - WORKSPACE=BeaverCodeGen.xcworkspace
   - FRAMEWORK_SCHEME="BeaverCodeGen"
   matrix:
-    - DESTINATION="OS=10.10,name=OS X"             SCHEME="$FRAMEWORK_SCHEME"      RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
+    - DESTINATION="platform=OS X,arch=x86_64"             SCHEME="$FRAMEWORK_SCHEME"      RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
 script:
   - set -o pipefail
   - xcodebuild -version
+  - xcodebuild -list
 
   # Build Framework in Debug and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
