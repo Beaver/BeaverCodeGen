@@ -1,6 +1,0 @@
-framework module BeaverCodeGen {
-  umbrella header "BeaverCodeGen-umbrella.h"
-
-  export *
-  module * { export * }
-}

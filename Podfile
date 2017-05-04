@@ -10,13 +10,6 @@ target 'BeaverCodeGen' do
   end
 end
 
-target 'BeaverScript' do
-  plugin 'cocoapods-rome'
-
-  pod 'Commander'
-  pod 'BeaverCodeGen', :path => "."
-end
-
 post_install do |installer|
   puts("Set Swift version to 3.0")
   installer.pods_project.targets.each do |target|

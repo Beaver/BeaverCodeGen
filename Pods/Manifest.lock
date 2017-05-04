@@ -1,25 +1,15 @@
 PODS:
-  - BeaverCodeGen (0.1.0)
-  - Commander (0.6.0)
   - Nimble (6.1.0)
   - Quick (1.1.0)
 
 DEPENDENCIES:
-  - BeaverCodeGen (from `.`)
-  - Commander
   - Nimble
   - Quick
 
-EXTERNAL SOURCES:
-  BeaverCodeGen:
-    :path: "."
-
 SPEC CHECKSUMS:
-  BeaverCodeGen: 44af1f254dc292318bd8fa1979f4b5d8c396a3bc
-  Commander: fba7c96c9e787ecc8ebe0737be875e1e18ef47ff
   Nimble: c53e6903fee94041b90ded74f135820437d8bf59
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 34ac762852d9f41add3a3bc8ba47277690785e2e
+PODFILE CHECKSUM: 8a70279a59b2a050d49df1c28d14610e8866a35e
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
