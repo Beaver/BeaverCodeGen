@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
+		762B872E1EBB0A1D002E4BD9 /* ActionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B872D1EBB0A1D002E4BD9 /* ActionSpecs.swift */; };
+		762B87331EBB0A29002E4BD9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87301EBB0A29002E4BD9 /* Action.swift */; };
+		762B87341EBB0A29002E4BD9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87311EBB0A29002E4BD9 /* Main.swift */; };
+		762B87351EBB0A29002E4BD9 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87321EBB0A29002E4BD9 /* Operators.swift */; };
 		7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */; };
-		7C76A7A81EB84F3D00D24A38 /* BeaverCodeGenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76A7A71EB84F3D00D24A38 /* BeaverCodeGenTests.swift */; };
 		7C76A7AA1EB84F3D00D24A38 /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9009799EB1EC338B709470D3 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DB6231DA5375F76D1E15D5 /* Pods_BeaverCodeGen.framework */; };
-		D378161701D491997AC79D08 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AD6494AB77EF2FB19AC190 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */; };
+		FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,18 +28,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2AFBF5EAEEC7BEFDB51C3A79 /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
-		6D388BF84BA7E98840949877 /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; sourceTree = "<group>"; };
+		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
+		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		762B872D1EBB0A1D002E4BD9 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
+		762B87301EBB0A29002E4BD9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		762B87311EBB0A29002E4BD9 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		762B87321EBB0A29002E4BD9 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverCodeGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaverCodeGen.h; sourceTree = "<group>"; };
 		7C76A79D1EB84F3D00D24A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C76A7A21EB84F3D00D24A38 /* BeaverCodeGenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaverCodeGenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C76A7A71EB84F3D00D24A38 /* BeaverCodeGenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaverCodeGenTests.swift; sourceTree = "<group>"; };
 		7C76A7A91EB84F3D00D24A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0DB6231DA5375F76D1E15D5 /* Pods_BeaverCodeGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA59F1069F52F703FD91AB60 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F1A04D251AFF88A974381CDC /* Pods-BeaverCodeGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.debug.xcconfig"; sourceTree = "<group>"; };
-		F8AD6494AB77EF2FB19AC190 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7EF28E8C79461199D40BB5C /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; sourceTree = "<group>"; };
+		A98480FA4584A3ED026B57DE /* Pods-BeaverCodeGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9009799EB1EC338B709470D3 /* Pods_BeaverCodeGen.framework in Frameworks */,
+				4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,31 +59,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */,
-				D378161701D491997AC79D08 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */,
+				FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13362EE22A87C1BDD9841969 /* Frameworks */ = {
+		5ABCD8BD1E4F9386EEF9CD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E0DB6231DA5375F76D1E15D5 /* Pods_BeaverCodeGen.framework */,
-				F8AD6494AB77EF2FB19AC190 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */,
+				6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */,
+				3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3088F0FE658DC6D3BB401808 /* Pods */ = {
+		71C8AA92249C876C2856F843 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F1A04D251AFF88A974381CDC /* Pods-BeaverCodeGen.debug.xcconfig */,
-				2AFBF5EAEEC7BEFDB51C3A79 /* Pods-BeaverCodeGen.release.xcconfig */,
-				EA59F1069F52F703FD91AB60 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */,
-				6D388BF84BA7E98840949877 /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */,
+				A98480FA4584A3ED026B57DE /* Pods-BeaverCodeGen.debug.xcconfig */,
+				1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */,
+				3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */,
+				A7EF28E8C79461199D40BB5C /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		762B872C1EBB0A1D002E4BD9 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				762B872D1EBB0A1D002E4BD9 /* ActionSpecs.swift */,
+			);
+			path = Generator;
+			sourceTree = "<group>";
+		};
+		762B872F1EBB0A29002E4BD9 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				762B87301EBB0A29002E4BD9 /* Action.swift */,
+				762B87311EBB0A29002E4BD9 /* Main.swift */,
+				762B87321EBB0A29002E4BD9 /* Operators.swift */,
+			);
+			path = Generator;
 			sourceTree = "<group>";
 		};
 		7C76A78F1EB84F3C00D24A38 = {
@@ -86,8 +110,8 @@
 				7C76A79B1EB84F3D00D24A38 /* BeaverCodeGen */,
 				7C76A7A61EB84F3D00D24A38 /* BeaverCodeGenTests */,
 				7C76A79A1EB84F3D00D24A38 /* Products */,
-				3088F0FE658DC6D3BB401808 /* Pods */,
-				13362EE22A87C1BDD9841969 /* Frameworks */,
+				71C8AA92249C876C2856F843 /* Pods */,
+				5ABCD8BD1E4F9386EEF9CD28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +127,7 @@
 		7C76A79B1EB84F3D00D24A38 /* BeaverCodeGen */ = {
 			isa = PBXGroup;
 			children = (
+				762B872F1EBB0A29002E4BD9 /* Generator */,
 				7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */,
 				7C76A79D1EB84F3D00D24A38 /* Info.plist */,
 			);
@@ -112,7 +137,7 @@
 		7C76A7A61EB84F3D00D24A38 /* BeaverCodeGenTests */ = {
 			isa = PBXGroup;
 			children = (
-				7C76A7A71EB84F3D00D24A38 /* BeaverCodeGenTests.swift */,
+				762B872C1EBB0A1D002E4BD9 /* Generator */,
 				7C76A7A91EB84F3D00D24A38 /* Info.plist */,
 			);
 			path = BeaverCodeGenTests;
@@ -136,12 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C76A7AD1EB84F3D00D24A38 /* Build configuration list for PBXNativeTarget "BeaverCodeGen" */;
 			buildPhases = (
-				3D673389C35E36DEE8690A5D /* [CP] Check Pods Manifest.lock */,
+				706420378B81F125B7F7126C /* [CP] Check Pods Manifest.lock */,
 				7C76A7941EB84F3D00D24A38 /* Sources */,
 				7C76A7951EB84F3D00D24A38 /* Frameworks */,
 				7C76A7961EB84F3D00D24A38 /* Headers */,
 				7C76A7971EB84F3D00D24A38 /* Resources */,
-				A28CCAD10E7243EC729809F8 /* [CP] Copy Pods Resources */,
+				63473A45FD10BD73DBEFCF2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,12 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C76A7B01EB84F3D00D24A38 /* Build configuration list for PBXNativeTarget "BeaverCodeGenTests" */;
 			buildPhases = (
-				B2882D80D80F445D940007BA /* [CP] Check Pods Manifest.lock */,
+				60C6562EECF6FBDFC8C68372 /* [CP] Check Pods Manifest.lock */,
 				7C76A79E1EB84F3D00D24A38 /* Sources */,
 				7C76A79F1EB84F3D00D24A38 /* Frameworks */,
 				7C76A7A01EB84F3D00D24A38 /* Resources */,
-				DDBB2E7D6F72DD8625182F99 /* [CP] Embed Pods Frameworks */,
-				342EBE146665DC628439B958 /* [CP] Copy Pods Resources */,
+				1A0750BF7246BD75462B3F6F /* [CP] Embed Pods Frameworks */,
+				734B95AA1FF9807EE4358D4F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,67 +256,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		342EBE146665DC628439B958 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3D673389C35E36DEE8690A5D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A28CCAD10E7243EC729809F8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2882D80D80F445D940007BA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		DDBB2E7D6F72DD8625182F99 /* [CP] Embed Pods Frameworks */ = {
+		1A0750BF7246BD75462B3F6F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,6 +271,66 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		60C6562EECF6FBDFC8C68372 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63473A45FD10BD73DBEFCF2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		706420378B81F125B7F7126C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		734B95AA1FF9807EE4358D4F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,6 +338,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762B87341EBB0A29002E4BD9 /* Main.swift in Sources */,
+				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
+				762B87351EBB0A29002E4BD9 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C76A7A81EB84F3D00D24A38 /* BeaverCodeGenTests.swift in Sources */,
+				762B872E1EBB0A1D002E4BD9 /* ActionSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +463,7 @@
 		};
 		7C76A7AE1EB84F3D00D24A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1A04D251AFF88A974381CDC /* Pods-BeaverCodeGen.debug.xcconfig */;
+			baseConfigurationReference = A98480FA4584A3ED026B57DE /* Pods-BeaverCodeGen.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -457,7 +485,7 @@
 		};
 		7C76A7AF1EB84F3D00D24A38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AFBF5EAEEC7BEFDB51C3A79 /* Pods-BeaverCodeGen.release.xcconfig */;
+			baseConfigurationReference = 1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -479,8 +507,9 @@
 		};
 		7C76A7B11EB84F3D00D24A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA59F1069F52F703FD91AB60 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */;
+			baseConfigurationReference = 3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QUQ2Y9T688;
 				INFOPLIST_FILE = BeaverCodeGenTests/Info.plist;
@@ -493,8 +522,9 @@
 		};
 		7C76A7B21EB84F3D00D24A38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D388BF84BA7E98840949877 /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */;
+			baseConfigurationReference = A7EF28E8C79461199D40BB5C /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QUQ2Y9T688;
 				INFOPLIST_FILE = BeaverCodeGenTests/Info.plist;
@@ -524,6 +554,7 @@
 				7C76A7AF1EB84F3D00D24A38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C76A7B01EB84F3D00D24A38 /* Build configuration list for PBXNativeTarget "BeaverCodeGenTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +563,7 @@
 				7C76A7B21EB84F3D00D24A38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
