@@ -1,6 +1,5 @@
 import Quick
 import Nimble
-import FileKit
 
 @testable import BeaverCodeGen
 

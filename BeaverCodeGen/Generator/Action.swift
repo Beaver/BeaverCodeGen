@@ -24,7 +24,7 @@ extension Action: CustomStringConvertible {
         s <<< tab(tab("return .open"))
         s <<< tab("}")
         s <<< "}"
-        s << "}"
+        s += "}"
 
         return s
     }
