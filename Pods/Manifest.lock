@@ -1,15 +1,30 @@
 PODS:
+  - Beaver (0.1.0)
+  - FileKit (4.0.1)
   - Nimble (6.1.0)
   - Quick (1.1.0)
 
 DEPENDENCIES:
+  - Beaver (from `git@github.com:Beaver/Beaver.git`)
+  - FileKit (~> 4.0)
   - Nimble
   - Quick
 
+EXTERNAL SOURCES:
+  Beaver:
+    :git: git@github.com:Beaver/Beaver.git
+
+CHECKOUT OPTIONS:
+  Beaver:
+    :commit: 845bef297eb3d97bacee351abc2f4d9f00acbd97
+    :git: git@github.com:Beaver/Beaver.git
+
 SPEC CHECKSUMS:
+  Beaver: 4530c604526aebb38b0c3da61dc6a20e5ef742b4
+  FileKit: 1ea916f594bc0bb9a3951f80edf92b52bb7f883c
   Nimble: c53e6903fee94041b90ded74f135820437d8bf59
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 8a70279a59b2a050d49df1c28d14610e8866a35e
+PODFILE CHECKSUM: 4a395c9805d6c067cd2de8e6ec3d2e98469930fb
 
 COCOAPODS: 1.2.1

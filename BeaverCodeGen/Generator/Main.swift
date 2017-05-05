@@ -5,6 +5,6 @@ public enum Command {
 public func generate(command: Command) -> String {
     switch command {
     case .module(let name):
-        return Action(name: name + "Action").description
+        return Action(moduleName: name + "Action").description
     }
 }

@@ -1,5 +1,6 @@
 import Quick
 import Nimble
+import FileKit
 
 @testable import BeaverCodeGen
 
@@ -8,11 +9,11 @@ final class ActionSpecs: QuickSpec {
         describe("Action") {
             describe("description") {
                 it("should return a string containing the action's code") {
-                    let code = generate(command: .module(name: "Test"))
+                    let code = Action(moduleName: "Expected").description
 
-                    expect(code) == "enum TestAction {\n" +
-                            "    open // Opens the main controller of the module\n" +
-                            "}\n"
+                    self.printDiff(code: code, expected: self.expectedActionCode)
+
+                    expect(code) == self.expectedActionCode
                 }
             }
         }

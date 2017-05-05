@@ -1,0 +1,6 @@
+framework module Beaver {
+  umbrella header "Beaver-umbrella.h"
+
+  export *
+  module * { export * }
+}
