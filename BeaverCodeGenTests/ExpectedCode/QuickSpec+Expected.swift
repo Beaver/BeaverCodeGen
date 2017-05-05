@@ -2,12 +2,18 @@ import FileKit
 import Quick
 
 extension QuickSpec {
-    var expectedActionCode: String {
-        return try! TextFile(path: dirPath + "ExpectedAction".swift).read()
+    enum ExpectedType: String {
+        case action = "Action"
+        case state = "State"
+        case route = "Route"
+
+        var expected: String {
+            return "Expected\(rawValue).swift"
+        }
     }
 
-    var expectedStateCode: String {
-        return try! TextFile(path: dirPath + "ExpectedState".swift).read()
+    func expectedCode(_ type: ExpectedType) -> String {
+        return try! TextFile(path: dirPath + type.expected).read()
     }
 
     func printDiff(code: String, expected: String) {
@@ -25,8 +31,3 @@ fileprivate extension QuickSpec {
     }
 }
 
-fileprivate extension String {
-    var swift: String {
-        return self + ".swift"
-    }
-}

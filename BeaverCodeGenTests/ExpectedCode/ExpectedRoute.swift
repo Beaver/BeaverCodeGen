@@ -12,6 +12,7 @@ public enum ExpectedRouteError: RouteError {
 
 extension ExpectedRoute {
     public typealias RouteSuccessType = ExpectedRouteSuccess
+
     public typealias RouteErrorType = ExpectedRouteError
 }
 

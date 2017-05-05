@@ -10,9 +10,9 @@ final class StateSpecs: QuickSpec {
                 it("should return a string containing the state's code") {
                     let code = State(moduleName: "Expected").description
 
-                    self.printDiff(code: code, expected: self.expectedStateCode)
+                    self.printDiff(code: code, expected: self.expectedCode(.state))
 
-                    expect(code) == self.expectedStateCode
+                    expect(code) == self.expectedCode(.state)
                 }
             }
         }

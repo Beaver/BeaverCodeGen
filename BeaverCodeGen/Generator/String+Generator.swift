@@ -14,12 +14,16 @@ extension String {
         return lhs << rhs.indented
     }
 
+    static let br = "\n"
+
     var br: String {
-        return self + "\n"
+        return self + .br
     }
 
+    static let tab = "    "
+
     var tab: String {
-        return self + "    "
+        return self + .tab
     }
 }
 

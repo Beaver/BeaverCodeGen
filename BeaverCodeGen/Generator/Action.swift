@@ -21,7 +21,7 @@ extension Action: CustomStringConvertible {
         s <<< "static func mapRouteToAction(from route: \(moduleName)Route) -> \(moduleName)Action {"
         s <<< tab("switch route {")
         s <<< tab("case .open:")
-        s <<< tab(tab("return .open"))
+        s <<< tab(.tab + "return .open")
         s <<< tab("}")
         s <<< "}"
         s += "}"
