@@ -18,6 +18,8 @@ extension ExpectedState {
 
 extension ExpectedState {
     public static func ==(lhs: ExpectedState, rhs: ExpectedState) -> Bool {
-        return true
+        return lhs.error == rhs.error &&
+                lhs.loading == rhs.loading &&
+                lhs.currentScreen == rhs.currentScreen
     }
 }

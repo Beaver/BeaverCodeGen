@@ -16,5 +16,17 @@ final class RouteSpecs: QuickSpec {
                 }
             }
         }
+
+        describe("AppRoute") {
+            describe("description") {
+                it("should return a string containing the AppRoute's code") {
+                    let code = BeaverCodeGen.AppRoute(moduleNames: ["Expected"]).description
+
+                    self.printDiff(code: code, expected: self.appCode(.route))
+
+                    expect(code) == self.appCode(.route)
+                }
+            }
+        }
     }
 }

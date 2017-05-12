@@ -8,17 +8,17 @@ extension Action: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "enum \(moduleName)Action: Beaver.Action {"
+        s << "enum \(moduleName.typeName)Action: Beaver.Action {"
         s <<< "case open \(comment("Opens the main controller of the module"))"
         s << "}"
         s << ""
-        s << "extension \(moduleName)Action {"
-        s <<< "typealias StateType = \(moduleName)State"
-        s <<< "typealias RouteType = \(moduleName)Route"
+        s << "extension \(moduleName.typeName)Action {"
+        s <<< "typealias StateType = \(moduleName.typeName)State"
+        s <<< "typealias RouteType = \(moduleName.typeName)Route"
         s << "}"
         s << ""
-        s << "extension \(moduleName)Action {"
-        s <<< "static func mapRouteToAction(from route: \(moduleName)Route) -> \(moduleName)Action {"
+        s << "extension \(moduleName.typeName)Action {"
+        s <<< "static func mapRouteToAction(from route: \(moduleName.typeName)Route) -> \(moduleName.typeName)Action {"
         s <<< tab("switch route {")
         s <<< tab("case .open:")
         s <<< tab(.tab + "return .open")

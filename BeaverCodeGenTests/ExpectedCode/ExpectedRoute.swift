@@ -5,9 +5,11 @@ public enum ExpectedRoute: Beaver.Route {
 }
 
 public enum ExpectedRouteSuccess: RouteSuccess {
+    case done
 }
 
 public enum ExpectedRouteError: RouteError {
+    case unexpected
 }
 
 extension ExpectedRoute {
@@ -16,8 +18,11 @@ extension ExpectedRoute {
     public typealias RouteErrorType = ExpectedRouteError
 }
 
-extension ExpectedRoute {
+extension ExpectedRoute: Equatable {
     public static func ==(lhs: ExpectedRoute, rhs: ExpectedRoute) -> Bool {
-        return true
+        switch (lhs, rhs) {
+        case (.open, .open):
+            return true
+        }
     }
 }

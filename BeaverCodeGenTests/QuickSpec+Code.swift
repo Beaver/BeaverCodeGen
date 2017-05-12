@@ -6,14 +6,28 @@ extension QuickSpec {
         case action = "Action"
         case state = "State"
         case route = "Route"
+        case reducer = "Reducer"
+        case viewController = "ViewController"
 
         var expected: String {
-            return "Expected\(rawValue).swift"
+            return "ExpectedCode/Expected\(rawValue).swift"
+        }
+    }
+
+    enum AppType: String {
+        case route = "Route"
+
+        var app: String {
+            return "AppCode/App\(rawValue).swift"
         }
     }
 
     func expectedCode(_ type: ExpectedType) -> String {
-        return try! TextFile(path: dirPath + type.expected).read()
+        return try! TextFile(path: dirPath / type.expected).read()
+    }
+
+    func appCode(_ type: AppType) -> String {
+        return try! TextFile(path: dirPath / type.app).read()
     }
 
     func printDiff(code: String, expected: String) {

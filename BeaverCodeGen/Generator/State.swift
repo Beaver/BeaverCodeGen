@@ -8,7 +8,7 @@ extension State: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "struct \(moduleName)State: Beaver.State {"
+        s << "struct \(moduleName.typeName)State: Beaver.State {"
         s <<< "var error: String?"
         s << ""
         s <<< "var loading: Bool = false"
@@ -16,7 +16,7 @@ extension State: CustomStringConvertible {
         s <<< "var currentScreen: CurrentScreen = .none"
         s << "}"
         s << ""
-        s << "extension \(moduleName)State {"
+        s << "extension \(moduleName.typeName)State {"
         s <<< "/// Represents the currently shown screen"
         s <<< "enum CurrentScreen: Int {"
         s <<< tab("case none")
@@ -24,9 +24,11 @@ extension State: CustomStringConvertible {
         s <<< "}"
         s << "}"
         s << ""
-        s << "extension \(moduleName)State {"
-        s <<< "public static func ==(lhs: \(moduleName)State, rhs: \(moduleName)State) -> Bool {"
-        s <<< tab("return true")
+        s << "extension \(moduleName.typeName)State {"
+        s <<< "public static func ==(lhs: \(moduleName.typeName)State, rhs: \(moduleName.typeName)State) -> Bool {"
+        s <<< tab("return lhs.error == rhs.error &&")
+        s <<< tab("        lhs.loading == rhs.loading &&")
+        s <<< tab("        lhs.currentScreen == rhs.currentScreen")
         s <<< "}"
         s += "}"
 
