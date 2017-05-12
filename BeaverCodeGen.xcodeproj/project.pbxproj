@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
 		516DD031A162389BED2DFAF8 /* ViewControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDDA25CA931EDB13E7634 /* ViewControllerSpecs.swift */; };
-		516DD0C1342FA6A7B62BB883 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDA86E5D0AC085A52F505 /* Enum.swift */; };
 		516DD0C6E611ECD9B74A0132 /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD8B60D7131D35A53CF96 /* StateSpecs.swift */; };
 		516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7E4CA30E9F8D793D12C /* ViewController.swift */; };
+		516DD10BFE1261CB3700C368 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD099374AABB77B373FF5 /* Switch.swift */; };
 		516DD351CE7EC5E24FFC5477 /* ExpectedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD63B71E152DD0D327EAC /* ExpectedRouter.swift */; };
 		516DD5AB597442F1D7C9E1E4 /* QuickSpec+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */; };
 		516DD7768E6484BA6B59FA98 /* ExpectedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDC808FA86983F2BCD74B /* ExpectedRoute.swift */; };
@@ -21,15 +21,16 @@
 		516DD865F5D10CF89016E7BC /* ExpectedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD0AD25BDF4A8D2C7D8CD /* ExpectedAction.swift */; };
 		516DD8C7A290AC2792580FB0 /* ExpectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDAA6013930F63DC9B610 /* ExpectedState.swift */; };
 		516DD8FB11A9636485984631 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD4043AF42AF2C5A6BF1D /* Route.swift */; };
+		516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD40BAC0CD37432550FBE /* Enum.swift */; };
 		516DDA0A5A732FBE19515C2B /* ExpectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD22E66E81F10E1983920 /* ExpectedViewController.swift */; };
 		516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDF0359D5602E23A93C30 /* Reducer.swift */; };
 		516DDC35220E3A65A2D2AEB8 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDFEEB563F15814531362 /* AppRoute.swift */; };
 		516DDCA09084B9FB8A9C0126 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD28743DD626B15D46B36 /* State.swift */; };
 		516DDFC06A6FD3347BABDEDD /* RouteSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD38F7ACDB6700F540FA1 /* RouteSpecs.swift */; };
+		516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD96DEFD9D99E275AD699 /* String+Generator.swift */; };
 		762B872E1EBB0A1D002E4BD9 /* ActionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B872D1EBB0A1D002E4BD9 /* ActionSpecs.swift */; };
 		762B87331EBB0A29002E4BD9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87301EBB0A29002E4BD9 /* Action.swift */; };
 		762B87341EBB0A29002E4BD9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87311EBB0A29002E4BD9 /* Main.swift */; };
-		762B87351EBB0A29002E4BD9 /* String+Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87321EBB0A29002E4BD9 /* String+Generator.swift */; };
 		7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */; };
 		7C76A7AA1EB84F3D00D24A38 /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */; };
@@ -49,16 +50,18 @@
 		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
 		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		516DD099374AABB77B373FF5 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		516DD0AD25BDF4A8D2C7D8CD /* ExpectedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedAction.swift; sourceTree = "<group>"; };
 		516DD22E66E81F10E1983920 /* ExpectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedViewController.swift; sourceTree = "<group>"; };
 		516DD28743DD626B15D46B36 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		516DD38F7ACDB6700F540FA1 /* RouteSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSpecs.swift; sourceTree = "<group>"; };
 		516DD4043AF42AF2C5A6BF1D /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		516DD40BAC0CD37432550FBE /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DD63B71E152DD0D327EAC /* ExpectedRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedRouter.swift; sourceTree = "<group>"; };
 		516DD7E4CA30E9F8D793D12C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		516DD8B60D7131D35A53CF96 /* StateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
+		516DD96DEFD9D99E275AD699 /* String+Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Generator.swift"; sourceTree = "<group>"; };
 		516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuickSpec+Code.swift"; sourceTree = "<group>"; };
-		516DDA86E5D0AC085A52F505 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DDA9E8769AABC10CA4BD5 /* ExpectedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedPresenter.swift; sourceTree = "<group>"; };
 		516DDAA6013930F63DC9B610 /* ExpectedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedState.swift; sourceTree = "<group>"; };
 		516DDADC6C5DEE243EE77EAD /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		762B872D1EBB0A1D002E4BD9 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
 		762B87301EBB0A29002E4BD9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		762B87311EBB0A29002E4BD9 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		762B87321EBB0A29002E4BD9 /* String+Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Generator.swift"; sourceTree = "<group>"; };
 		7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeaverCodeGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaverCodeGen.h; sourceTree = "<group>"; };
 		7C76A79D1EB84F3D00D24A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +116,16 @@
 				516DD22E66E81F10E1983920 /* ExpectedViewController.swift */,
 			);
 			path = ExpectedCode;
+			sourceTree = "<group>";
+		};
+		516DDB8208DB1062568C1D1C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				516DD40BAC0CD37432550FBE /* Enum.swift */,
+				516DD099374AABB77B373FF5 /* Switch.swift */,
+				516DD96DEFD9D99E275AD699 /* String+Generator.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		516DDDC5F7D45AD65844A720 /* AppCode */ = {
@@ -161,12 +173,11 @@
 			children = (
 				762B87301EBB0A29002E4BD9 /* Action.swift */,
 				762B87311EBB0A29002E4BD9 /* Main.swift */,
-				762B87321EBB0A29002E4BD9 /* String+Generator.swift */,
 				516DD28743DD626B15D46B36 /* State.swift */,
 				516DD4043AF42AF2C5A6BF1D /* Route.swift */,
 				516DDF0359D5602E23A93C30 /* Reducer.swift */,
 				516DD7E4CA30E9F8D793D12C /* ViewController.swift */,
-				516DDA86E5D0AC085A52F505 /* Enum.swift */,
+				516DDB8208DB1062568C1D1C /* Core */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -409,12 +420,13 @@
 			files = (
 				762B87341EBB0A29002E4BD9 /* Main.swift in Sources */,
 				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
-				762B87351EBB0A29002E4BD9 /* String+Generator.swift in Sources */,
 				516DDCA09084B9FB8A9C0126 /* State.swift in Sources */,
 				516DD8FB11A9636485984631 /* Route.swift in Sources */,
 				516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */,
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
-				516DD0C1342FA6A7B62BB883 /* Enum.swift in Sources */,
+				516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */,
+				516DD10BFE1261CB3700C368 /* Switch.swift in Sources */,
+				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

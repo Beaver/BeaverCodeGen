@@ -4,11 +4,11 @@ public enum AppRoute: Beaver.Route {
     case expected(ExpectedRoute)
 }
 
-public enum AppRouteSuccess: RouteSuccess {
+public enum AppRouteSuccess: Beaver.RouteSuccess {
     case expected(ExpectedRouteSuccess)
 }
 
-public enum AppRouteError: RouteError {
+public enum AppRouteError: Beaver.RouteError {
     case expected(ExpectedRouteError)
 }
 

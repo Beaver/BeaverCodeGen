@@ -24,23 +24,20 @@ extension Route: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "public enum \(moduleName.typeName)Route: Beaver.Route {"
-        for routeCase in routeCases {
-            s <<< routeCase.description
-        }
-        s << "}"
+        s << Enum(name: "\(moduleName.typeName)Route",
+                  isPublic: true,
+                  enumCases: routeCases,
+                  implementing: ["Beaver.Route"]).description
         s << ""
-        s << "public enum \(moduleName.typeName)RouteSuccess: RouteSuccess {"
-        for successCase in successCases {
-            s <<< successCase.description
-        }
-        s << "}"
+        s << Enum(name: "\(moduleName.typeName)RouteSuccess",
+                  isPublic: true,
+                  enumCases: successCases,
+                  implementing: ["Beaver.RouteSuccess"]).description
         s << ""
-        s << "public enum \(moduleName.typeName)RouteError: RouteError {"
-        for errorCase in errorCases {
-            s <<< errorCase.description
-        }
-        s << "}"
+        s << Enum(name: "\(moduleName.typeName)RouteError",
+                  isPublic: true,
+                  enumCases: errorCases,
+                  implementing: ["Beaver.RouteError"]).description
         s << ""
         s << "extension \(moduleName.typeName)Route {"
         s <<< "public typealias RouteSuccessType = \(moduleName.typeName)RouteSuccess"

@@ -3,7 +3,7 @@ infix operator <<<
 extension String {
     var indented: String {
         let split = self.characters.split(separator: "\n")
-        return split.map { "".tab + String($0) }.joined(separator: "\n")
+        return split.map { ($0.count > 0 ? .tab : "") + String($0) }.joined(separator: "\n")
     }
     
     static func <<(lhs: inout String, rhs: String) {

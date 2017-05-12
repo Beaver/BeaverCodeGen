@@ -10,6 +10,7 @@ target 'BeaverCodeGen' do
     pod 'Beaver', :git => 'git@github.com:Beaver/Beaver.git'
     pod 'Quick'
     pod 'Nimble'
+    pod 'Diff'
   end
 end
 
