@@ -8,19 +8,23 @@ extension Reducer: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "struct \(moduleName.typeName)Reducer: Beaver.Reducing {"
-        s <<< "typealias ActionType = \(moduleName.typeName)Action"
-        s << ""
-        s <<< "func handle(envelop: ActionEnvelop<\(moduleName.typeName)Action>,"
-        s <<< "            state: \(moduleName.typeName)State,"
-        s <<< "            completion: @escaping (\(moduleName.typeName)State) -> ()) -> \(moduleName.typeName)State {"
-        s <<< tab("var newState = state")
-        s << ""
-        s <<< tab("// Update the state here")
-        s << ""
-        s <<< tab("return newState")
-        s <<< "}"
-        s += "}"
+        s += "struct \(moduleName.typeName)Reducer: Beaver.Reducing ".scope {
+            var s = ""
+            s << "typealias ActionType = \(moduleName.typeName)Action"
+            s << ""
+            s << "func handle(envelop: ActionEnvelop<\(moduleName.typeName)Action>,"
+            s << "            state: \(moduleName.typeName)State,"
+            s += "            completion: @escaping (\(moduleName.typeName)State) -> ()) -> \(moduleName.typeName)State ".scope {
+                var s = ""
+                s << "var newState = state"
+                s << ""
+                s << "// Update the state here"
+                s << ""
+                s += "return newState"
+                return s
+            }
+            return s
+        }
 
         return s
     }

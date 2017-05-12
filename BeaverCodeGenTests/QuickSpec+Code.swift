@@ -8,6 +8,7 @@ extension QuickSpec {
         case state = "State"
         case route = "Route"
         case reducer = "Reducer"
+        case presenter = "Presenter"
         case viewController = "ViewController"
 
         var expected: String {
@@ -38,18 +39,26 @@ extension QuickSpec {
         for diff in diffs.elements {
             switch diff {
             case .insert(let at), .delete(let at):
-                let thisLine = line(ofChar: at, in: expected)
+                let thisLine = line(ofChar: at, in: code)
                 if thisLine == currentLine {
                     break
                 }
                 currentLine = thisLine
                 print("Expected Line >>>>>>>>")
-                print("[\(currentLine!)]")
+                print("[\(line(ofChar: at, in: expected))]")
                 print("------- Generated Line")
-                print("[\(line(ofChar: at, in: code))]")
+                print("[\(thisLine)]")
                 print(" \(diffIndicator(ofChar: at, in: code)) ")
                 print("<<<<<<<<<<<<<<<<<<<<<<")
             }
+        }
+
+        if diffs.elements.count > 0 {
+            print("Expected Code >>>>>>>>")
+            print(expected)
+            print("------- Generated Code")
+            print(code)
+            print("<<<<<<<<<<<<<<<<<<<<<<")
         }
     }
 }
@@ -60,12 +69,18 @@ fileprivate extension QuickSpec {
     }
 
     func line(ofChar at: Int, in str: String) -> String {
+        if str.characters.count <= at {
+            return ""
+        }
         let index = str.index(str.startIndex, offsetBy: at)
         let lineRange = str.lineRange(for: Range(uncheckedBounds: (index, str.index(after: index))))
         return str.substring(with: lineRange).replacingOccurrences(of: "\n", with: "\\n")
     }
 
     func diffIndicator(ofChar at: Int, in str: String) -> String {
+        if str.characters.count <= at {
+            return ""
+        }
         let index = str.index(str.startIndex, offsetBy: at)
         let lineRange = str.lineRange(for: Range(uncheckedBounds: (index, str.index(after: index))))
         return String(repeating: " ", count: at - str.distance(from: str.startIndex, to: lineRange.lowerBound)) + "^"

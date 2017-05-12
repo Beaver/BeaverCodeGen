@@ -39,17 +39,19 @@ extension Route: CustomStringConvertible {
                   enumCases: errorCases,
                   implementing: ["Beaver.RouteError"]).description
         s << ""
-        s << "extension \(moduleName.typeName)Route {"
-        s <<< "public typealias RouteSuccessType = \(moduleName.typeName)RouteSuccess"
+        s << "extension \(moduleName.typeName)Route ".scope {
+            var s = ""
+            s << "public typealias RouteSuccessType = \(moduleName.typeName)RouteSuccess"
+            s << ""
+            s += "public typealias RouteErrorType = \(moduleName.typeName)RouteError"
+            return s
+        }
         s << ""
-        s <<< "public typealias RouteErrorType = \(moduleName.typeName)RouteError"
-        s << "}"
-        s << ""
-        s << "extension \(moduleName.typeName)Route: Equatable {"
-        s <<< "public static func ==(lhs: \(moduleName.typeName)Route, rhs: \(moduleName.typeName)Route) -> Bool {"
-        s <<< tab(CompareSwitch(enumCases: routeCases).description)
-        s <<< "}"
-        s += "}"
+        s += "extension \(moduleName.typeName)Route: Equatable ".scope {
+            "public static func ==(lhs: \(moduleName.typeName)Route, rhs: \(moduleName.typeName)Route) -> Bool ".scope {
+                CompareSwitch(enumCases: routeCases).description
+            }
+        }
 
         return s
     }
