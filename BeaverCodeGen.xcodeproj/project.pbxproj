@@ -13,6 +13,7 @@
 		516DD10BFE1261CB3700C368 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD099374AABB77B373FF5 /* Switch.swift */; };
 		516DD351CE7EC5E24FFC5477 /* ExpectedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD63B71E152DD0D327EAC /* ExpectedRouter.swift */; };
 		516DD5AB597442F1D7C9E1E4 /* QuickSpec+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */; };
+		516DD626AD7985720711C048 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD921558AD570E4393BE7 /* AppAction.swift */; };
 		516DD7768E6484BA6B59FA98 /* ExpectedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDC808FA86983F2BCD74B /* ExpectedRoute.swift */; };
 		516DD812522860CC4D52BEDB /* ExpectedReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDC5677F78DB836A91D11 /* ExpectedReducer.swift */; };
 		516DD85B642E2242E14D2F05 /* ExpectedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDA9E8769AABC10CA4BD5 /* ExpectedPresenter.swift */; };
@@ -20,6 +21,7 @@
 		516DD8AA042E9418C288969C /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7A5390B2D623A30825C /* StateSpecs.swift */; };
 		516DD8C7A290AC2792580FB0 /* ExpectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDAA6013930F63DC9B610 /* ExpectedState.swift */; };
 		516DD8FB11A9636485984631 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD4043AF42AF2C5A6BF1D /* Route.swift */; };
+		516DD9379039DE20D1548680 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD5CE178205143C1CC99C /* AppRouter.swift */; };
 		516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD40BAC0CD37432550FBE /* Enum.swift */; };
 		516DDA0A5A732FBE19515C2B /* ExpectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD22E66E81F10E1983920 /* ExpectedViewController.swift */; };
 		516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDF0359D5602E23A93C30 /* Reducer.swift */; };
@@ -63,11 +65,13 @@
 		516DD4043AF42AF2C5A6BF1D /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		516DD40BAC0CD37432550FBE /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
+		516DD5CE178205143C1CC99C /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
 		516DD63B71E152DD0D327EAC /* ExpectedRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedRouter.swift; sourceTree = "<group>"; };
 		516DD7A5390B2D623A30825C /* StateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		516DD7E214952DCDD6AD90CB /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		516DD7E4CA30E9F8D793D12C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		516DD921558AD570E4393BE7 /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		516DD96DEFD9D99E275AD699 /* String+Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Generator.swift"; sourceTree = "<group>"; };
 		516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuickSpec+Code.swift"; sourceTree = "<group>"; };
 		516DDA9E8769AABC10CA4BD5 /* ExpectedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedPresenter.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				516DDFEEB563F15814531362 /* AppRoute.swift */,
 				CC6F80876E64F2C68D6CD258 /* AppPresenter.swift */,
 				CC6F8C0C28155B78A23EF1E3 /* AppState.swift */,
+				516DD921558AD570E4393BE7 /* AppAction.swift */,
+				516DD5CE178205143C1CC99C /* AppRouter.swift */,
 			);
 			path = AppCode;
 			sourceTree = "<group>";
@@ -472,6 +478,8 @@
 				516DDDD89A9F0A6BEE4DD240 /* PresenterSpecs.swift in Sources */,
 				CC6F8A7F32C490DD76F01B3A /* AppPresenter.swift in Sources */,
 				CC6F825E9250F45CD75BAD2E /* AppState.swift in Sources */,
+				516DD626AD7985720711C048 /* AppAction.swift in Sources */,
+				516DD9379039DE20D1548680 /* AppRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

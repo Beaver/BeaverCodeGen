@@ -13,11 +13,4 @@ extension Router {
 }
 
 extension ExpectedPresenter: Routing {
-    func handle(route: ExpectedRoute,
-                file: String,
-                function: String,
-                line: Int,
-                completion: @escaping Router<ExpectedRoute>.Completion) {
-        completion(.success(.done))
-    }
 }
