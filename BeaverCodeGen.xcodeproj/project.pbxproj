@@ -35,6 +35,8 @@
 		762B87341EBB0A29002E4BD9 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762B87311EBB0A29002E4BD9 /* Main.swift */; };
 		7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */; };
 		7C76A7AA1EB84F3D00D24A38 /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC6F825E9250F45CD75BAD2E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8C0C28155B78A23EF1E3 /* AppState.swift */; };
+		CC6F8A7F32C490DD76F01B3A /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F80876E64F2C68D6CD258 /* AppPresenter.swift */; };
 		FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		7C76A7A91EB84F3D00D24A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7EF28E8C79461199D40BB5C /* Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.release.xcconfig"; sourceTree = "<group>"; };
 		A98480FA4584A3ED026B57DE /* Pods-BeaverCodeGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.debug.xcconfig"; sourceTree = "<group>"; };
+		CC6F80876E64F2C68D6CD258 /* AppPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		CC6F8C0C28155B78A23EF1E3 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				516DDFEEB563F15814531362 /* AppRoute.swift */,
+				CC6F80876E64F2C68D6CD258 /* AppPresenter.swift */,
+				CC6F8C0C28155B78A23EF1E3 /* AppState.swift */,
 			);
 			path = AppCode;
 			sourceTree = "<group>";
@@ -464,6 +470,8 @@
 				516DDB1EAAB4379A8AC7F840 /* RouteSpecs.swift in Sources */,
 				516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */,
 				516DDDD89A9F0A6BEE4DD240 /* PresenterSpecs.swift in Sources */,
+				CC6F8A7F32C490DD76F01B3A /* AppPresenter.swift in Sources */,
+				CC6F825E9250F45CD75BAD2E /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

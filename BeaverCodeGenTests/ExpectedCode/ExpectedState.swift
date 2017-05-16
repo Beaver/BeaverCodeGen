@@ -1,6 +1,6 @@
 import Beaver
 
-struct ExpectedState: Beaver.State {
+public struct ExpectedState: Beaver.State {
     var error: String?
 
     var loading: Bool = false
