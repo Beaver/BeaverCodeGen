@@ -2,10 +2,18 @@ infix operator <<<
 
 extension String {
     var indented: String {
-        let split = self.characters.split(separator: "\n")
-        return split.map { String($0) == .tab ? "" : (.tab + String($0)) }.joined(separator: "\n")
+        let split = self.characters.split(separator: "\n", omittingEmptySubsequences: false)
+
+        return split.map { chars in
+            let str = String(chars)
+            if str.replacingOccurrences(of: " ", with: "").characters.count == 0 {
+                return ""
+            } else {
+                return .tab + str
+            }
+        }.joined(separator: "\n")
     }
-    
+
     static func <<(lhs: inout String, rhs: String) {
         return lhs.append(rhs.br)
     }
@@ -40,12 +48,7 @@ extension String {
 
     func scope(indent: Bool = true, _ content: () -> String) -> String {
         if indent {
-            return self + "{".br
-                    + content().replacingOccurrences(of: "\n", with: .tab + "\n")
-                    .indented
-                    .replacingOccurrences(of: .tab + "\n", with: "\n")
-                    .br
-                    + "}"
+            return self + "{".br + content().indented.br + "}"
         } else {
             return self + "{".br + content() + "}"
         }
