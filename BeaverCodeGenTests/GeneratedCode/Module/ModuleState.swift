@@ -1,6 +1,6 @@
 import Beaver
 
-public struct ExpectedState: Beaver.State {
+public struct ModuleState: Beaver.State {
     var error: String?
 
     var loading: Bool = false
@@ -8,7 +8,7 @@ public struct ExpectedState: Beaver.State {
     var currentScreen: CurrentScreen = .none
 }
 
-extension ExpectedState {
+extension ModuleState {
     /// Represents the currently shown screen
     enum CurrentScreen: Int {
         case none
@@ -16,8 +16,8 @@ extension ExpectedState {
     }
 }
 
-extension ExpectedState {
-    public static func ==(lhs: ExpectedState, rhs: ExpectedState) -> Bool {
+extension ModuleState {
+    public static func ==(lhs: ModuleState, rhs: ModuleState) -> Bool {
         return lhs.error == rhs.error &&
                 lhs.loading == rhs.loading &&
                 lhs.currentScreen == rhs.currentScreen

@@ -1,23 +1,23 @@
 import Beaver
 
-final class ExpectedPresenter: Beaver.Presenting {
-    typealias ActionType = ExpectedAction
+final class ModulePresenter: Beaver.Presenting {
+    typealias ActionType = ModuleAction
 
-    weak var weakStore: Store<ExpectedAction>?
+    weak var weakStore: Store<ModuleAction>?
 
     let parentRouter: Router<AppRoute>
 
     let context: Context
 
-    let initialState: ExpectedState
+    let initialState: ModuleState
 
     // Register your middlewares here
-    let middlewares: [Store<ExpectedAction>.Middleware]
+    let middlewares: [Store<ModuleAction>.Middleware]
 
     init(parentRouter: Router<AppRoute>,
          context: Context,
-         initialState: ExpectedState,
-         middlewares: [Store<ExpectedAction>.Middleware]) {
+         initialState: ModuleState,
+         middlewares: [Store<ModuleAction>.Middleware]) {
         self.parentRouter = parentRouter
         self.context = context
         self.initialState = initialState
@@ -25,9 +25,9 @@ final class ExpectedPresenter: Beaver.Presenting {
     }
 }
 
-extension ExpectedPresenter {
-    func stateDidUpdate(oldState: ExpectedState?,
-                        newState: ExpectedState,
+extension ModulePresenter {
+    func stateDidUpdate(oldState: ModuleState?,
+                        newState: ModuleState,
                         completion: @escaping () -> ()) {
 
         // Present the stages or emit to the parent router here

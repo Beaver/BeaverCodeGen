@@ -1,9 +1,7 @@
 import Beaver
 
 struct AppState: Beaver.State {
-    var currentRoute: AppRoute
-
-    var expectedState: ExpectedState?
+    var moduleState: ModuleState?
 }
 
 extension AppState {
