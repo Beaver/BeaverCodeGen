@@ -1,5 +1,5 @@
 import Beaver
 
-enum AppRoutingAction: Beaver.Action {
+enum AppAction: Beaver.Action {
     case module(ModuleAction)
 }

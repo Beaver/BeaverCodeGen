@@ -2,10 +2,11 @@
 
 import UIKit
 
-open class ViewController<AStateType: State>: UIViewController, Subscribing {
+open class ViewController<AStateType: State, AParentStateType: State>: UIViewController, Subscribing {
     public typealias StateType = AStateType
+    public typealias ParentStateType = AParentStateType
 
-    public let store: Store<StateType>
+    public let store: ChildStore<StateType, ParentStateType>
 
     // MARK: - Init
     
@@ -13,19 +14,27 @@ open class ViewController<AStateType: State>: UIViewController, Subscribing {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(store: Store<StateType>) {
+    public init(store: ChildStore<StateType, ParentStateType>) {
         self.store = store
 
         super.init(nibName: nil, bundle: nil)
-
-        subscribe(to: self.store)
     }
 
     // MARK: - Lifecycle
-    
-    deinit {
-        store.unsubscribe(subscriptionName)
 
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        subscribe(to: store)
+    }
+
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        unsubscribe(from: store)
+    }
+
+    deinit {
 #if DEBUG
         print("[\(self)] --- DEINIT ---")
 #endif

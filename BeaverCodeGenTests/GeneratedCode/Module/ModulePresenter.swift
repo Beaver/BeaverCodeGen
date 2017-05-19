@@ -1,27 +1,17 @@
 import Beaver
 
 final class ModulePresenter: Beaver.Presenting {
-    typealias ActionType = ModuleAction
+    typealias StateType = ModuleState
+    typealias ParentStateType = AppState
 
-    weak var weakStore: Store<ModuleAction>?
-
-    let parentRouter: Router<AppRoute>
+    let store: ChildStore<ModuleState, AppState>
 
     let context: Context
 
-    let initialState: ModuleState
-
-    // Register your middlewares here
-    let middlewares: [Store<ModuleAction>.Middleware]
-
-    init(parentRouter: Router<AppRoute>,
-         context: Context,
-         initialState: ModuleState,
-         middlewares: [Store<ModuleAction>.Middleware]) {
-        self.parentRouter = parentRouter
+    init(store: ChildStore<ModuleState, AppState>,
+         context: Context) {
+        self.store = store
         self.context = context
-        self.initialState = initialState
-        self.middlewares = middlewares
     }
 }
 

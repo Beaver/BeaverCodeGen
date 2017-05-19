@@ -1,5 +1,6 @@
 extension Store {
     /// An object observing state updates
+
     public struct Subscriber {
         /// Called when the store's state changed
         ///
@@ -21,6 +22,7 @@ extension Store {
             self.stateDidUpdate = stateDidUpdate
         }
     }
+
 }
 
 // MARK: - Equatable
@@ -51,6 +53,8 @@ extension Store.Subscriber: CustomDebugStringConvertible {
 public protocol Subscribing: class {
     associatedtype StateType: State
 
+    associatedtype ParentStateType: State
+
     /// Name automatically given to the store when subscribing
     var subscriptionName: String { get }
 
@@ -67,15 +71,11 @@ extension Subscribing {
         return String(describing: type(of: self))
     }
 
-    public var isSubscriptionWeak: Bool {
-        return true
-    }
-    
     public typealias StateUpdateEvent = (_ oldState: StateType?,
                                          _ newState: StateType) -> ()
 
     /// Subscribes to a store.
-    public func subscribe(to store: Store<StateType>) {
+    public func subscribe(to store: ChildStore<StateType, ParentStateType>) {
         if isSubscriptionWeak {
             // Copy subscription name outside of self
             let subscriptionName = self.subscriptionName
@@ -87,6 +87,7 @@ extension Subscribing {
                                             completion: completion)
                 } else {
                     store.unsubscribe(subscriptionName)
+                    completion()
                 }
             }
         } else {
@@ -97,12 +98,21 @@ extension Subscribing {
             }
         }
     }
+
+    // Unsubscribe from a store
+    public func unsubscribe(from store: ChildStore<StateType, ParentStateType>) {
+        store.unsubscribe(subscriptionName)
+    }
 }
 
-#if os(iOS)
-extension Subscribing where Self: UIViewController {
+extension Subscribing where Self: Presenting {
     public var isSubscriptionWeak: Bool {
         return false
     }
 }
-#endif
+
+extension Subscribing where Self: UIViewController {
+    public var isSubscriptionWeak: Bool {
+        return true
+    }
+}

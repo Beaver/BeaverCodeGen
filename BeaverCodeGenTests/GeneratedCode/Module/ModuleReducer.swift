@@ -1,9 +1,9 @@
 import Beaver
 
 struct ModuleReducer: Beaver.Reducing {
-    typealias ActionType = ModuleAction
+    typealias StateType = ModuleState
 
-    func handle(envelop: ActionEnvelop<ModuleAction>,
+    func handle(envelop: ActionEnvelop,
                 state: ModuleState,
                 completion: @escaping (ModuleState) -> ()) -> ModuleState {
         var newState = state
