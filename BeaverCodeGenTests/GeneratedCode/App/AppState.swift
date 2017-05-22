@@ -6,6 +6,6 @@ struct AppState: Beaver.State {
 
 extension AppState {
     public static func ==(lhs: AppState, rhs: AppState) -> Bool {
-        return lhs.currentRoute == rhs.currentRoute
+        return lhs.moduleState == rhs.moduleState
     }
 }

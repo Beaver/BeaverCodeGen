@@ -1,7 +1,9 @@
 import Beaver
 
-final class AppPresenter {
-    let store = Beaver.Store<AppState>
+final class AppPresenter: Beaver.Presenting, Beaver.Storing {
+    typealias StateType = AppState
+    
+    let store: Beaver.Store<AppState>
 
     let context: Context
 

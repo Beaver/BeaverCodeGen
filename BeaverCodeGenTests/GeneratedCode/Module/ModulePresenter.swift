@@ -1,10 +1,10 @@
 import Beaver
 
-final class ModulePresenter: Beaver.Presenting {
+final class ModulePresenter: Beaver.Presenting, Beaver.ChildStoring {
     typealias StateType = ModuleState
     typealias ParentStateType = AppState
 
-    let store: ChildStore<ModuleState, AppState>
+    var store: ChildStore<ModuleState, AppState>
 
     let context: Context
 

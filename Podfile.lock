@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: e4d4ef0f94c84414819fbf1653db2336441feb98
+    :commit: c60726ab36110014e6aa2fd32538c755b0683e2b
     :git: git@github.com:Beaver/Beaver.git
 
 SPEC CHECKSUMS:
