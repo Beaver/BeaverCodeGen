@@ -1,7 +1,10 @@
 import Beaver
 
-struct AppState: Beaver.State {
+public struct AppState: Beaver.State {
     var moduleState: ModuleState?
+
+    public init() {
+    }
 }
 
 extension AppState {

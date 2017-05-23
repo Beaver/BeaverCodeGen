@@ -1,5 +1,6 @@
 import Beaver
 
 enum AppAction: Beaver.Action {
-    case module(ModuleAction)
+    case start(module: Action)
+    case stop(module: Action)
 }

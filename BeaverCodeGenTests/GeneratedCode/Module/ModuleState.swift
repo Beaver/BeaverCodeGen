@@ -6,6 +6,9 @@ public struct ModuleState: Beaver.State {
     var loading: Bool = false
 
     var currentScreen: CurrentScreen = .none
+    
+    public init() {
+    }
 }
 
 extension ModuleState {
