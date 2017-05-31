@@ -18,7 +18,7 @@ struct AppReducer: Beaver.Reducing {
             
             newState.moduleState = nil
 
-        case is ModuleRoutingAction:
+        case is ModuleAction:
             newState.moduleState = module.handle(envelop: envelop, state: state.moduleState ?? ModuleState()) { moduleState in
                 newState.moduleState = moduleState
                 completion(newState)
