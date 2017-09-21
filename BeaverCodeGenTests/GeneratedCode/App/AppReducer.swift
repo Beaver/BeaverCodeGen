@@ -3,7 +3,8 @@ import Beaver
 struct AppReducer: Beaver.Reducing {
     typealias StateType = AppState
 
-    let module: ModuleReducer
+    let moduleOne: ModuleOneReducer
+    let moduleTwo: ModuleTwoReducer
 
     func handle(envelop: ActionEnvelop,
                 state: AppState,
@@ -14,15 +15,23 @@ struct AppReducer: Beaver.Reducing {
         case AppAction.start(let startAction):
             return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
 
-        case AppAction.stop(module: ModuleRoutingAction.stop):
-            
-            newState.moduleState = nil
-
-        case is ModuleAction:
-            newState.moduleState = module.handle(envelop: envelop, state: state.moduleState ?? ModuleState()) { moduleState in
-                newState.moduleState = moduleState
+        case is ModuleOneAction:
+            newState.moduleOneState = moduleOne.handle(envelop: envelop, state: state.moduleOneState ?? ModuleOneState()) { moduleOneState in
+                newState.moduleOneState = moduleOneState
                 completion(newState)
             }
+
+        case AppAction.stop(module: ModuleOneRoutingAction.stop):
+            newState.moduleOneState = nil
+            
+        case is ModuleTwoAction:
+            newState.moduleTwoState = moduleTwo.handle(envelop: envelop, state: state.moduleTwoState ?? ModuleTwoState()) { moduleTwoState in
+                newState.moduleTwoState = moduleTwoState
+                completion(newState)
+            }
+            
+        case AppAction.stop(module: ModuleTwoRoutingAction.stop):
+            newState.moduleTwoState = nil
             
         default: break
         }

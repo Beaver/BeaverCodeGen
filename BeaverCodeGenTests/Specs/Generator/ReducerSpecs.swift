@@ -8,11 +8,11 @@ final class ReducerSpecs: QuickSpec {
         describe("Reducer") {
             describe("description") {
                 it("should return a string containing the Reducer's code") {
-                    let code = Reducer(moduleName: "Module").description
+                    let code = Reducer(moduleName: "ModuleOne").description
 
-                    self.printDiff(code: code, expected: self.expectedCode(.reducer))
+                    self.printDiff(code: code, expected: self.expectedCode(ModuleOneType.reducer))
 
-                    expect(code) == self.expectedCode(.reducer)
+                    expect(code) == self.expectedCode(ModuleOneType.reducer)
                 }
             }
         }

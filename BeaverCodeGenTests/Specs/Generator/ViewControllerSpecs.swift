@@ -10,9 +10,9 @@ final class ViewControllerSpecs: QuickSpec {
                 it("should return a string containing the ViewController's code") {
                     let code = ViewController(moduleName: "Module").description
 
-                    self.printDiff(code: code, expected: self.expectedCode(.viewController))
+                    self.printDiff(code: code, expected: self.expectedCode(ModuleOneType.viewController))
 
-                    expect(code) == self.expectedCode(.viewController)
+                    expect(code) == self.expectedCode(ModuleOneType.viewController)
                 }
             }
         }

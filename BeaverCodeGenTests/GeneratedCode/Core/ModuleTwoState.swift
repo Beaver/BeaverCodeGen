@@ -1,15 +1,15 @@
 import Beaver
 
-public struct ModuleState: Beaver.State {
+public struct ModuleTwoState: Beaver.State {
     public var error: String?
-
+    
     public var currentScreen: CurrentScreen = .none
-
+    
     public init() {
     }
 }
 
-extension ModuleState {
+extension ModuleTwoState {
     /// Represents the currently shown screen
     public enum CurrentScreen: Int {
         case none
@@ -17,9 +17,10 @@ extension ModuleState {
     }
 }
 
-extension ModuleState {
-    public static func ==(lhs: ModuleState, rhs: ModuleState) -> Bool {
+extension ModuleTwoState {
+    public static func ==(lhs: ModuleTwoState, rhs: ModuleTwoState) -> Bool {
         return lhs.error == rhs.error &&
             lhs.currentScreen == rhs.currentScreen
     }
 }
+

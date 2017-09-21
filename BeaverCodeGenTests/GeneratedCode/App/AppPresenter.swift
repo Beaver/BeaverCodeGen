@@ -5,7 +5,8 @@ import UIKit
 #endif
 
 final class ModulesContainer {
-    var module: ModulePresenter?
+    var moduleOne: ModuleOnePresenter?
+    var moduleTwo: ModuleTwoPresenter?
 }
 
 final class AppPresenter: Presenting, Storing {
@@ -50,15 +51,28 @@ extension AppPresenter {
     func stateDidUpdate(oldState: AppState?,
                         newState: AppState,
                         completion: @escaping () -> ()) {
-        switch (oldState?.moduleState, newState.moduleState) {
+        switch (oldState?.moduleOneState, newState.moduleOneState) {
         case (.none, .some):
-            let childStore = ChildStore(store: store) { $0.moduleState }
-            modules.module = ModulePresenter(store: childStore, context: context)
-            modules.module?.subscribe()
+            let childStore = ChildStore(store: store) { $0.moduleOneState }
+            modules.moduleOne = ModuleOnePresenter(store: childStore, context: context)
+            modules.moduleOne?.subscribe()
 
         case (.some, .none):
-            modules.module?.unsubscribe()
-            modules.module = nil
+            modules.moduleOne?.unsubscribe()
+            modules.moduleOne = nil
+            
+        default: break
+        }
+        
+        switch (oldState?.moduleTwoState, newState.moduleTwoState) {
+        case (.none, .some):
+            let childStore = ChildStore(store: store) { $0.moduleTwoState }
+            modules.moduleTwo = ModuleTwoPresenter(store: childStore, context: context)
+            modules.moduleTwo?.subscribe()
+            
+        case (.some, .none):
+            modules.moduleTwo?.unsubscribe()
+            modules.moduleTwo = nil
             
         default: break
         }

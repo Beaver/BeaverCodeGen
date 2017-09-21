@@ -1,8 +1,8 @@
-struct State {
+struct ModuleState {
     let moduleName: String
 }
 
-extension State: CustomStringConvertible {
+extension ModuleState: CustomStringConvertible {
     var description: String {
         var s = ""
 
@@ -40,6 +40,42 @@ extension State: CustomStringConvertible {
             }
         }
 
+        return s
+    }
+}
+
+struct AppState {
+    let moduleNames: [String]
+}
+
+extension AppState: CustomStringConvertible {
+    var description: String {
+        var s = ""
+        
+        s << "import Beaver"
+        s << ""
+        s << "public struct AppState: Beaver.State ".scope {
+            var s = ""
+            for moduleName in moduleNames {
+                s << "public var \(moduleName.varName)State: \(moduleName.typeName)State?"
+            }
+            s << ""
+            s << "public init() {"
+            s += "}"
+            return s
+        }
+        s << ""
+        s << "extension AppState ".scope {
+            var s = ""
+            s << "public static func ==(lhs: AppState, rhs: AppState) -> Bool ".scope {
+                "return " + moduleNames.map {
+                    "lhs.\($0.varName) == rhs.\($0.varName)"
+                }.joined(separator: " &&".br.tab)
+            }
+            return s
+        }
+        
+        
         return s
     }
 }

@@ -1,35 +1,43 @@
 import Quick
 import Diff
 
+protocol FilePathRepresentable {
+    var filePath: String { get }
+}
+
 extension QuickSpec {
-    enum ExpectedType: String {
+    enum CoreType: String, FilePathRepresentable {
+        case moduleOneState = "ModuleOneState"
+        case appState = "AppState"
+        
+        var filePath: String {
+            return "GeneratedCode/Core/\(rawValue).swift"
+        }
+    }
+    
+    enum ModuleOneType: String, FilePathRepresentable {
         case action = "Action"
-        case state = "State"
         case reducer = "Reducer"
         case presenter = "Presenter"
         case viewController = "ViewController"
 
-        var expected: String {
-            return "GeneratedCode/Module/Module\(rawValue).swift"
+        var filePath: String {
+            return "GeneratedCode/ModuleOne/ModuleOne\(rawValue).swift"
         }
     }
 
-    enum AppType: String {
+    enum AppType: String, FilePathRepresentable {
         case route = "Route"
 
-        var app: String {
+        var filePath: String {
             return "GeneratedCode/App/App\(rawValue).swift"
         }
     }
 
-    func expectedCode(_ type: ExpectedType) -> String {
-        return readFile(atPath: "\(dirPath)/\(type.expected)")
+    func expectedCode(_ type: FilePathRepresentable) -> String {
+        return readFile(atPath: "\(dirPath)/\(type.filePath)")
     }
-
-    func appCode(_ type: AppType) -> String {
-        return readFile(atPath: "\(dirPath)/\(type.app)")
-    }
-
+    
     func printDiff(code: String, expected: String) {
         let diffs = expected.diff(to: code)
 
