@@ -14,11 +14,9 @@
 		516DD13AF412D9FEF5E519F7 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */; };
 		516DD5AB597442F1D7C9E1E4 /* QuickSpec+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */; };
 		516DD8AA042E9418C288969C /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7A5390B2D623A30825C /* StateSpecs.swift */; };
-		516DD8FB11A9636485984631 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD4043AF42AF2C5A6BF1D /* Route.swift */; };
 		516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD40BAC0CD37432550FBE /* Enum.swift */; };
 		516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDF0359D5602E23A93C30 /* Reducer.swift */; };
 		516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */; };
-		516DDB1EAAB4379A8AC7F840 /* RouteSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3E56AC4FB7FCA7A1F3F /* RouteSpecs.swift */; };
 		516DDB92411724A03098DFE8 /* ReducerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */; };
 		516DDC105506D076421FF1F8 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7E214952DCDD6AD90CB /* Presenter.swift */; };
 		516DDCA09084B9FB8A9C0126 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD28743DD626B15D46B36 /* State.swift */; };
@@ -56,9 +54,7 @@
 		516DD099374AABB77B373FF5 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		516DD28743DD626B15D46B36 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		516DD3E56AC4FB7FCA7A1F3F /* RouteSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSpecs.swift; sourceTree = "<group>"; };
 		516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSpecs.swift; sourceTree = "<group>"; };
-		516DD4043AF42AF2C5A6BF1D /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		516DD40BAC0CD37432550FBE /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
 		516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
@@ -116,7 +112,6 @@
 				516DD7A5390B2D623A30825C /* StateSpecs.swift */,
 				516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */,
 				516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */,
-				516DD3E56AC4FB7FCA7A1F3F /* RouteSpecs.swift */,
 				516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */,
 				516DDDA309C419204D90A7FD /* PresenterSpecs.swift */,
 			);
@@ -167,7 +162,6 @@
 				762B87301EBB0A29002E4BD9 /* Action.swift */,
 				762B87311EBB0A29002E4BD9 /* Main.swift */,
 				516DD28743DD626B15D46B36 /* State.swift */,
-				516DD4043AF42AF2C5A6BF1D /* Route.swift */,
 				516DDF0359D5602E23A93C30 /* Reducer.swift */,
 				516DD7E4CA30E9F8D793D12C /* ViewController.swift */,
 				516DDB8208DB1062568C1D1C /* Core */,
@@ -367,9 +361,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Beaver/Beaver.framework",
+				"${BUILT_PRODUCTS_DIR}/Diff/Diff.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Beaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Diff.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -382,13 +385,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeaverCodeGen-BeaverCodeGenTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		63473A45FD10BD73DBEFCF2B /* [CP] Copy Pods Resources */ = {
@@ -412,13 +418,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeaverCodeGen-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		734B95AA1FF9807EE4358D4F /* [CP] Copy Pods Resources */ = {
@@ -446,7 +455,6 @@
 				762B87341EBB0A29002E4BD9 /* Main.swift in Sources */,
 				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
 				516DDCA09084B9FB8A9C0126 /* State.swift in Sources */,
-				516DD8FB11A9636485984631 /* Route.swift in Sources */,
 				516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */,
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
 				516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */,
@@ -464,7 +472,6 @@
 				516DD8AA042E9418C288969C /* StateSpecs.swift in Sources */,
 				516DD0A5D095C94EE92405E1 /* ViewControllerSpecs.swift in Sources */,
 				516DDB92411724A03098DFE8 /* ReducerSpecs.swift in Sources */,
-				516DDB1EAAB4379A8AC7F840 /* RouteSpecs.swift in Sources */,
 				516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */,
 				516DDDD89A9F0A6BEE4DD240 /* PresenterSpecs.swift in Sources */,
 				CC6F8422CF16A863BF237222 /* AppPresenter.swift in Sources */,

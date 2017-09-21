@@ -8,7 +8,7 @@ final class PresenterSpecs: QuickSpec {
         describe("Presenter") {
             describe("description") {
                 it("should return a string containing the Presenter's code") {
-                    let code = Presenter(moduleName: "Expected").description
+                    let code = Presenter(moduleName: "Module").description
 
                     self.printDiff(code: code, expected: self.expectedCode(.presenter))
 

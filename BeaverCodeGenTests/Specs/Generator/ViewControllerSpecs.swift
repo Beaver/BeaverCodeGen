@@ -8,7 +8,7 @@ final class ViewControllerSpecs: QuickSpec {
         describe("ViewController") {
             describe("description") {
                 it("should return a string containing the ViewController's code") {
-                    let code = ViewController(moduleName: "Expected").description
+                    let code = ViewController(moduleName: "Module").description
 
                     self.printDiff(code: code, expected: self.expectedCode(.viewController))
 

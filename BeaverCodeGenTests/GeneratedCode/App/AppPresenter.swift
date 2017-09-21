@@ -31,13 +31,15 @@ extension AppPresenter {
                           middlewares: [Store<AppState>.Middleware] = [.logging]) -> (UIWindow, AppPresenter) {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
-
+        
         let context = NavigationContext(parent: WindowContext(window: window))
-        let store = Store<AppState>(initialState: state, middlewares: middlewares, reducer: AppReducer(module: ModuleReducer()).reducer)
+        let reducer = AppReducer(module: ModuleReducer()).reducer
+        let store = Store<AppState>(initialState: state, middlewares: middlewares, reducer: reducer)
         let presenter = AppPresenter(context: context, store: store)
-
-        presenter.dispatch(AppAction.start)
-
+        
+        presenter.subscribe()
+        presenter.dispatch(AppAction.start(withFirstAction: ModuleRoutingAction.start), recipients: .emitter)
+        
         return (window, presenter)
     }
 }
@@ -48,7 +50,6 @@ extension AppPresenter {
     func stateDidUpdate(oldState: AppState?,
                         newState: AppState,
                         completion: @escaping () -> ()) {
-
         switch (oldState?.moduleState, newState.moduleState) {
         case (.none, .some):
             let childStore = ChildStore(store: store) { $0.moduleState }

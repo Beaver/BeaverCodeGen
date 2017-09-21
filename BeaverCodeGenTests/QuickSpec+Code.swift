@@ -1,4 +1,3 @@
-import FileKit
 import Quick
 import Diff
 
@@ -6,13 +5,12 @@ extension QuickSpec {
     enum ExpectedType: String {
         case action = "Action"
         case state = "State"
-        case route = "Route"
         case reducer = "Reducer"
         case presenter = "Presenter"
         case viewController = "ViewController"
 
         var expected: String {
-            return "ExpectedCode/Expected\(rawValue).swift"
+            return "GeneratedCode/Module/Module\(rawValue).swift"
         }
     }
 
@@ -20,16 +18,16 @@ extension QuickSpec {
         case route = "Route"
 
         var app: String {
-            return "AppCode/App\(rawValue).swift"
+            return "GeneratedCode/App/App\(rawValue).swift"
         }
     }
 
     func expectedCode(_ type: ExpectedType) -> String {
-        return try! TextFile(path: dirPath / type.expected).read()
+        return readFile(atPath: "\(dirPath)/\(type.expected)")
     }
 
     func appCode(_ type: AppType) -> String {
-        return try! TextFile(path: dirPath / type.app).read()
+        return readFile(atPath: "\(dirPath)/\(type.app)")
     }
 
     func printDiff(code: String, expected: String) {
@@ -64,8 +62,10 @@ extension QuickSpec {
 }
 
 fileprivate extension QuickSpec {
-    var dirPath: Path {
-        return Path(#file).parent
+    var dirPath: String {
+        var pathComponents = (#file).split(separator: "/")
+        pathComponents.removeLast()
+        return "/" + pathComponents.joined(separator: "/")
     }
 
     func line(ofChar at: Int, in str: String) -> String {
@@ -84,6 +84,19 @@ fileprivate extension QuickSpec {
         let index = str.index(str.startIndex, offsetBy: at)
         let lineRange = str.lineRange(for: Range(uncheckedBounds: (index, str.index(after: index))))
         return String(repeating: " ", count: at - str.distance(from: str.startIndex, to: lineRange.lowerBound)) + "^"
+    }
+    
+    func readFile(atPath path: String) -> String {
+        guard let file = FileHandle(forReadingAtPath: path) else {
+            fatalError("Couldn't find resource at path: \(path)")
+        }
+        
+        let data = file.readDataToEndOfFile()
+        file.closeFile()
+        guard let result = String(data: data, encoding: .utf8) else {
+            fatalError("Couldn't convert file content to UTF8 string")
+        }
+        return result
     }
 }
 

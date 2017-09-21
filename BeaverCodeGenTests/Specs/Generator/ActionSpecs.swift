@@ -8,7 +8,7 @@ final class ActionSpecs: QuickSpec {
         describe("Action") {
             describe("description") {
                 it("should return a string containing the action's code") {
-                    let code = Action(moduleName: "Expected").description
+                    let code = Action(moduleName: "Module").description
 
                     self.printDiff(code: code, expected: self.expectedCode(.action))
 
