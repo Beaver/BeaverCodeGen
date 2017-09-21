@@ -8,28 +8,20 @@ extension Action: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "enum \(moduleName.typeName)Action: Beaver.Action ".scope {
-            "case open \(comment("Opens the main controller of the module"))"
-        }
+        s << "public protocol ModuleAction: Beaver.Action {"
+        s << "}"
         s << ""
-        s << "extension \(moduleName.typeName)Action ".scope {
+        s << "public enum \(moduleName.typeName)RoutingAction: ModuleAction ".scope {
             var s = ""
-            s << "typealias StateType = \(moduleName.typeName)State"
-            s += "typealias RouteType = \(moduleName.typeName)Route"
+            s << "case start"
+            s += "case stop"
             return s
         }
         s << ""
-        s += "extension \(moduleName.typeName)Action ".scope {
-            "static func mapRouteToAction(from route: \(moduleName.typeName)Route) -> \(moduleName.typeName)Action ".scope {
-                "switch route ".scope(indent: false) {
-                    var s = ""
-                    s << "case .open:"
-                    s <<< "return .open"
-                    return s
-                }
-            }
+        s << "enum ModuleUIAction: ModuleAction ".scope {
+            "case finish"
         }
-
+        
         return s
     }
 }

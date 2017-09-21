@@ -4,7 +4,7 @@ public final class ModulePresenter: Beaver.Presenting, Beaver.ChildStoring {
     public typealias StateType = ModuleState
     public typealias ParentStateType = AppState
 
-    public var store: ChildStore<ModuleState, AppState>
+    public let store: ChildStore<ModuleState, AppState>
 
     public let context: Context
 

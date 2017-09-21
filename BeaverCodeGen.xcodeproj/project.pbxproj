@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191BACB61F7389380071D2BA /* ModuleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB51F7389380071D2BA /* ModuleState.swift */; };
+		191BACB81F7390950071D2BA /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB71F7390950071D2BA /* StateSpecs.swift */; };
 		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
 		516DD0A5D095C94EE92405E1 /* ViewControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */; };
 		516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7E4CA30E9F8D793D12C /* ViewController.swift */; };
 		516DD10BFE1261CB3700C368 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD099374AABB77B373FF5 /* Switch.swift */; };
 		516DD13AF412D9FEF5E519F7 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */; };
 		516DD5AB597442F1D7C9E1E4 /* QuickSpec+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD9ADE331EE85FEBA21FF /* QuickSpec+Code.swift */; };
-		516DD8AA042E9418C288969C /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7A5390B2D623A30825C /* StateSpecs.swift */; };
 		516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD40BAC0CD37432550FBE /* Enum.swift */; };
 		516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDF0359D5602E23A93C30 /* Reducer.swift */; };
 		516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */; };
@@ -27,7 +28,6 @@
 		7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */; };
 		7C76A7AA1EB84F3D00D24A38 /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC6F8422CF16A863BF237222 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88D59B5722E0E01CA280 /* AppPresenter.swift */; };
-		CC6F84B15D06C220BA16A97B /* ModuleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8E12F428DD5906F70EBD /* ModuleState.swift */; };
 		CC6F88F3EA55C7ECE2095CB3 /* ModuleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F80F381B61451BF77C6DF /* ModuleReducer.swift */; };
 		CC6F890ACCF33FF7D4E822B0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F806E61B8DA1B62168722 /* AppState.swift */; };
 		CC6F894004CDF618F3FD3F83 /* ModuleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F8BAC560C5BF0F76F3EE6 /* ModuleAction.swift */; };
@@ -48,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		191BACB51F7389380071D2BA /* ModuleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleState.swift; sourceTree = "<group>"; };
+		191BACB71F7390950071D2BA /* StateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
 		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,7 +60,6 @@
 		516DD40BAC0CD37432550FBE /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
 		516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
-		516DD7A5390B2D623A30825C /* StateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		516DD7E214952DCDD6AD90CB /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		516DD7E4CA30E9F8D793D12C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		516DD96DEFD9D99E275AD699 /* String+Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Generator.swift"; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		CC6F88D59B5722E0E01CA280 /* AppPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		CC6F8A46EF113737B2BDD463 /* ModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
 		CC6F8BAC560C5BF0F76F3EE6 /* ModuleAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleAction.swift; sourceTree = "<group>"; };
-		CC6F8E12F428DD5906F70EBD /* ModuleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleState.swift; sourceTree = "<group>"; };
 		CC6F8E79CB200692FD0E596E /* ModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModulePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,11 +109,11 @@
 		516DDA585AD99D9D9D0A7F2B /* Generator */ = {
 			isa = PBXGroup;
 			children = (
-				516DD7A5390B2D623A30825C /* StateSpecs.swift */,
 				516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */,
 				516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */,
 				516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */,
 				516DDDA309C419204D90A7FD /* PresenterSpecs.swift */,
+				191BACB71F7390950071D2BA /* StateSpecs.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 		CC6F8977A66D99788792CDF6 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				191BACB51F7389380071D2BA /* ModuleState.swift */,
 				CC6F8BAC560C5BF0F76F3EE6 /* ModuleAction.swift */,
-				CC6F8E12F428DD5906F70EBD /* ModuleState.swift */,
 				CC6F80F381B61451BF77C6DF /* ModuleReducer.swift */,
 				CC6F8E79CB200692FD0E596E /* ModulePresenter.swift */,
 				CC6F8A46EF113737B2BDD463 /* ModuleViewController.swift */,
@@ -468,8 +468,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191BACB61F7389380071D2BA /* ModuleState.swift in Sources */,
+				191BACB81F7390950071D2BA /* StateSpecs.swift in Sources */,
 				516DD5AB597442F1D7C9E1E4 /* QuickSpec+Code.swift in Sources */,
-				516DD8AA042E9418C288969C /* StateSpecs.swift in Sources */,
 				516DD0A5D095C94EE92405E1 /* ViewControllerSpecs.swift in Sources */,
 				516DDB92411724A03098DFE8 /* ReducerSpecs.swift in Sources */,
 				516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */,
@@ -478,7 +479,6 @@
 				CC6F890ACCF33FF7D4E822B0 /* AppState.swift in Sources */,
 				CC6F8EBD72BC2B71DE9C5F37 /* AppAction.swift in Sources */,
 				CC6F894004CDF618F3FD3F83 /* ModuleAction.swift in Sources */,
-				CC6F84B15D06C220BA16A97B /* ModuleState.swift in Sources */,
 				CC6F88F3EA55C7ECE2095CB3 /* ModuleReducer.swift in Sources */,
 				CC6F8FC744ADDFE7162C2FF1 /* ModulePresenter.swift in Sources */,
 				CC6F8CE111B375955E36685E /* ModuleViewController.swift in Sources */,

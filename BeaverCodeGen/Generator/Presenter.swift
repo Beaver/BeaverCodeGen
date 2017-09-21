@@ -8,44 +8,34 @@ extension Presenter: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "final class \(moduleName.typeName)Presenter: Beaver.Presenting ".scope {
+        s << "public final class \(moduleName.typeName)Presenter: Beaver.Presenting, Beaver.ChildStoring ".scope {
             var s = ""
 
-            s << "typealias ActionType = \(moduleName.typeName)Action"
+            s << "public typealias StateType = \(moduleName.typeName)State"
+            s << "public typealias ParentStateType = AppState"
             s << ""
-            s << "weak var weakStore: Store<\(moduleName.typeName)Action>?"
+            s << "public let store: ChildStore<\(moduleName.typeName)State, AppState>"
             s << ""
-            s << "let parentRouter: Router<AppRoute>"
+            s << "public let context: Context"
             s << ""
-            s << "let context: Context"
-            s << ""
-            s << "let initialState: \(moduleName.typeName)State"
-            s << ""
-            s << "// Register your middlewares here"
-            s << "let middlewares: [Store<\(moduleName.typeName)Action>.Middleware]"
-            s << ""
-            s << "init(parentRouter: Router<AppRoute>,"
-            s << "     context: Context,"
-            s << "     initialState: \(moduleName.typeName)State,"
-            s += "     middlewares: [Store<\(moduleName.typeName)Action>.Middleware]) ".scope {
+            s << "public init(store: ChildStore<\(moduleName.typeName)State, AppState>,"
+            s += "            context: Context) ".scope {
                 var s = ""
 
-                s << "self.parentRouter = parentRouter"
-                s << "self.context = context"
-                s << "self.initialState = initialState"
-                s += "self.middlewares = middlewares"
+                s << "self.store = store"
+                s += "self.context = context"
 
                 return s
             }
             return s
         }
         s << ""
-        s += "extension \(moduleName.typeName)Presenter ".scope {
+        s << "extension \(moduleName.typeName)Presenter ".scope {
             var s = ""
 
-            s << "func stateDidUpdate(oldState: \(moduleName.typeName)State?,"
-            s << "                    newState: \(moduleName.typeName)State,"
-            s += "                    completion: @escaping () -> ()) ".scope {
+            s << "public func stateDidUpdate(oldState: \(moduleName.typeName)State?,"
+            s << "                           newState: \(moduleName.typeName)State,"
+            s += "                           completion: @escaping () -> ()) ".scope {
                 var s = ""
 
                 s << ""

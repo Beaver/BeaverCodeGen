@@ -8,20 +8,21 @@ extension State: CustomStringConvertible {
 
         s << "import Beaver"
         s << ""
-        s << "struct \(moduleName.typeName)State: Beaver.State ".scope {
+        s << "public struct \(moduleName.typeName)State: Beaver.State ".scope {
             var s = ""
-            s << "var error: String?"
+            s << "public var error: String?"
             s << ""
-            s << "var loading: Bool = false"
+            s << "public var currentScreen: CurrentScreen = .none"
             s << ""
-            s += "var currentScreen: CurrentScreen = .none"
+            s << "public init() {"
+            s += "}"
             return s
         }
         s << ""
         s << "extension \(moduleName.typeName)State ".scope {
             var s = ""
             s << "/// Represents the currently shown screen"
-            s += "enum CurrentScreen: Int ".scope {
+            s += "public enum CurrentScreen: Int ".scope {
                 var s = ""
                 s << "case none"
                 s += "case main"
@@ -30,12 +31,11 @@ extension State: CustomStringConvertible {
             return s
         }
         s << ""
-        s += "extension \(moduleName.typeName)State ".scope {
+        s << "extension \(moduleName.typeName)State ".scope {
             "public static func ==(lhs: \(moduleName.typeName)State, rhs: \(moduleName.typeName)State) -> Bool ".scope {
                 var s = ""
                 s << "return lhs.error == rhs.error &&"
-                s << "        lhs.loading == rhs.loading &&"
-                s += "        lhs.currentScreen == rhs.currentScreen"
+                s += "    lhs.currentScreen == rhs.currentScreen"
                 return s
             }
         }

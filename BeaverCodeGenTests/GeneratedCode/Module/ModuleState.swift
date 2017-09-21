@@ -1,19 +1,17 @@
 import Beaver
 
 public struct ModuleState: Beaver.State {
-    var error: String?
+    public var error: String?
 
-    var loading: Bool = false
+    public var currentScreen: CurrentScreen = .none
 
-    var currentScreen: CurrentScreen = .none
-    
     public init() {
     }
 }
 
 extension ModuleState {
     /// Represents the currently shown screen
-    enum CurrentScreen: Int {
+    public enum CurrentScreen: Int {
         case none
         case main
     }
@@ -22,7 +20,6 @@ extension ModuleState {
 extension ModuleState {
     public static func ==(lhs: ModuleState, rhs: ModuleState) -> Bool {
         return lhs.error == rhs.error &&
-                lhs.loading == rhs.loading &&
-                lhs.currentScreen == rhs.currentScreen
+            lhs.currentScreen == rhs.currentScreen
     }
 }

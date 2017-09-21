@@ -1,12 +1,13 @@
 import Beaver
 
-public struct ModuleReducer: Beaver.Reducing {
+public struct ModuleReducer: Beaver.ChildReducing {
+    public typealias ActionType = ModuleAction
     public typealias StateType = ModuleState
 
     public init() {
     }
 
-    public func handle(envelop: ActionEnvelop,
+    public func handle(action: ModuleAction,
                        state: ModuleState,
                        completion: @escaping (ModuleState) -> ()) -> ModuleState {
         var newState = state
