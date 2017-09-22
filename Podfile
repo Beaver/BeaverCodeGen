@@ -8,15 +8,6 @@ target 'BeaverCodeGen' do
     pod 'Beaver', :git => 'git@github.com:Beaver/Beaver.git'
     pod 'Quick'
     pod 'Nimble'
-    pod 'Diff'
-  end
-end
-
-post_install do |installer|
-  puts("Set Swift version to 3.0")
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '3.0'
-    end
+    pod 'Diff', :git => 'git@github.com:wokalski/Diff.swift.git', :branch => 'swift-4.0'
   end
 end
