@@ -28,6 +28,7 @@ extension QuickSpec {
 
     enum AppType: String, FilePathRepresentable {
         case route = "Route"
+        case presenter = "Presenter"
 
         var filePath: String {
             return "GeneratedCode/App/App\(rawValue).swift"
