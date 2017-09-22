@@ -4,24 +4,21 @@ struct Action {
 
 extension Action: CustomStringConvertible {
     var description: String {
-        var s = ""
-
-        s << "import Beaver"
-        s << ""
-        s << "public protocol ModuleAction: Beaver.Action {"
-        s << "}"
-        s << ""
-        s << "public enum \(moduleName.typeName)RoutingAction: ModuleAction ".scope {
-            var s = ""
-            s << "case start"
-            s += "case stop"
-            return s
-        }
-        s << ""
-        s << "enum ModuleUIAction: ModuleAction ".scope {
-            "case finish"
+        return """
+        import Beaver
+        
+        public protocol \(moduleName.typeName)Action: Beaver.Action {
         }
         
-        return s
+        public enum \(moduleName.typeName)RoutingAction: \(moduleName.typeName)Action {
+            case start
+            case stop
+        }
+        
+        enum \(moduleName.typeName)UIAction: \(moduleName.typeName)Action {
+            case finish
+        }
+        
+        """
     }
 }

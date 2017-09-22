@@ -61,14 +61,12 @@ extension Enum: CustomStringConvertible {
     }
 
     var description: String {
-        var s = ""
-
-        s << "\(isPublic ? "public" : "") enum \(name.typeName)\(implementingDescription) {"
-        for enumCase in enumCases {
-            s <<< enumCase.description
+        return """
+        \(isPublic ? "public" : "") enum \(name.typeName)\(implementingDescription) {
+        \(enumCases.map {
+            $0.description
+        }.joined(separator: .br).indented)
         }
-        s += "}"
-
-        return s
+        """
     }
 }

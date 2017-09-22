@@ -39,7 +39,7 @@ extension CompareSwitchCase: CustomStringConvertible {
     var description: String {
         var s = ""
 
-        s << SwitchCase(enumCases: [base, base]).description
+        s += SwitchCase(enumCases: [base, base]).description.br
         s += tab("return " + (base.arguments.count > 0 ? base.arguments.map { argument in
             if let name = argument.name {
                 return "\(name.varName)1 == \(name.varName)2"
@@ -58,12 +58,12 @@ struct CompareSwitch {
 
 extension CompareSwitch: CustomStringConvertible {
     var description: String {
-        return "switch (lhs, rhs) ".scope(indent: false) {
-            var s = ""
-            for enumCase in enumCases {
-                s << CompareSwitchCase(base: enumCase).description
-            }
-            return s
+        return """
+        switch (lhs, rhs) {
+        \(enumCases.map {
+            CompareSwitchCase(base: $0).description
+        }.joined(separator: .br).indented)
         }
+        """
     }
 }

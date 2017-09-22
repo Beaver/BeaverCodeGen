@@ -4,29 +4,24 @@ struct ViewController {
 
 extension ViewController: CustomStringConvertible {
     public var description: String {
-        var s = ""
+        return """
+        import Beaver
+        
+        #if os(iOS)
+        
+        final class \(moduleName.typeName)ViewController: Beaver.ViewController<\(moduleName.typeName)Action> {
+            func stateDidUpdate(oldState: \(moduleName.typeName)State?,
+                                newState: \(moduleName.typeName)State,
+                                completion: @escaping () -> ()) {
 
-        s << "import Beaver"
-        s << ""
-        s << "#if os(iOS)"
-        s << ""
-        s << "final class \(moduleName.typeName)ViewController: Beaver.ViewController<\(moduleName.typeName)Action> ".scope {
-            var s = ""
-            s << "func stateDidUpdate(oldState: \(moduleName.typeName)State?,"
-            s << "                    newState: \(moduleName.typeName)State,"
-            s += "                    completion: @escaping () -> ()) ".scope {
-                var s = ""
-                s << ""
-                s << "// Update the UI here"
-                s << ""
-                s += "completion()"
-                return s
+                // Update the UI here
+        
+                completion()
             }
-            return s
         }
-        s << ""
-        s += "#endif"
-
-        return s
+        
+        #endif
+        
+        """
     }
 }

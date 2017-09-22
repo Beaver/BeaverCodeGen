@@ -2,36 +2,40 @@ infix operator <<<
 
 extension String {
     var indented: String {
+        return indented(count: 1)
+    }
+    
+    func indented(count: Int) -> String {
         let split = self.characters.split(separator: "\n", omittingEmptySubsequences: false)
-
+        
         return split.map { chars in
             let str = String(chars)
             if str.replacingOccurrences(of: " ", with: "").characters.count == 0 {
                 return ""
             } else {
-                return .tab + str
+                return BeaverCodeGen.tab(str, count: count)
             }
-        }.joined(separator: "\n")
+        }.joined(separator: .br)
     }
-
-    static func <<(lhs: inout String, rhs: String) {
-        return lhs.append(rhs.br)
-    }
-
-    static func <<<(lhs: inout String, rhs: String) {
-        return lhs << rhs.indented
-    }
-
+    
     static let br = "\n"
 
     var br: String {
         return self + .br
+    }
+    
+    func br(_ count: Int) -> String {
+        return self + (0..<count).map { _ in "".br }.joined()
     }
 
     static let tab = "    "
 
     var tab: String {
         return self + .tab
+    }
+    
+    func tab(_ count: Int) -> String {
+        return self + (0..<count).map { _ in "".tab }.joined()
     }
 
     var typeName: String {
@@ -45,18 +49,14 @@ extension String {
         let other = String(characters.dropFirst())
         return first + other
     }
-
-    func scope(indent: Bool = true, _ content: () -> String) -> String {
-        if indent {
-            return self + "{".br + content().indented.br + "}"
-        } else {
-            return self + "{".br + content() + "}"
-        }
-    }
 }
 
-func tab(_ s: String) -> String {
-    return "".tab + s
+func br(_ s: String, count: Int = 1) -> String {
+    return "".br(count) + s
+}
+
+func tab(_ s: String, count: Int = 1) -> String {
+    return "".tab(count) + s
 }
 
 func comment(_ s: String) -> String {
