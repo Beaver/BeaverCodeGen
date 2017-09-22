@@ -62,7 +62,7 @@ extension Enum: CustomStringConvertible {
 
     var description: String {
         return """
-        \(isPublic ? "public" : "") enum \(name.typeName)\(implementingDescription) {
+        \(isPublic ? "public " : "")enum \(name.typeName)\(implementingDescription) {
         \(enumCases.map {
             $0.description
         }.joined(separator: .br).indented)
