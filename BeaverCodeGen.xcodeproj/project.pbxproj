@@ -14,6 +14,9 @@
 		191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */; };
 		191BACC41F739F2A0071D2BA /* ModuleTwoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */; };
 		191BACC61F739F4A0071D2BA /* ModuleTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */; };
+		19895C691F75E8B300FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C681F75E8B300FB754C /* AppDelegate.swift */; };
+		19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6A1F75E8DE00FB754C /* AppDelegate.swift */; };
+		19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */; };
 		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
 		516DD0A5D095C94EE92405E1 /* ViewControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */; };
 		516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7E4CA30E9F8D793D12C /* ViewController.swift */; };
@@ -60,6 +63,9 @@
 		191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoReducer.swift; sourceTree = "<group>"; };
 		191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoPresenter.swift; sourceTree = "<group>"; };
 		191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoViewController.swift; sourceTree = "<group>"; };
+		19895C681F75E8B300FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		19895C6A1F75E8DE00FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpecs.swift; sourceTree = "<group>"; };
 		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
 		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +151,7 @@
 				516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */,
 				516DDDA309C419204D90A7FD /* PresenterSpecs.swift */,
 				191BACB71F7390950071D2BA /* StateSpecs.swift */,
+				19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -190,13 +197,14 @@
 		762B872F1EBB0A29002E4BD9 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
+				516DDB8208DB1062568C1D1C /* Core */,
 				762B87301EBB0A29002E4BD9 /* Action.swift */,
 				762B87311EBB0A29002E4BD9 /* Main.swift */,
 				516DD28743DD626B15D46B36 /* State.swift */,
 				516DDF0359D5602E23A93C30 /* Reducer.swift */,
 				516DD7E4CA30E9F8D793D12C /* ViewController.swift */,
-				516DDB8208DB1062568C1D1C /* Core */,
 				516DD7E214952DCDD6AD90CB /* Presenter.swift */,
+				19895C6A1F75E8DE00FB754C /* AppDelegate.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				CC6F88D59B5722E0E01CA280 /* AppPresenter.swift */,
 				CC6F81E68DB38F2FE87F5868 /* AppAction.swift */,
 				516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */,
+				19895C681F75E8B300FB754C /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -491,6 +500,7 @@
 				516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */,
 				516DD10BFE1261CB3700C368 /* Switch.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
+				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,
 				516DDC105506D076421FF1F8 /* Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,8 +527,10 @@
 				CC6F88F3EA55C7ECE2095CB3 /* ModuleOneReducer.swift in Sources */,
 				CC6F8FC744ADDFE7162C2FF1 /* ModuleOnePresenter.swift in Sources */,
 				CC6F8CE111B375955E36685E /* ModuleOneViewController.swift in Sources */,
+				19895C691F75E8B300FB754C /* AppDelegate.swift in Sources */,
 				516DD13AF412D9FEF5E519F7 /* AppReducer.swift in Sources */,
 				191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */,
+				19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

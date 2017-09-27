@@ -1,6 +1,8 @@
 import Quick
 import Diff
 
+@testable import BeaverCodeGen
+
 protocol FilePathRepresentable {
     var filePath: String { get }
 }
@@ -29,6 +31,8 @@ extension QuickSpec {
     enum AppType: String, FilePathRepresentable {
         case route = "Route"
         case presenter = "Presenter"
+        case action = "Action"
+        case appDelegate = "Delegate"
 
         var filePath: String {
             return "GeneratedCode/App/App\(rawValue).swift"
@@ -70,7 +74,7 @@ extension QuickSpec {
     }
 }
 
-fileprivate extension QuickSpec {
+private extension QuickSpec {
     var dirPath: String {
         var pathComponents = (#file).split(separator: "/")
         pathComponents.removeLast()
@@ -83,7 +87,7 @@ fileprivate extension QuickSpec {
         }
         let index = str.index(str.startIndex, offsetBy: at)
         let lineRange = str.lineRange(for: Range(uncheckedBounds: (index, str.index(after: index))))
-        return str.substring(with: lineRange).replacingOccurrences(of: "\n", with: "\\n")
+        return str[lineRange].replacingOccurrences(of: "\n", with: "\\n")
     }
 
     func diffIndicator(ofChar at: Int, in str: String) -> String {
@@ -108,4 +112,3 @@ fileprivate extension QuickSpec {
         return result
     }
 }
-

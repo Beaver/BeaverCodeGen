@@ -1,8 +1,8 @@
-struct Action {
+struct ModuleAction {
     let moduleName: String
 }
 
-extension Action: CustomStringConvertible {
+extension ModuleAction: CustomStringConvertible {
     var description: String {
         return """
         import Beaver
@@ -17,6 +17,23 @@ extension Action: CustomStringConvertible {
         
         enum \(moduleName.typeName)UIAction: \(moduleName.typeName)Action {
             case finish
+        }
+        
+        """
+    }
+}
+
+struct AppAction {
+}
+
+extension AppAction: CustomStringConvertible {
+    var description: String {
+        return """
+        import Beaver
+        
+        enum AppAction: Beaver.Action {
+            case start(module: Action)
+            case stop(module: Action)
         }
         
         """
