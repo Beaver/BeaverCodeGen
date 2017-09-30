@@ -10,6 +10,4 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
 
   s.source_files = "BeaverCodeGen/Generator/**/*.swift"
-
-  s.dependency "FileKit", "~> 4.0"
 end
