@@ -1,13 +1,26 @@
-public enum Command {
-    case module(name: String)
-}
+public struct ProjectGenetator {
+    private let fileHandler: FileHandling
 
-public func generate(command: Command) -> String {
-    switch command {
-    case .module(let name):
+    let path: String
+    let name: String
+    private(set) var moduleNames: [String]
+    
+    public init(path: String,
+                name: String,
+                moduleNames: [String] = [],
+                fileHandler: FileHandling = FileHandler()) {
+        self.fileHandler = fileHandler
+        self.path = path
+        self.name = name
+        self.moduleNames = moduleNames
+    }
+    
+    mutating public func generateProject(moduleNames: [String] = []) {
+        self.moduleNames = moduleNames
         
-        fatalError("toto")
+        let state = AppState(moduleNames: moduleNames)
         
-        return ModuleAction(moduleName: name + "Action").description
+        fileHandler.writeFile(atPath: "\(path)/\(name)/AppState", content: state.description)
     }
 }
+

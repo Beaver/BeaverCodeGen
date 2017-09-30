@@ -1,4 +1,4 @@
-protocol FileHandling {
+public protocol FileHandling {
     func readFile(atPath path: String) -> String
     func writeFile(atPath path: String, content: Data)
 }
@@ -13,8 +13,11 @@ extension FileHandling {
     }
 }
 
-struct FileHandler: FileHandling {
-    func readFile(atPath path: String) -> String {
+public struct FileHandler: FileHandling {
+    public init() {
+    }
+    
+    public func readFile(atPath path: String) -> String {
         guard let file = FileHandle(forReadingAtPath: path) else {
             fatalError("Couldn't find resource at path: \(path)")
         }
@@ -27,7 +30,7 @@ struct FileHandler: FileHandling {
         return result
     }
     
-    func writeFile(atPath path: String, content: Data) {
+    public func writeFile(atPath path: String, content: Data) {
         guard let file = FileHandle(forWritingAtPath: path) else {
             fatalError("Couldn't find resource at path: \(path)")
         }
