@@ -1,5 +1,3 @@
-infix operator <<<
-
 extension String {
     var indented: String {
         return indented(count: 1)
