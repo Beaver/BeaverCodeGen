@@ -14,6 +14,8 @@ extension FileHandling {
 }
 
 public struct FileHandler: FileHandling {
+    private let fileManager = FileManager()
+    
     public init() {
     }
     
@@ -31,12 +33,18 @@ public struct FileHandler: FileHandling {
     }
     
     public func writeFile(atPath path: String, content: Data) {
-        guard let file = FileHandle(forWritingAtPath: path) else {
-            fatalError("Couldn't find resource at path: \(path)")
-        }
+        let dirPath = (path.first == "/" ? "/" : "") + path.split(separator: "/").dropLast().joined(separator: "/")
 
-        file.write(content)
-        file.closeFile()
+        var isDirectory = ObjCBool(false)
+        if !fileManager.fileExists(atPath: dirPath, isDirectory: &isDirectory) {
+            try! fileManager.createDirectory(atPath: dirPath, withIntermediateDirectories: true, attributes: nil)
+        } else if !isDirectory.boolValue {
+            fatalError("Couldn't create the directory (\(dirPath)) because a file with the same path already exists")
+        }
+        
+        if !fileManager.createFile(atPath: path, contents: content, attributes: nil) {
+            fatalError("Couldn't write file at path: \(path)")
+        }
     }
 }
 

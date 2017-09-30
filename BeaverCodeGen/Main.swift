@@ -20,7 +20,7 @@ public struct ProjectGenetator {
         
         let state = AppState(moduleNames: moduleNames)
         
-        fileHandler.writeFile(atPath: "\(path)/\(name)/AppState", content: state.description)
+        fileHandler.writeFile(atPath: "\(path)/\(name)/AppState.swift", content: state.description)
     }
 }
 
