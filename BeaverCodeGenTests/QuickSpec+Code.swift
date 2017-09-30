@@ -100,15 +100,6 @@ private extension QuickSpec {
     }
     
     func readFile(atPath path: String) -> String {
-        guard let file = FileHandle(forReadingAtPath: path) else {
-            fatalError("Couldn't find resource at path: \(path)")
-        }
-        
-        let data = file.readDataToEndOfFile()
-        file.closeFile()
-        guard let result = String(data: data, encoding: .utf8) else {
-            fatalError("Couldn't convert file content to UTF8 string")
-        }
-        return result
+        return FileHandler().readFile(atPath: path)
     }
 }
