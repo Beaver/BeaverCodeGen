@@ -26,10 +26,8 @@
 		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
 		516DD0A5D095C94EE92405E1 /* ViewControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */; };
 		516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD7E4CA30E9F8D793D12C /* ViewController.swift */; };
-		516DD10BFE1261CB3700C368 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD099374AABB77B373FF5 /* Switch.swift */; };
 		516DD13AF412D9FEF5E519F7 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */; };
 		516DD5AB597442F1D7C9E1E4 /* QuickSpec+Codegen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD9ADE331EE85FEBA21FF /* QuickSpec+Codegen.swift */; };
-		516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD40BAC0CD37432550FBE /* Enum.swift */; };
 		516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDF0359D5602E23A93C30 /* Reducer.swift */; };
 		516DDAE69D1B35A8DB125794 /* ActionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */; };
 		516DDB92411724A03098DFE8 /* ReducerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */; };
@@ -81,11 +79,9 @@
 		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
 		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		516DD099374AABB77B373FF5 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		516DD28743DD626B15D46B36 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		516DD3F182BDE18B18C23FC5 /* ViewControllerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSpecs.swift; sourceTree = "<group>"; };
-		516DD40BAC0CD37432550FBE /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		516DD45D26EB22E6DA709CC6 /* ActionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSpecs.swift; sourceTree = "<group>"; };
 		516DD61AAC061D4E012B2215 /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
 		516DD7E214952DCDD6AD90CB /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -221,8 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				762B87311EBB0A29002E4BD9 /* Project.swift */,
-				516DD40BAC0CD37432550FBE /* Enum.swift */,
-				516DD099374AABB77B373FF5 /* Switch.swift */,
 				762B87301EBB0A29002E4BD9 /* Action.swift */,
 				516DD28743DD626B15D46B36 /* State.swift */,
 				516DDF0359D5602E23A93C30 /* Reducer.swift */,
@@ -523,8 +517,6 @@
 				516DDCA09084B9FB8A9C0126 /* State.swift in Sources */,
 				516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */,
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
-				516DD97150916A2E0AB8BB49 /* Enum.swift in Sources */,
-				516DD10BFE1261CB3700C368 /* Switch.swift in Sources */,
 				19A29C001F87412A0030B486 /* ObjectType.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
 				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,
