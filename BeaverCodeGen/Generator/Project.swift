@@ -19,7 +19,7 @@ public struct ProjectGenetator: Generating {
 
 extension ProjectGenetator: CustomStringConvertible {
     public var description: String {
-        return generators.map { "//\($0.path)\n\n\($0.description)" }.joined(separator: "\n")
+        return generators.map { "//\($0.path)\n\n\($0.description)" }.joined(separator: .br)
     }
 }
 

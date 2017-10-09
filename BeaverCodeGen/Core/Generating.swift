@@ -1,4 +1,7 @@
+
+
 public protocol Generating: CustomStringConvertible {
+    var framework: String { get }
     var name: String { get }
     var objectType: ObjectType { get }
 
@@ -11,6 +14,10 @@ extension Generating {
     }
 
     var path: String {
-        return "\(name)/\(name)\(objectType.rawValue).swift"
+        return "\(framework)/\(name)\(objectType.rawValue).swift"
+    }
+    
+    public var framework: String {
+        return name
     }
 }

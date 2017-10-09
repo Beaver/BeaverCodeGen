@@ -52,9 +52,9 @@ extension AppReducer {
         struct AppReducer: Beaver.Reducing {
             typealias StateType = AppState
         
-            \(moduleNames.map {
-                "let \($0.varName): \($0.typeName)Reducer"
-            }.joined(separator: br(.tab)))
+        \(moduleNames.map {
+            "let \($0.varName): \($0.typeName)Reducer"
+        }.joined(separator: .br).indented)
         
             func handle(envelop: ActionEnvelop,
                         state: AppState,

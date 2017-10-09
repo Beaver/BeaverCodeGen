@@ -1,5 +1,6 @@
 struct ModuleState: Generating {
     let objectType: ObjectType = .state
+    let framework = "Core"
     let moduleName: String
 }
 
@@ -7,7 +8,7 @@ extension ModuleState {
     var name: String {
         return moduleName
     }
-
+    
     var description: String {
         return """
         import Beaver
@@ -42,6 +43,7 @@ extension ModuleState {
 
 struct AppState: Generating {
     let objectType: ObjectType = .state
+    let framework = "Core"
     let name = "App"
     let moduleNames: [String]
 }

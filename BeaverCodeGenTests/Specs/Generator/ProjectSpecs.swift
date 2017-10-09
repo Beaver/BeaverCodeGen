@@ -22,8 +22,8 @@ final class ProjectSpecs: QuickSpec {
                     
                     // App
                     
-                    expect(fileHandlerMock.paths["App/AppState.swift"]) == 1
-                    expect(fileHandlerMock.contents["App/AppState.swift"]) == BeaverCodeGen.AppState(moduleNames: moduleNames).description
+                    expect(fileHandlerMock.paths["Core/AppState.swift"]) == 1
+                    expect(fileHandlerMock.contents["Core/AppState.swift"]) == BeaverCodeGen.AppState(moduleNames: moduleNames).description
                     
                     expect(fileHandlerMock.paths["App/AppAction.swift"]) == 1
                     expect(fileHandlerMock.contents["App/AppAction.swift"]) == BeaverCodeGen.AppAction().description
@@ -39,8 +39,8 @@ final class ProjectSpecs: QuickSpec {
 
                     // Test1 Module
 
-                    expect(fileHandlerMock.paths["Test1/Test1State.swift"]) == 1
-                    expect(fileHandlerMock.contents["Test1/Test1State.swift"]) == ModuleState(moduleName: "Test1").description
+                    expect(fileHandlerMock.paths["Core/Test1State.swift"]) == 1
+                    expect(fileHandlerMock.contents["Core/Test1State.swift"]) == ModuleState(moduleName: "Test1").description
 
                     expect(fileHandlerMock.paths["Test1/Test1Action.swift"]) == 1
                     expect(fileHandlerMock.contents["Test1/Test1Action.swift"]) == ModuleAction(moduleName: "Test1").description
@@ -56,8 +56,8 @@ final class ProjectSpecs: QuickSpec {
                     
                     // Test2 Module
                     
-                    expect(fileHandlerMock.paths["Test2/Test2State.swift"]) == 1
-                    expect(fileHandlerMock.contents["Test2/Test2State.swift"]) == ModuleState(moduleName: "Test2").description
+                    expect(fileHandlerMock.paths["Core/Test2State.swift"]) == 1
+                    expect(fileHandlerMock.contents["Core/Test2State.swift"]) == ModuleState(moduleName: "Test2").description
                     
                     expect(fileHandlerMock.paths["Test2/Test2Action.swift"]) == 1
                     expect(fileHandlerMock.contents["Test2/Test2Action.swift"]) == ModuleAction(moduleName: "Test2").description
