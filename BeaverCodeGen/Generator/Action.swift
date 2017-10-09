@@ -1,8 +1,13 @@
-struct ModuleAction {
+struct ModuleAction: Generating {
+    let objectType: ObjectType = .action
     let moduleName: String
 }
 
-extension ModuleAction: CustomStringConvertible {
+extension ModuleAction {
+    var name: String {
+        return moduleName
+    }
+
     var description: String {
         return """
         import Beaver
@@ -23,10 +28,12 @@ extension ModuleAction: CustomStringConvertible {
     }
 }
 
-struct AppAction {
+struct AppAction: Generating {
+    let objectType: ObjectType = .action
+    let name = "App"
 }
 
-extension AppAction: CustomStringConvertible {
+extension AppAction {
     var description: String {
         return """
         import Beaver

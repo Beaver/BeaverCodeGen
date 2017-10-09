@@ -1,8 +1,13 @@
-struct ModuleState {
+struct ModuleState: Generating {
+    let objectType: ObjectType = .state
     let moduleName: String
 }
 
-extension ModuleState: CustomStringConvertible {
+extension ModuleState {
+    var name: String {
+        return moduleName
+    }
+
     var description: String {
         return """
         import Beaver
@@ -35,7 +40,9 @@ extension ModuleState: CustomStringConvertible {
     }
 }
 
-struct AppState {
+struct AppState: Generating {
+    let objectType: ObjectType = .state
+    let name = "App"
     let moduleNames: [String]
 }
 

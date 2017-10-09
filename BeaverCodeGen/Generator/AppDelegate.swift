@@ -1,7 +1,9 @@
-struct AppDelegate {
+struct AppDelegate: Generating {
+    let objectType: ObjectType = .delegate
+    let name = "App"
 }
 
-extension AppDelegate: CustomStringConvertible {
+extension AppDelegate {
     var description: String {
         return """
         #if os(iOS)

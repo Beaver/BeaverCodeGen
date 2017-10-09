@@ -33,6 +33,7 @@ extension QuickSpec {
         case presenter = "Presenter"
         case action = "Action"
         case appDelegate = "Delegate"
+        case reducer = "Reducer"
 
         var filePath: String {
             return "GeneratedCode/App/App\(rawValue).swift"
@@ -40,7 +41,7 @@ extension QuickSpec {
     }
 
     func expectedCode(_ type: FilePathRepresentable) -> String {
-        return readFile(atPath: "\(dirPath)/\(type.filePath)")
+        return readFile(inDirectory: dirPath, atPath: type.filePath)
     }
     
     func printDiff(code: String, expected: String) {
@@ -99,7 +100,7 @@ private extension QuickSpec {
         return String(repeating: " ", count: at - str.distance(from: str.startIndex, to: lineRange.lowerBound)) + "^"
     }
     
-    func readFile(atPath path: String) -> String {
-        return FileHandler().readFile(atPath: path)
+    func readFile(inDirectory dirPath: String, atPath path: String) -> String {
+        return FileHandler(dirPath: dirPath).readFile(atPath: path)
     }
 }

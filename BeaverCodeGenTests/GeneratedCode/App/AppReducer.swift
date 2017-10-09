@@ -23,16 +23,16 @@ struct AppReducer: Beaver.Reducing {
 
         case AppAction.stop(module: ModuleOneRoutingAction.stop):
             newState.moduleOneState = nil
-            
+
         case is ModuleTwoAction:
             newState.moduleTwoState = moduleTwo.handle(envelop: envelop, state: state.moduleTwoState ?? ModuleTwoState()) { moduleTwoState in
                 newState.moduleTwoState = moduleTwoState
                 completion(newState)
             }
-            
+
         case AppAction.stop(module: ModuleTwoRoutingAction.stop):
             newState.moduleTwoState = nil
-            
+
         default: break
         }
 

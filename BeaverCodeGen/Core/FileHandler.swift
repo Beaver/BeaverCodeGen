@@ -1,4 +1,6 @@
 public protocol FileHandling {
+    var dirPath: String { get }
+    
     func readFile(atPath path: String) -> String
     func writeFile(atPath path: String, content: Data)
 }
@@ -15,13 +17,16 @@ extension FileHandling {
 
 public struct FileHandler: FileHandling {
     private let fileManager = FileManager()
+
+    public let dirPath: String
     
-    public init() {
+    public init(dirPath: String) {
+        self.dirPath = dirPath
     }
     
     public func readFile(atPath path: String) -> String {
-        guard let file = FileHandle(forReadingAtPath: path) else {
-            fatalError("Couldn't find resource at path: \(path)")
+        guard let file = FileHandle(forReadingAtPath: "\(dirPath)/\(path)") else {
+            fatalError("Couldn't find resource at path: \(dirPath)/\(path)")
         }
         
         let data = file.readDataToEndOfFile()
@@ -33,8 +38,6 @@ public struct FileHandler: FileHandling {
     }
     
     public func writeFile(atPath path: String, content: Data) {
-        let dirPath = (path.first == "/" ? "/" : "") + path.split(separator: "/").dropLast().joined(separator: "/")
-
         var isDirectory = ObjCBool(false)
         if !fileManager.fileExists(atPath: dirPath, isDirectory: &isDirectory) {
             try! fileManager.createDirectory(atPath: dirPath, withIntermediateDirectories: true, attributes: nil)
@@ -42,8 +45,8 @@ public struct FileHandler: FileHandling {
             fatalError("Couldn't create the directory (\(dirPath)) because a file with the same path already exists")
         }
         
-        if !fileManager.createFile(atPath: path, contents: content, attributes: nil) {
-            fatalError("Couldn't write file at path: \(path)")
+        if !fileManager.createFile(atPath: "\(dirPath)/\(path)", contents: content, attributes: nil) {
+            fatalError("Couldn't write file at path: \(dirPath)\(path)")
         }
     }
 }

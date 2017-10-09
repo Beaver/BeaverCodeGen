@@ -1,9 +1,14 @@
-struct ViewController {
+struct ViewController: Generating {
+    let objectType: ObjectType = .viewController
     let moduleName: String
 }
 
-extension ViewController: CustomStringConvertible {
-    public var description: String {
+extension ViewController {
+    var name: String {
+        return moduleName
+    }
+    
+    var description: String {
         return """
         import Beaver
         

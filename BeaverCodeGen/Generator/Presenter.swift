@@ -1,4 +1,6 @@
-struct AppPresenter {
+struct AppPresenter: Generating {
+    let objectType: ObjectType = .presenter
+    let name = "App"
     let moduleNames: [String]
     
     var startModuleName: String {
@@ -9,8 +11,8 @@ struct AppPresenter {
     }
 }
 
-extension AppPresenter: CustomStringConvertible {
-    public var description: String {
+extension AppPresenter {
+    var description: String {
         return """
         import Beaver
         
@@ -100,12 +102,17 @@ extension AppPresenter: CustomStringConvertible {
     }
 }
 
-struct ModulePresenter {
+struct ModulePresenter: Generating {
+    let objectType: ObjectType = .presenter
     let moduleName: String
 }
 
-extension ModulePresenter: CustomStringConvertible {
-    public var description: String {
+extension ModulePresenter {
+    var name: String {
+        return moduleName
+    }
+    
+    var description: String {
         return """
         import Beaver
         

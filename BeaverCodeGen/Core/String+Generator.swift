@@ -17,23 +17,31 @@ extension String {
     }
     
     static let br = "\n"
+    
+    static func br(_ count: Int) -> String {
+        return (0..<count).map { _ in br }.joined()
+    }
 
     var br: String {
         return self + .br
     }
     
     func br(_ count: Int) -> String {
-        return self + (0..<count).map { _ in "".br }.joined()
+        return self + String.br(count)
     }
 
     static let tab = "    "
+    
+    static func tab(_ count: Int) -> String {
+        return (0..<count).map { _ in tab }.joined()
+    }
 
     var tab: String {
         return self + .tab
     }
     
     func tab(_ count: Int) -> String {
-        return self + (0..<count).map { _ in "".tab }.joined()
+        return self + String.tab(count)
     }
 
     var typeName: String {
