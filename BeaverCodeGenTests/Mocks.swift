@@ -1,7 +1,7 @@
 @testable import BeaverCodeGen
 
 final class FileHandlerMock: FileHandling {
-    var dirPath: String = "fake_path"
+    var basePath: String = "fake_path"
     
     var contents = [String:String]()
     var paths = [String:Int]()

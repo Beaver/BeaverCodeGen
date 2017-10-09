@@ -1,5 +1,5 @@
 public protocol FileHandling {
-    var dirPath: String { get }
+    var basePath: String { get }
     
     func readFile(atPath path: String) -> String
     func writeFile(atPath path: String, content: Data)
@@ -18,15 +18,19 @@ extension FileHandling {
 public struct FileHandler: FileHandling {
     private let fileManager = FileManager()
 
-    public let dirPath: String
+    public let basePath: String
     
-    public init(dirPath: String) {
-        self.dirPath = dirPath
+    public init(basePath: String) {
+        guard basePath.characters.count > 0 else {
+            fatalError("basePath can't be empty")
+        }
+        
+        self.basePath = basePath
     }
     
     public func readFile(atPath path: String) -> String {
-        guard let file = FileHandle(forReadingAtPath: "\(dirPath)/\(path)") else {
-            fatalError("Couldn't find resource at path: \(dirPath)/\(path)")
+        guard let file = FileHandle(forReadingAtPath: "\(basePath)/\(path)") else {
+            fatalError("Couldn't find resource at path: \(basePath)/\(path)")
         }
         
         let data = file.readDataToEndOfFile()
@@ -38,6 +42,13 @@ public struct FileHandler: FileHandling {
     }
     
     public func writeFile(atPath path: String, content: Data) {
+        var pathComponents = path.split(separator: "/")
+        guard let fileName = pathComponents.last else {
+            fatalError("Path needs to contain at least one component")
+        }
+        pathComponents.removeLast()
+        let dirPath = basePath + "/" + pathComponents.joined(separator: "/")
+        
         var isDirectory = ObjCBool(false)
         if !fileManager.fileExists(atPath: dirPath, isDirectory: &isDirectory) {
             try! fileManager.createDirectory(atPath: dirPath, withIntermediateDirectories: true, attributes: nil)
@@ -45,8 +56,8 @@ public struct FileHandler: FileHandling {
             fatalError("Couldn't create the directory (\(dirPath)) because a file with the same path already exists")
         }
         
-        if !fileManager.createFile(atPath: "\(dirPath)/\(path)", contents: content, attributes: nil) {
-            fatalError("Couldn't write file at path: \(dirPath)\(path)")
+        if !fileManager.createFile(atPath: "\(dirPath)/\(fileName)", contents: content, attributes: nil) {
+            fatalError("Couldn't write file at path: \(dirPath)/\(fileName)")
         }
     }
 }

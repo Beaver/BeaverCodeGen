@@ -100,7 +100,7 @@ private extension QuickSpec {
         return String(repeating: " ", count: at - str.distance(from: str.startIndex, to: lineRange.lowerBound)) + "^"
     }
     
-    func readFile(inDirectory dirPath: String, atPath path: String) -> String {
-        return FileHandler(dirPath: dirPath).readFile(atPath: path)
+    func readFile(inDirectory basePath: String, atPath path: String) -> String {
+        return FileHandler(basePath: basePath).readFile(atPath: path)
     }
 }
