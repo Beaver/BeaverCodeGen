@@ -14,6 +14,10 @@
 		191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */; };
 		191BACC41F739F2A0071D2BA /* ModuleTwoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */; };
 		191BACC61F739F4A0071D2BA /* ModuleTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */; };
+		194ABDB71F8C731F003303B4 /* SwiftSubstructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */; };
+		194ABDBA1F8C7552003303B4 /* SwiftElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDB91F8C7552003303B4 /* SwiftElement.swift */; };
+		194ABDBC1F8C76D7003303B4 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */; };
+		194ABDC21F8C8CBC003303B4 /* SwiftKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */; };
 		19895C691F75E8B300FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C681F75E8B300FB754C /* AppDelegate.swift */; };
 		19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6A1F75E8DE00FB754C /* AppDelegate.swift */; };
 		19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */; };
@@ -67,6 +71,10 @@
 		191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoReducer.swift; sourceTree = "<group>"; };
 		191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoPresenter.swift; sourceTree = "<group>"; };
 		191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoViewController.swift; sourceTree = "<group>"; };
+		194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSubstructure.swift; sourceTree = "<group>"; };
+		194ABDB91F8C7552003303B4 /* SwiftElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftElement.swift; sourceTree = "<group>"; };
+		194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFile.swift; sourceTree = "<group>"; };
+		194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKind.swift; sourceTree = "<group>"; };
 		19895C681F75E8B300FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6A1F75E8DE00FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpecs.swift; sourceTree = "<group>"; };
@@ -149,6 +157,18 @@
 				191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */,
 			);
 			path = ModuleTwo;
+			sourceTree = "<group>";
+		};
+		194ABDB81F8C753D003303B4 /* SwiftModel */ = {
+			isa = PBXGroup;
+			children = (
+				194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */,
+				194ABDB91F8C7552003303B4 /* SwiftElement.swift */,
+				194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */,
+				194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */,
+			);
+			name = SwiftModel;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		19E014111F7FF2E4005F30F9 /* Core */ = {
@@ -250,6 +270,7 @@
 		7C76A79B1EB84F3D00D24A38 /* BeaverCodeGen */ = {
 			isa = PBXGroup;
 			children = (
+				194ABDB81F8C753D003303B4 /* SwiftModel */,
 				19E014111F7FF2E4005F30F9 /* Core */,
 				762B872F1EBB0A29002E4BD9 /* Generator */,
 				7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */,
@@ -264,8 +285,8 @@
 				19E014191F80210F005F30F9 /* Mocks.swift */,
 				516DD9ADE331EE85FEBA21FF /* QuickSpec+Codegen.swift */,
 				762B872C1EBB0A1D002E4BD9 /* Specs */,
-				7C76A7A91EB84F3D00D24A38 /* Info.plist */,
 				CC6F8899807A0C4A15105C9F /* GeneratedCode */,
+				7C76A7A91EB84F3D00D24A38 /* Info.plist */,
 			);
 			path = BeaverCodeGenTests;
 			sourceTree = "<group>";
@@ -422,6 +443,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SourceKittenFramework/SourceKittenFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Yams/Yams.framework",
 				"${BUILT_PRODUCTS_DIR}/Beaver/Beaver.framework",
 				"${BUILT_PRODUCTS_DIR}/Diff/Diff.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
@@ -429,6 +453,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SourceKittenFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Yams.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Beaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Diff.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
@@ -512,9 +539,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				194ABDB71F8C731F003303B4 /* SwiftSubstructure.swift in Sources */,
 				762B87341EBB0A29002E4BD9 /* Project.swift in Sources */,
 				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
+				194ABDBA1F8C7552003303B4 /* SwiftElement.swift in Sources */,
 				516DDCA09084B9FB8A9C0126 /* State.swift in Sources */,
+				194ABDBC1F8C76D7003303B4 /* SwiftFile.swift in Sources */,
 				516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */,
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
 				19A29C001F87412A0030B486 /* ObjectType.swift in Sources */,
@@ -523,6 +553,7 @@
 				19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */,
 				516DDC105506D076421FF1F8 /* Presenter.swift in Sources */,
 				19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */,
+				194ABDC21F8C8CBC003303B4 /* SwiftKind.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

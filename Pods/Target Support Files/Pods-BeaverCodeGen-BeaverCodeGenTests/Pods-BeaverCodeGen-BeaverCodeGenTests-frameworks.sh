@@ -102,12 +102,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SourceKittenFramework/SourceKittenFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Yams/Yams.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Beaver/Beaver.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Diff/Diff.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SourceKittenFramework/SourceKittenFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Yams/Yams.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Beaver/Beaver.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Diff/Diff.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"

@@ -1,12 +1,16 @@
+import SourceKittenFramework
+
 public protocol FileHandling {
     var basePath: String { get }
     
     func readFile(atPath path: String) -> String
     func writeFile(atPath path: String, content: Data)
+    
+    func sourceKittenFile(atPath path: String) -> File
 }
 
 extension FileHandling {
-    func writeFile(atPath path: String, content: String) {
+    public func writeFile(atPath path: String, content: String) {
         guard let data = content.data(using: .utf8) else {
             fatalError("Couldn't convert content to UTF8 data")
         }
@@ -59,6 +63,13 @@ public struct FileHandler: FileHandling {
         if !fileManager.createFile(atPath: "\(dirPath)/\(fileName)", contents: content, attributes: nil) {
             fatalError("Couldn't write file at path: \(dirPath)/\(fileName)")
         }
+    }
+    
+    public func sourceKittenFile(atPath path: String) -> File {
+        guard let file = File(path: basePath + "/" + path) else {
+            fatalError("Couldn't open file at path \(basePath + "/" + path)")
+        }
+        return file
     }
 }
 

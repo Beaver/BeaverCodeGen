@@ -1,3 +1,5 @@
+import SourceKittenFramework
+
 @testable import BeaverCodeGen
 
 final class FileHandlerMock: FileHandling {
@@ -21,5 +23,15 @@ final class FileHandlerMock: FileHandling {
     func writeFile(atPath path: String, content: Data) {
         paths[path, default: 0] += 1
         contents[path] = String(data: content, encoding: .utf8)
+    }
+    
+    func sourceKittenFile(atPath path: String) -> File {
+        paths[path, default: 0] += 1
+        
+        guard let content = contents[path] else {
+            fatalError("Content not set for path \(path)")
+        }
+        
+        return File(contents: content)
     }
 }

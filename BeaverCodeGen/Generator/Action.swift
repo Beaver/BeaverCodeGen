@@ -1,6 +1,8 @@
+import SourceKittenFramework
+
 struct ModuleAction: Generating {
     let objectType: ObjectType = .action
-    let moduleName: String
+    var moduleName: String
 }
 
 extension ModuleAction {
@@ -26,6 +28,21 @@ extension ModuleAction {
         
         """
     }
+    
+    func addUIAction(name: String, in fileHandler: FileHandling) {
+        let structure = Structure(file:fileHandler.sourceKittenFile(atPath: path))
+        print(structure)
+
+        let swiftFile: SwiftFile
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: structure.dictionary)
+            swiftFile = try JSONDecoder().decode(SwiftFile.self, from: jsonData)
+        } catch {
+            fatalError("\(error)")
+        }
+        print(swiftFile)
+//        swiftFile.substructure.filter { $0.name == "\()" }
+    }
 }
 
 struct AppAction: Generating {
@@ -46,3 +63,4 @@ extension AppAction {
         """
     }
 }
+

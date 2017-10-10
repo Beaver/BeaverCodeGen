@@ -4,6 +4,8 @@ use_frameworks!
 platform :osx, '10.10'
 
 target 'BeaverCodeGen' do
+  pod 'SourceKittenFramework'
+
   target 'BeaverCodeGenTests' do
     pod 'Beaver', :git => 'git@github.com:Beaver/Beaver.git'
     pod 'Quick'

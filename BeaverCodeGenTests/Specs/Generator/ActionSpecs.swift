@@ -16,6 +16,17 @@ final class ActionSpecs: QuickSpec {
                         expect(code) == self.expectedCode(ModuleOneType.action)
                     }
                 }
+                
+                describe("addAction(name:in:)") {
+                    it("should rewrite the action file with one more action") {
+                        let generator = BeaverCodeGen.ModuleAction(moduleName: "ModuleOne")
+                        let fileHandlerMock = FileHandlerMock()
+                        
+                        fileHandlerMock.contents["ModuleOne/ModuleOneAction.swift"] = generator.description
+                        
+                        generator.addUIAction(name: "Test", in: fileHandlerMock)
+                    }
+                }
             }
             
             describe("AppAction") {
