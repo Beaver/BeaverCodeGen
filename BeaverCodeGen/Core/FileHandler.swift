@@ -5,6 +5,11 @@ public protocol FileHandling {
     
     func readFile(atPath path: String) -> String
     func writeFile(atPath path: String, content: Data)
+
+    func insert(content: String,
+                atOffset offset: Int,
+                atNextLine: Bool,
+                inFileAtPath path: String)
     
     func sourceKittenFile(atPath path: String) -> File
 }
@@ -16,6 +21,25 @@ extension FileHandling {
         }
         
         writeFile(atPath: path, content: data)
+    }
+    
+    public func insert(content: String,
+                       atOffset offset: Int,
+                       atNextLine: Bool = false,
+                       inFileAtPath path: String) {
+        var fileContent = readFile(atPath: path)
+        var index = fileContent.index(fileContent.startIndex, offsetBy: offset)
+        
+        if atNextLine {
+            let suffix = fileContent.suffix(from: index)
+            if let breakLindIndex = suffix.characters.index(of: "\n") {
+                let breakLinePosition = suffix.distance(from: suffix.startIndex, to: breakLindIndex)
+                index = fileContent.index(index, offsetBy: breakLinePosition + 1)
+            }
+        }
+        
+        fileContent.insert(contentsOf: content, at: index)
+        writeFile(atPath: path, content: fileContent)
     }
 }
 
@@ -67,7 +91,7 @@ public struct FileHandler: FileHandling {
     
     public func sourceKittenFile(atPath path: String) -> File {
         guard let file = File(path: basePath + "/" + path) else {
-            fatalError("Couldn't open file at path \(basePath + "/" + path)")
+            fatalError("Couldn't open file at path \(basePath)/\(path)")
         }
         return file
     }

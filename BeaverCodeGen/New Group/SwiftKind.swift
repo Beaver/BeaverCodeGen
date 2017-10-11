@@ -26,3 +26,28 @@ extension SwiftKind: Decodable {
         }
     }
 }
+
+extension SwiftKind {
+    var name: String {
+        switch self {
+        case .`enum`:
+            return "enum"
+        case .enumcase:
+            return "enumcase"
+        case .enumelement:
+            return "enumelement"
+        case .typeref:
+            return "typeref"
+        case .`protocol`:
+            return "protocol"
+        case .unknown(let value):
+            return value
+        }
+    }
+}
+
+extension SwiftKind: Equatable {
+    static func ==(lhs: SwiftKind, rhs: SwiftKind) -> Bool {
+        return lhs.name == rhs.name
+    }
+}

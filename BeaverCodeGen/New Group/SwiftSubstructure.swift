@@ -1,8 +1,10 @@
+// MARK: - Substructure
+
 struct SwiftSubstructure {
     let type: SwiftType?
     let kind: SwiftKind
 
-    let inheritedType: [SwiftType]
+    let inheritedType: Set<SwiftType>
     
     let length: Int
     let bodyLength: Int?
@@ -21,7 +23,7 @@ extension SwiftSubstructure: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         type = try values.decodeIfPresent(SwiftType.self, forKey: .name)
         kind = try values.decode(SwiftKind.self, forKey: .kind)
-        inheritedType = try values.decodeIfPresent([SwiftType].self, forKey: .inheritedType) ?? []
+        inheritedType = Set(try values.decodeIfPresent([SwiftType].self, forKey: .inheritedType) ?? [])
         length = try values.decode(Int.self, forKey: .length)
         bodyLength = try values.decodeIfPresent(Int.self, forKey: .bodyLength)
         nameLength = try values.decode(Int.self, forKey: .nameLength)
@@ -51,20 +53,14 @@ extension SwiftSubstructure: Decodable {
     }
 }
 
+// MARK: - Type
+
 enum SwiftType {
     case beaverAction
     case moduleAction(moduleName: String)
     case moduleUIAction(moduleName: String)
     case moduleRoutingAction(moduleName: String)
     case unknown(name: String)
-}
-
-private func ~= (pattern: String, value: String) -> Bool {
-    guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
-        fatalError("Could not build regex with pattern: \(pattern)")
-    }
-    let range = NSMakeRange(0, value.characters.count)
-    return regex.matches(in: value, options: .anchored, range: range).count > 0
 }
 
 extension SwiftType: Decodable {
@@ -110,4 +106,24 @@ extension SwiftType {
             return name
         }
     }
+}
+
+extension SwiftType: Hashable {
+    static func ==(lhs: SwiftType, rhs: SwiftType) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    var hashValue: Int {
+        return name.hashValue
+    }
+}
+
+// MARK: - Pattern matching
+
+private func ~= (pattern: String, value: String) -> Bool {
+    guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
+        fatalError("Could not build regex with pattern: \(pattern)")
+    }
+    let range = NSMakeRange(0, value.characters.count)
+    return regex.matches(in: value, options: .anchored, range: range).count > 0
 }

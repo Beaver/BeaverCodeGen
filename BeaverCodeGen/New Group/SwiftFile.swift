@@ -1,3 +1,5 @@
+import SourceKittenFramework
+
 struct SwiftFile {
     let diagnosticStage: String
     let substructure: [SwiftSubstructure]
@@ -5,6 +7,8 @@ struct SwiftFile {
     let offset: Int
     let length: Int
 }
+
+// MARK: - Decodable
 
 extension SwiftFile: Decodable {
     init(from decoder: Decoder) throws {
@@ -22,3 +26,18 @@ extension SwiftFile: Decodable {
         case length = "key.length"
     }
 }
+
+// MARK: - Init from file
+
+extension SwiftFile {
+    static func read(from fileHandler: FileHandling, atPath path: String) -> SwiftFile {
+        let structure = Structure(file: fileHandler.sourceKittenFile(atPath: path))
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: structure.dictionary)
+            return try JSONDecoder().decode(SwiftFile.self, from: jsonData)
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+}
+
