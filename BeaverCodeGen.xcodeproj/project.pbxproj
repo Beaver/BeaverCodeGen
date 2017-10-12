@@ -22,6 +22,7 @@
 		19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6A1F75E8DE00FB754C /* AppDelegate.swift */; };
 		19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */; };
 		199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199586871F8DCB640065E706 /* SwiftModel+Find.swift */; };
+		1995868C1F8F1FA20065E706 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1995868B1F8F1FA20065E706 /* Enum.swift */; };
 		19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFD1F873F2E0030B486 /* Generating.swift */; };
 		19A29C001F87412A0030B486 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFF1F87412A0030B486 /* ObjectType.swift */; };
 		19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E014121F7FF301005F30F9 /* FileHandler.swift */; };
@@ -80,6 +81,7 @@
 		19895C6A1F75E8DE00FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpecs.swift; sourceTree = "<group>"; };
 		199586871F8DCB640065E706 /* SwiftModel+Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftModel+Find.swift"; sourceTree = "<group>"; };
+		1995868B1F8F1FA20065E706 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		19A29BFD1F873F2E0030B486 /* Generating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generating.swift; sourceTree = "<group>"; };
 		19A29BFF1F87412A0030B486 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		19E014121F7FF301005F30F9 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				516DD7E4CA30E9F8D793D12C /* ViewController.swift */,
 				516DD7E214952DCDD6AD90CB /* Presenter.swift */,
 				19895C6A1F75E8DE00FB754C /* AppDelegate.swift */,
+				1995868B1F8F1FA20065E706 /* Enum.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */,
 				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,
 				19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */,
+				1995868C1F8F1FA20065E706 /* Enum.swift in Sources */,
 				516DDC105506D076421FF1F8 /* Presenter.swift in Sources */,
 				19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */,
 				194ABDC21F8C8CBC003303B4 /* SwiftKind.swift in Sources */,

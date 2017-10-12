@@ -3,7 +3,9 @@ struct ModuleAction: Generating {
     var moduleName: String
 
     var actions: [ActionType]
-    let defaultActions: [ActionType] = [.routing("start"), .routing("stop"), .ui("finish")]
+    let defaultActions: [ActionType] = [.routing(EnumCase(name: "Start")),
+                                        .routing(EnumCase(name: "Stop")),
+                                        .ui(EnumCase(name: "Finish"))]
     
     init(moduleName: String,
          actions: [ActionType] = []) {
@@ -35,29 +37,29 @@ extension ModuleAction {
         }
         
         public enum \(moduleName.typeName)RoutingAction: \(moduleName.typeName)Action {
-        \(routingActions.map { "case \($0.name.varName)" }.joined(separator: .br).indented)
+        \(routingActions.map { $0.description }.joined(separator: .br).indented)
         }
         
         enum \(moduleName.typeName)UIAction: \(moduleName.typeName)Action {
-        \(uiActions.map { "case \($0.name.varName)" }.joined(separator: .br).indented)
+        \(uiActions.map { $0.description }.joined(separator: .br).indented)
         }
         
         """
     }
     
-    func insertUIAction(name: String, in fileHandler: FileHandling) {
+    func insert(action: ActionType, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
-        guard let action = swiftFile.find(byType: .moduleUIAction(moduleName: moduleName),
+        guard let actionEnum = swiftFile.find(byType: action.toSwiftType(moduleName: moduleName),
                                           withInheritedType: [.moduleAction(moduleName: moduleName)],
                                           recursive: true).first as? SwiftScanable & SwiftIndexable else {
             fatalError("Couldn't find \(moduleName)UIAction in \(fileHandler)")
         }
         
-        let lastEnumcase = action.find(byKind: .enumcase).last
-        let offset = lastEnumcase?.offset ?? action.offset
+        let lastEnumcase = actionEnum.find(byKind: .enumcase).last
+        let offset = lastEnumcase?.offset ?? actionEnum.offset
 
-        fileHandler.insert(content: "case \(name.varName)".br.indented,
+        fileHandler.insert(content: action.description.br.indented,
                            atOffset: offset,
                            atNextLine: true,
                            inFileAtPath: path)
@@ -67,16 +69,16 @@ extension ModuleAction {
 // MARK: - ActionType
 
 extension ModuleAction {
-    enum ActionType {
-        case ui(String)
-        case routing(String)
+    enum ActionType: CustomStringConvertible {
+        case ui(EnumCase)
+        case routing(EnumCase)
         
         var name: String {
             switch self {
-            case .ui(let name):
-                return name
-            case .routing(let name):
-                return name
+            case .ui(let enumCase):
+                return enumCase.name
+            case .routing(let enumCase):
+                return enumCase.name
             }
         }
         
@@ -97,25 +99,76 @@ extension ModuleAction {
                 return true
             }
         }
+        
+        func toSwiftType(moduleName: String) -> SwiftType {
+            switch self {
+            case .ui:
+                return .moduleUIAction(moduleName: moduleName)
+            case .routing:
+                return .moduleRoutingAction(moduleName: moduleName)
+            }
+        }
+        
+        var description: String {
+            switch self {
+            case .ui(let enumCase):
+                return enumCase.description
+            case .routing(let enumCase):
+                return enumCase.description
+            }
+        }
     }
 }
+
+// MARK: - App Action
 
 struct AppAction: Generating {
     let objectType: ObjectType = .action
     let name = "App"
+    
+    var actions: [EnumCase]
+    let defaultActions = [EnumCase(name: "start", arguments: [EnumCase.Argument(name: "module", type: "Action")]),
+                          EnumCase(name: "stop", arguments: [EnumCase.Argument(name: "module", type: "Action")])]
+    
+    init(actions: [EnumCase] = []) {
+        self.actions = actions
+    }
 }
 
+// MARK: - Generation methods
+
 extension AppAction {
+    var allActions: [EnumCase] {
+        return defaultActions + actions
+    }
+    
     var description: String {
         return """
         import Beaver
         
         enum AppAction: Beaver.Action {
-            case start(module: Action)
-            case stop(module: Action)
+        \(allActions.map { $0.description }.joined(separator: .br).indented)
         }
         
         """
+    }
+    
+    func insert(action: EnumCase, in fileHandler: FileHandling) {
+        let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
+
+        guard let actionEnum = swiftFile.find(byType: .appAction,
+                                              withInheritedType: [.beaverAction],
+                                              recursive: true).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find AppAction in \(fileHandler)")
+        }
+
+        let lastEnumcase = actionEnum.find(byKind: .enumcase).last
+        let offset = lastEnumcase?.offset ?? actionEnum.offset
+
+        fileHandler.insert(content: action.description.br.indented,
+                           atOffset: offset,
+                           atNextLine: true,
+                           inFileAtPath: path)
     }
 }
 

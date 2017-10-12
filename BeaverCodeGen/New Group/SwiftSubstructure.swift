@@ -60,6 +60,7 @@ enum SwiftType {
     case moduleAction(moduleName: String)
     case moduleUIAction(moduleName: String)
     case moduleRoutingAction(moduleName: String)
+    case appAction
     case unknown(name: String)
 }
 
@@ -79,6 +80,8 @@ extension SwiftType: Decodable {
             self = .moduleUIAction(moduleName: name.replacingOccurrences(of: "UIAction", with: ""))
         case ".*RoutingAction$":
             self = .moduleRoutingAction(moduleName: name.replacingOccurrences(of: "RoutingAction", with: ""))
+        case "^AppAction$":
+            self = .appAction
         case ".*Action$":
             self = .moduleAction(moduleName: name.replacingOccurrences(of: "Action", with: ""))
         default:
@@ -102,6 +105,8 @@ extension SwiftType {
             return "\(moduleName)UIAction"
         case .moduleRoutingAction(let moduleName):
             return "\(moduleName)RoutingAction"
+        case .appAction:
+            return "AppAction"
         case .unknown(let name):
             return name
         }
