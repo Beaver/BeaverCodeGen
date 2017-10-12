@@ -1,6 +1,6 @@
 import SourceKittenFramework
 
-public protocol FileHandling {
+public protocol FileHandling: CustomStringConvertible {
     var basePath: String { get }
     
     func readFile(atPath path: String) -> String
@@ -40,6 +40,12 @@ extension FileHandling {
         
         fileContent.insert(contentsOf: content, at: index)
         writeFile(atPath: path, content: fileContent)
+    }
+}
+
+extension FileHandling {
+    public var description: String {
+        return basePath
     }
 }
 

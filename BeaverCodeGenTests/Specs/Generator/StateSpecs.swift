@@ -17,12 +17,42 @@ final class StateSpecs: QuickSpec {
             }
             
             describe("AppState") {
-                it("should return a string containing the State's code") {
-                    let code = BeaverCodeGen.AppState(moduleNames: ["ModuleOne", "ModuleTwo"]).description
+                var generator: BeaverCodeGen.AppState!
+                
+                beforeEach {
+                    generator = BeaverCodeGen.AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
+                }
+
+                describe("description") {
+                    it("should return a string containing the State's code") {
+                        let code = generator.description
+                        
+                        self.printDiff(code: code, expected: self.expectedCode(CoreType.appState))
+                        
+                        expect(code) == self.expectedCode(CoreType.appState)
+                    }
+                }
+                
+                describe("insert(module:in:)") {
+                    var fileHandlerMock: FileHandlerMock!
+                    let filePath = "Core/AppState.swift"
                     
-                    self.printDiff(code: code, expected: self.expectedCode(CoreType.appState))
+                    beforeEach {
+                        fileHandlerMock = FileHandlerMock()
+                    }
                     
-                    expect(code) == self.expectedCode(CoreType.appState)
+                    it("should rewrite the state file with one more module") {
+                        fileHandlerMock.contents[filePath] = generator.description
+                        generator.insert(module: "Test", in: fileHandlerMock)
+                        generator.moduleNames.append("Test")
+                        expect(fileHandlerMock.contents[filePath]) == generator.description
+                    }
+                    
+                    afterEach {
+                        if let code = fileHandlerMock.contents[filePath] {
+                            self.printDiff(code: code, expected: generator.description)
+                        }
+                    }
                 }
             }
         }

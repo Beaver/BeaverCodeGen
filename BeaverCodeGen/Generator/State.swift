@@ -45,7 +45,7 @@ struct AppState: Generating {
     let objectType: ObjectType = .state
     let framework = "Core"
     let name = "App"
-    let moduleNames: [String]
+    var moduleNames: [String]
 }
 
 extension AppState: CustomStringConvertible {
@@ -71,5 +71,25 @@ extension AppState: CustomStringConvertible {
         }
         
         """
+    }
+    
+    func insert(module moduleName: String, in fileHandler: FileHandling) {
+        let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
+        
+        guard let stateStruct = swiftFile.find(byType: { $0 == .appState },
+                                               byKind: .`struct`,
+                                               withInheritedType: [.beaverState],
+                                               recursive: true).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find AppState in \(fileHandler)")
+        }
+        
+        let lastModuleVar = stateStruct.find(byType: { $0?.isModuleState ?? false }, byKind: .instance).last
+        let offset = lastModuleVar?.offset ?? stateStruct.offset
+
+        fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State".br.indented,
+                           atOffset: offset,
+                           atNextLine: true,
+                           inFileAtPath: path)
+        
     }
 }

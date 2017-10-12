@@ -50,10 +50,10 @@ extension ModuleAction {
     func insert(action: ActionType, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
-        guard let actionEnum = swiftFile.find(byType: action.toSwiftType(moduleName: moduleName),
-                                          withInheritedType: [.moduleAction(moduleName: moduleName)],
-                                          recursive: true).first as? SwiftScanable & SwiftIndexable else {
-            fatalError("Couldn't find \(moduleName)UIAction in \(fileHandler)")
+        guard let actionEnum = swiftFile.find(byType: { $0 == action.toSwiftType(moduleName: self.moduleName) },
+                                              withInheritedType: [.moduleAction(moduleName: moduleName)],
+                                              recursive: true).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find \(moduleName)UIAction in \(fileHandler) at path \(path)")
         }
         
         let lastEnumcase = actionEnum.find(byKind: .enumcase).last
@@ -156,10 +156,10 @@ extension AppAction {
     func insert(action: EnumCase, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
-        guard let actionEnum = swiftFile.find(byType: .appAction,
+        guard let actionEnum = swiftFile.find(byType: { $0 == .appAction },
                                               withInheritedType: [.beaverAction],
                                               recursive: true).first as? SwiftScanable & SwiftIndexable else {
-            fatalError("Couldn't find AppAction in \(fileHandler)")
+            fatalError("Couldn't find AppAction in \(fileHandler) at path \(path)")
         }
 
         let lastEnumcase = actionEnum.find(byKind: .enumcase).last

@@ -14,15 +14,15 @@
 		191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */; };
 		191BACC41F739F2A0071D2BA /* ModuleTwoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */; };
 		191BACC61F739F4A0071D2BA /* ModuleTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */; };
-		194ABDB71F8C731F003303B4 /* SwiftSubstructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */; };
-		194ABDBA1F8C7552003303B4 /* SwiftElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDB91F8C7552003303B4 /* SwiftElement.swift */; };
-		194ABDBC1F8C76D7003303B4 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */; };
-		194ABDC21F8C8CBC003303B4 /* SwiftKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */; };
 		19895C691F75E8B300FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C681F75E8B300FB754C /* AppDelegate.swift */; };
 		19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6A1F75E8DE00FB754C /* AppDelegate.swift */; };
 		19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */; };
 		199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199586871F8DCB640065E706 /* SwiftModel+Find.swift */; };
 		1995868C1F8F1FA20065E706 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1995868B1F8F1FA20065E706 /* Enum.swift */; };
+		199586921F8FD42A0065E706 /* SwiftElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1995868E1F8FD42A0065E706 /* SwiftElement.swift */; };
+		199586931F8FD42A0065E706 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1995868F1F8FD42A0065E706 /* SwiftFile.swift */; };
+		199586941F8FD42A0065E706 /* SwiftKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199586901F8FD42A0065E706 /* SwiftKind.swift */; };
+		199586951F8FD42A0065E706 /* SwiftSubstructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199586911F8FD42A0065E706 /* SwiftSubstructure.swift */; };
 		19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFD1F873F2E0030B486 /* Generating.swift */; };
 		19A29C001F87412A0030B486 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFF1F87412A0030B486 /* ObjectType.swift */; };
 		19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E014121F7FF301005F30F9 /* FileHandler.swift */; };
@@ -73,15 +73,15 @@
 		191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoReducer.swift; sourceTree = "<group>"; };
 		191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoPresenter.swift; sourceTree = "<group>"; };
 		191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoViewController.swift; sourceTree = "<group>"; };
-		194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSubstructure.swift; sourceTree = "<group>"; };
-		194ABDB91F8C7552003303B4 /* SwiftElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftElement.swift; sourceTree = "<group>"; };
-		194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFile.swift; sourceTree = "<group>"; };
-		194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKind.swift; sourceTree = "<group>"; };
 		19895C681F75E8B300FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6A1F75E8DE00FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpecs.swift; sourceTree = "<group>"; };
 		199586871F8DCB640065E706 /* SwiftModel+Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftModel+Find.swift"; sourceTree = "<group>"; };
 		1995868B1F8F1FA20065E706 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		1995868E1F8FD42A0065E706 /* SwiftElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftElement.swift; sourceTree = "<group>"; };
+		1995868F1F8FD42A0065E706 /* SwiftFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftFile.swift; sourceTree = "<group>"; };
+		199586901F8FD42A0065E706 /* SwiftKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftKind.swift; sourceTree = "<group>"; };
+		199586911F8FD42A0065E706 /* SwiftSubstructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSubstructure.swift; sourceTree = "<group>"; };
 		19A29BFD1F873F2E0030B486 /* Generating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generating.swift; sourceTree = "<group>"; };
 		19A29BFF1F87412A0030B486 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		19E014121F7FF301005F30F9 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
@@ -163,16 +163,15 @@
 			path = ModuleTwo;
 			sourceTree = "<group>";
 		};
-		194ABDB81F8C753D003303B4 /* SwiftModel */ = {
+		1995868D1F8FD42A0065E706 /* SwiftModel */ = {
 			isa = PBXGroup;
 			children = (
-				194ABDB61F8C731F003303B4 /* SwiftSubstructure.swift */,
-				194ABDB91F8C7552003303B4 /* SwiftElement.swift */,
-				194ABDBB1F8C76D7003303B4 /* SwiftFile.swift */,
-				194ABDC11F8C8CBC003303B4 /* SwiftKind.swift */,
+				1995868E1F8FD42A0065E706 /* SwiftElement.swift */,
+				1995868F1F8FD42A0065E706 /* SwiftFile.swift */,
+				199586901F8FD42A0065E706 /* SwiftKind.swift */,
+				199586911F8FD42A0065E706 /* SwiftSubstructure.swift */,
 			);
-			name = SwiftModel;
-			path = "New Group";
+			path = SwiftModel;
 			sourceTree = "<group>";
 		};
 		19E014111F7FF2E4005F30F9 /* Core */ = {
@@ -276,7 +275,7 @@
 		7C76A79B1EB84F3D00D24A38 /* BeaverCodeGen */ = {
 			isa = PBXGroup;
 			children = (
-				194ABDB81F8C753D003303B4 /* SwiftModel */,
+				1995868D1F8FD42A0065E706 /* SwiftModel */,
 				19E014111F7FF2E4005F30F9 /* Core */,
 				762B872F1EBB0A29002E4BD9 /* Generator */,
 				7C76A79C1EB84F3D00D24A38 /* BeaverCodeGen.h */,
@@ -545,23 +544,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				194ABDB71F8C731F003303B4 /* SwiftSubstructure.swift in Sources */,
 				762B87341EBB0A29002E4BD9 /* Project.swift in Sources */,
 				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
-				194ABDBA1F8C7552003303B4 /* SwiftElement.swift in Sources */,
+				199586951F8FD42A0065E706 /* SwiftSubstructure.swift in Sources */,
 				516DDCA09084B9FB8A9C0126 /* State.swift in Sources */,
-				194ABDBC1F8C76D7003303B4 /* SwiftFile.swift in Sources */,
 				516DDADF0D032C98BD0478F7 /* Reducer.swift in Sources */,
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
+				199586931F8FD42A0065E706 /* SwiftFile.swift in Sources */,
 				19A29C001F87412A0030B486 /* ObjectType.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
 				199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */,
+				199586921F8FD42A0065E706 /* SwiftElement.swift in Sources */,
 				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,
 				19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */,
 				1995868C1F8F1FA20065E706 /* Enum.swift in Sources */,
+				199586941F8FD42A0065E706 /* SwiftKind.swift in Sources */,
 				516DDC105506D076421FF1F8 /* Presenter.swift in Sources */,
 				19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */,
-				194ABDC21F8C8CBC003303B4 /* SwiftKind.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

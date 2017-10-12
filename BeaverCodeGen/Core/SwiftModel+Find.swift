@@ -4,33 +4,27 @@ protocol SwiftIndexable {
     var inheritedType: Set<SwiftType> { get }
 
     var offset: Int { get }
-    var bodyOffset: Int { get }
+    var bodyOffset: Int? { get }
     var bodyLength: Int? { get }
-}
-
-extension SwiftIndexable {
-    var endOffset: Int {
-        return bodyOffset + (bodyLength ?? 0)
-    }
 }
 
 protocol SwiftScanable {
     var indexes: [SwiftIndexable] { get }
     
-    func find(byType type: SwiftType?,
+    func find(byType type: ((SwiftType?) -> Bool)?,
               byKind kind: SwiftKind?,
               withInheritedType inheritedType: [SwiftType],
               recursive: Bool) -> [SwiftIndexable]
 }
 
 extension SwiftScanable {
-    func find(byType type: SwiftType? = nil,
+    func find(byType type: ((SwiftType?) -> Bool)? = nil,
               byKind kind: SwiftKind? = nil,
               withInheritedType inheritedType: [SwiftType] = [],
               recursive: Bool = false) -> [SwiftIndexable] {
         return indexes.reduce([SwiftIndexable]()) { (result, index) in
-            let isIndexMatching = (type == nil || index.type == type)
-                && (kind == nil || index.kind == kind)
+            let isIndexMatching = (type?(index.type) ?? true)
+                && (kind == nil ||  index.kind == kind)
                 && index.inheritedType.intersection(inheritedType).count == inheritedType.count
 
             let firstIndex: [SwiftIndexable] = isIndexMatching ? [index] : []

@@ -4,6 +4,8 @@ enum SwiftKind {
     case enumelement
     case typeref
     case `protocol`
+    case `struct`
+    case instance
     case unknown(value: String)
 }
 
@@ -21,6 +23,10 @@ extension SwiftKind: Decodable {
             self = .typeref
         case "source.lang.swift.decl.protocol":
             self = .`protocol`
+        case "source.lang.swift.decl.struct":
+            self = .`struct`
+        case "source.lang.swift.decl.var.instance":
+            self = .instance
         default:
             self = .unknown(value: value)
         }
@@ -40,6 +46,10 @@ extension SwiftKind {
             return "typeref"
         case .`protocol`:
             return "protocol"
+        case .`struct`:
+            return "struct"
+        case .instance:
+            return "instance"
         case .unknown(let value):
             return value
         }

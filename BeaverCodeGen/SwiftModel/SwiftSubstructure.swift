@@ -12,7 +12,7 @@ struct SwiftSubstructure {
     
     let offset: Int
     let nameOffset: Int
-    let bodyOffset: Int
+    let bodyOffset: Int?
 
     var elements: [SwiftElement]
     let substructure: [SwiftSubstructure]
@@ -29,7 +29,7 @@ extension SwiftSubstructure: Decodable {
         nameLength = try values.decode(Int.self, forKey: .nameLength)
         offset = try values.decode(Int.self, forKey: .offset)
         nameOffset = try values.decode(Int.self, forKey: .nameOffset)
-        bodyOffset = try values.decode(Int.self, forKey: .nameOffset)
+        bodyOffset = try values.decodeIfPresent(Int.self, forKey: .bodyOffset)
         elements = try values.decodeIfPresent([SwiftElement].self, forKey: .elements) ?? []
         substructure = try values.decodeIfPresent([SwiftSubstructure].self, forKey: .substructure) ?? []
     }
@@ -61,6 +61,9 @@ enum SwiftType {
     case moduleUIAction(moduleName: String)
     case moduleRoutingAction(moduleName: String)
     case appAction
+    case beaverState
+    case appState
+    case moduleState(moduleName: String)
     case unknown(name: String)
 }
 
@@ -74,7 +77,7 @@ extension SwiftType: Decodable {
             }
         }()
         switch name {
-        case "(Beaver\\.)?Action":
+        case "^(Beaver\\.)?Action$":
             self = .beaverAction
         case ".*UIAction$":
             self = .moduleUIAction(moduleName: name.replacingOccurrences(of: "UIAction", with: ""))
@@ -83,7 +86,13 @@ extension SwiftType: Decodable {
         case "^AppAction$":
             self = .appAction
         case ".*Action$":
-            self = .moduleAction(moduleName: name.replacingOccurrences(of: "Action", with: ""))
+            self = .moduleAction(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Action".characters.count)]))
+        case "^(Beaver\\.)?State$":
+            self = .beaverState
+        case "^AppState$":
+            self = .appState
+        case ".*State$":
+            self = .moduleState(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"State".characters.count)]))
         default:
             self = .unknown(name: name)
         }
@@ -95,10 +104,19 @@ extension SwiftType: Decodable {
 }
 
 extension SwiftType {
+    var isModuleState: Bool {
+        switch self {
+        case .moduleState:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var name: String {
         switch self {
         case .beaverAction:
-            return "BeaverAction"
+            return "Beaver.Action"
         case .moduleAction(let moduleName):
             return "\(moduleName)Action"
         case .moduleUIAction(let moduleName):
@@ -107,6 +125,12 @@ extension SwiftType {
             return "\(moduleName)RoutingAction"
         case .appAction:
             return "AppAction"
+        case .beaverState:
+            return "Beaver.State"
+        case .appState:
+            return "AppState"
+        case .moduleState(let moduleName):
+            return "\(moduleName)State"
         case .unknown(let name):
             return name
         }
