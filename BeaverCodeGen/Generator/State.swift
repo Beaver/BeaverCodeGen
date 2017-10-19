@@ -54,19 +54,18 @@ extension AppState: CustomStringConvertible {
         import Beaver
         
         public struct AppState: Beaver.State {
-            \(moduleNames.map {
+            \(moduleNames.count > 0 ? moduleNames.map {
                 "public var \($0.varName)State: \($0.typeName)State?"
-            }.joined(separator: br(.tab)))
-        
+            }.joined(separator: br(.tab)).br : "")
             public init() {
             }
         }
         
         extension AppState {
             public static func ==(lhs: AppState, rhs: AppState) -> Bool {
-                return \(moduleNames.map {
+                return \(moduleNames.count > 0 ? moduleNames.map {
                     "lhs.\($0.varName)State == rhs.\($0.varName)State"
-                }.joined(separator: " &&".br.tab(3)))
+                }.joined(separator: " &&".br.tab(3)) : "true")
             }
         }
         
@@ -83,13 +82,43 @@ extension AppState: CustomStringConvertible {
             fatalError("Couldn't find AppState in \(fileHandler)")
         }
         
-        let lastModuleVar = stateStruct.find(byType: { $0?.isModuleState ?? false }, byKind: .instance).last
-        let offset = lastModuleVar?.offset ?? stateStruct.offset
+        let moduleVars = stateStruct.find(byType: { $0?.isModuleState ?? false }, byKind: .instance)
+        let varOffset = moduleVars.last?.offset ?? stateStruct.offset
 
-        fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State".br.indented,
-                           atOffset: offset,
-                           atNextLine: true,
-                           inFileAtPath: path)
+        if moduleVars.count > 0 {
+            fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br.indented,
+                               atOffset: varOffset,
+                               withSelector: .matching(string: .br, insert: .after),
+                               inFileAtPath: path)
+        } else {
+            fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br,
+                               atOffset: varOffset,
+                               withSelector: .matching(string: .br + .tab, insert: .after),
+                               inFileAtPath: path)
+        }
         
+        guard let equalOperator = swiftFile.find(byType: { $0?.isEqualOperator ?? false },
+                                                 byKind: .staticMethod,
+                                                 byParent: { $0?.type?.isModuleState ?? false },
+                                                 recursive: true).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find AppState.==(_:_:) in \(fileHandler)")
+        }
+
+        guard let equalOffset = equalOperator.endOffset else {
+            fatalError("Couldn't compute offset to insert at in \(fileHandler)")
+        }
+        
+        let equalString = "lhs.\(moduleName.varName)State == rhs.\(moduleName.varName)State"
+        if moduleVars.count > 0 {
+            fileHandler.insert(content: " &&".br + equalString.indented(count: 3),
+                               atOffset: equalOffset,
+                               withSelector: .matching(string: .br, insert: .before),
+                               inFileAtPath: path)
+        } else {
+            fileHandler.insert(content: "return " + equalString,
+                               atOffset: equalOffset,
+                               withSelector: .matching(string: "return true", insert: .over),
+                               inFileAtPath: path)
+        }
     }
 }

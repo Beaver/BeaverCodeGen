@@ -61,7 +61,7 @@ extension ModuleAction {
 
         fileHandler.insert(content: action.description.br.indented,
                            atOffset: offset,
-                           atNextLine: true,
+                           withSelector: .matching(string: .br, insert: .after),
                            inFileAtPath: path)
     }
 }
@@ -167,7 +167,7 @@ extension AppAction {
 
         fileHandler.insert(content: action.description.br.indented,
                            atOffset: offset,
-                           atNextLine: true,
+                           withSelector: .matching(string: .br, insert: .after),
                            inFileAtPath: path)
     }
 }

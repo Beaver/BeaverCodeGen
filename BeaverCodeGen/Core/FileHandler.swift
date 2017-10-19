@@ -8,10 +8,32 @@ public protocol FileHandling: CustomStringConvertible {
 
     func insert(content: String,
                 atOffset offset: Int,
-                atNextLine: Bool,
+                withSelector offsetSelector: OffsetSelector,
                 inFileAtPath path: String)
     
     func sourceKittenFile(atPath path: String) -> File
+}
+
+public indirect enum OffsetSelector {
+    public enum InsertionType {
+        case after
+        case before
+        case over
+    }
+    
+    case matching(string: String, insert: InsertionType)
+    case none
+}
+
+extension OffsetSelector {
+    var string: String? {
+        switch self {
+        case .matching(let string, _):
+            return string
+        default:
+            return nil
+        }
+    }
 }
 
 extension FileHandling {
@@ -25,16 +47,26 @@ extension FileHandling {
     
     public func insert(content: String,
                        atOffset offset: Int,
-                       atNextLine: Bool = false,
+                       withSelector offsetSelector: OffsetSelector = .none,
                        inFileAtPath path: String) {
         var fileContent = readFile(atPath: path)
         var index = fileContent.index(fileContent.startIndex, offsetBy: offset)
         
-        if atNextLine {
-            let suffix = fileContent.suffix(from: index)
-            if let breakLindIndex = suffix.characters.index(of: "\n") {
-                let breakLinePosition = suffix.distance(from: suffix.startIndex, to: breakLindIndex)
-                index = fileContent.index(index, offsetBy: breakLinePosition + 1)
+        if let matchingString = offsetSelector.string,
+            let range = fileContent.range(of: matchingString, range: index..<fileContent.endIndex) {
+            index = range.lowerBound
+            
+            switch offsetSelector {
+            case .matching(_, insert: .after):
+                index = fileContent.index(index, offsetBy: matchingString.characters.count)
+
+            case .matching(_, insert: .over):
+                let distance = fileContent.distance(from: fileContent.startIndex, to: index)
+                fileContent = fileContent.replacingOccurrences(of: matchingString, with: "")
+                index = fileContent.index(fileContent.startIndex, offsetBy: distance)
+
+            default:
+                break
             }
         }
         

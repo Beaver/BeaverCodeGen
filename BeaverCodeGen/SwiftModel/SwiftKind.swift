@@ -6,6 +6,8 @@ enum SwiftKind {
     case `protocol`
     case `struct`
     case instance
+    case `extension`
+    case staticMethod
     case unknown(value: String)
 }
 
@@ -27,6 +29,10 @@ extension SwiftKind: Decodable {
             self = .`struct`
         case "source.lang.swift.decl.var.instance":
             self = .instance
+        case "source.lang.swift.decl.extension":
+            self = .`extension`
+        case "source.lang.swift.decl.function.method.static":
+            self = .staticMethod
         default:
             self = .unknown(value: value)
         }
@@ -50,6 +56,10 @@ extension SwiftKind {
             return "struct"
         case .instance:
             return "instance"
+        case .`extension`:
+            return "extension"
+        case .staticMethod:
+            return "static_method"
         case .unknown(let value):
             return value
         }

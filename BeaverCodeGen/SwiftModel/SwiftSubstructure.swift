@@ -1,6 +1,8 @@
 // MARK: - Substructure
 
 struct SwiftSubstructure {
+    fileprivate(set) var parent: SwiftIndexable?
+    
     let type: SwiftType?
     let kind: SwiftKind
 
@@ -15,12 +17,13 @@ struct SwiftSubstructure {
     let bodyOffset: Int?
 
     var elements: [SwiftElement]
-    let substructure: [SwiftSubstructure]
+    fileprivate(set) var substructure: [SwiftSubstructure]
 }
 
 extension SwiftSubstructure: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        parent = nil
         type = try values.decodeIfPresent(SwiftType.self, forKey: .name)
         kind = try values.decode(SwiftKind.self, forKey: .kind)
         inheritedType = Set(try values.decodeIfPresent([SwiftType].self, forKey: .inheritedType) ?? [])
@@ -31,7 +34,13 @@ extension SwiftSubstructure: Decodable {
         nameOffset = try values.decode(Int.self, forKey: .nameOffset)
         bodyOffset = try values.decodeIfPresent(Int.self, forKey: .bodyOffset)
         elements = try values.decodeIfPresent([SwiftElement].self, forKey: .elements) ?? []
-        substructure = try values.decodeIfPresent([SwiftSubstructure].self, forKey: .substructure) ?? []
+        substructure = (try values.decodeIfPresent([SwiftSubstructure].self, forKey: .substructure) ?? [])
+        
+        substructure = substructure.map { substructure in
+            var mutableSubstructure = substructure
+            mutableSubstructure.parent = self
+            return mutableSubstructure
+        }
     }
     
     enum CodingKeys: String, CodingKey {
@@ -64,6 +73,7 @@ enum SwiftType {
     case beaverState
     case appState
     case moduleState(moduleName: String)
+    case equalOperator
     case unknown(name: String)
 }
 
@@ -83,16 +93,18 @@ extension SwiftType: Decodable {
             self = .moduleUIAction(moduleName: name.replacingOccurrences(of: "UIAction", with: ""))
         case ".*RoutingAction$":
             self = .moduleRoutingAction(moduleName: name.replacingOccurrences(of: "RoutingAction", with: ""))
-        case "^AppAction$":
+        case _ where name == "AppAction":
             self = .appAction
         case ".*Action$":
             self = .moduleAction(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Action".characters.count)]))
         case "^(Beaver\\.)?State$":
             self = .beaverState
-        case "^AppState$":
+        case _ where name == "AppState":
             self = .appState
         case ".*State$":
             self = .moduleState(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"State".characters.count)]))
+        case _ where name == "==(_:_:)":
+            self = .equalOperator
         default:
             self = .unknown(name: name)
         }
@@ -107,6 +119,15 @@ extension SwiftType {
     var isModuleState: Bool {
         switch self {
         case .moduleState:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var isEqualOperator: Bool {
+        switch self {
+        case .equalOperator:
             return true
         default:
             return false
@@ -131,6 +152,8 @@ extension SwiftType {
             return "AppState"
         case .moduleState(let moduleName):
             return "\(moduleName)State"
+        case .equalOperator:
+            return "equal_operator"
         case .unknown(let name):
             return name
         }

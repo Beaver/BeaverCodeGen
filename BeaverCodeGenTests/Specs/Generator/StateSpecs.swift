@@ -40,12 +40,31 @@ final class StateSpecs: QuickSpec {
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()
                     }
+
+                    context("when inserting a second or more module") {
+                        beforeEach {
+                            generator = BeaverCodeGen.AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
+                        }
+                        
+                        it("should rewrite the state file with one more module") {
+                            fileHandlerMock.contents[filePath] = generator.description
+                            generator.insert(module: "Test", in: fileHandlerMock)
+                            generator.moduleNames.append("Test")
+                            expect(fileHandlerMock.contents[filePath]) == generator.description
+                        }
+                    }
                     
-                    it("should rewrite the state file with one more module") {
-                        fileHandlerMock.contents[filePath] = generator.description
-                        generator.insert(module: "Test", in: fileHandlerMock)
-                        generator.moduleNames.append("Test")
-                        expect(fileHandlerMock.contents[filePath]) == generator.description
+                    context("when inserting the first module") {
+                        beforeEach {
+                            generator = BeaverCodeGen.AppState(moduleNames: [])
+                        }
+                        
+                        it("should rewrite the state file with one module") {
+                            fileHandlerMock.contents[filePath] = generator.description
+                            generator.insert(module: "Test", in: fileHandlerMock)
+                            generator.moduleNames.append("Test")
+                            expect(fileHandlerMock.contents[filePath]) == generator.description
+                        }
                     }
                     
                     afterEach {
