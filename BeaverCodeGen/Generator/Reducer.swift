@@ -37,7 +37,7 @@ extension ModuleReducer {
 
 struct AppReducer: Generating {
     let objectType: ObjectType = .reducer
-    let moduleNames: [String]
+    var moduleNames: [String]
 }
 
 extension AppReducer {
@@ -52,10 +52,9 @@ extension AppReducer {
         struct AppReducer: Beaver.Reducing {
             typealias StateType = AppState
         
-        \(moduleNames.map {
+        \(moduleNames.count > 0 ? moduleNames.map {
             "let \($0.varName): \($0.typeName)Reducer"
-        }.joined(separator: .br).indented)
-        
+        }.joined(separator: .br).indented.br : "")
             func handle(envelop: ActionEnvelop,
                         state: AppState,
                         completion: @escaping (AppState) -> ()) -> AppState {
@@ -65,8 +64,7 @@ extension AppReducer {
                 case AppAction.start(let startAction):
                     return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
 
-        \(moduleActionCase.indented(count: 2))
-        
+        \(moduleNames.count > 0 ? moduleActionCase(moduleNames).indented(count: 2).br : "")
                 default: break
                 }
         
@@ -77,7 +75,7 @@ extension AppReducer {
         """
     }
     
-    private var moduleActionCase: String {
+    private func moduleActionCase(_ moduleNames: [String]) -> String {
         return moduleNames.map {
             """
             case is \($0.typeName)Action:
@@ -90,5 +88,34 @@ extension AppReducer {
                 newState.\($0.varName)State = nil
             """
         }.joined(separator: .br(2))
+    }
+    
+    func insert(module moduleName: String, in fileHandler: FileHandling) {
+        let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
+
+        guard let reducerStruct = swiftFile.find(recursive: true, isMatching: {
+            $0.typeName == .appReducer && $0.kind == .`struct` && $0.doesInherit(from: [.beaverReducing])
+        }).first as? SwiftSubstructure else {
+            fatalError("Couldn't find AppReducer in \(fileHandler)")
+        }
+        
+        let reducerVars = reducerStruct.find { ($0.typeName?.isModuleReducer ?? false) && $0.kind == .`var` }
+        let varOffset = reducerVars.last?.offset ?? reducerStruct.offset
+        
+        fileHandler.insert(content: "let \(moduleName.varName): \(moduleName.typeName)Reducer".indented.br,
+                           atOffset: varOffset,
+                           withSelector: .matching(string: .br, insert: .after),
+                           inFileAtPath: path)
+        
+        guard let handleSwitch = reducerStruct.find(recursive: true, isMatching: {
+            $0.kind == .`switch` && $0.parent?.typeName == .beaverReducingHandleMethod
+        }).first as? SwiftSubstructure else {
+            fatalError("Couldn't find switch in \(SwiftTypeName.beaverReducingHandleMethod.name) in \(fileHandler)")
+        }
+
+        fileHandler.insert(content: moduleActionCase([moduleName]).indented(count: 2).br(2),
+                           atOffset: handleSwitch.offset,
+                           withSelector: .matching(string: "default".indented(count: 2), insert: .before),
+                           inFileAtPath: path)
     }
 }

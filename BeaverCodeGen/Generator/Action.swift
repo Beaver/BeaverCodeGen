@@ -50,13 +50,13 @@ extension ModuleAction {
     func insert(action: ActionType, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
-        guard let actionEnum = swiftFile.find(byType: { $0 == action.toSwiftType(moduleName: self.moduleName) },
-                                              withInheritedType: [.moduleAction(moduleName: moduleName)],
-                                              recursive: true).first as? SwiftScanable & SwiftIndexable else {
+        guard let actionEnum = swiftFile.find(recursive: true, isMatching: {
+            $0.typeName == action.toSwiftTypeName(moduleName: self.moduleName) && $0.doesInherit(from: [.moduleAction(moduleName: moduleName)])
+        }).first as? SwiftScanable & SwiftIndexable else {
             fatalError("Couldn't find \(moduleName)UIAction in \(fileHandler) at path \(path)")
         }
         
-        let lastEnumcase = actionEnum.find(byKind: .enumcase).last
+        let lastEnumcase = actionEnum.find { $0.kind == .enumcase }.last
         let offset = lastEnumcase?.offset ?? actionEnum.offset
 
         fileHandler.insert(content: action.description.br.indented,
@@ -100,7 +100,7 @@ extension ModuleAction {
             }
         }
         
-        func toSwiftType(moduleName: String) -> SwiftType {
+        func toSwiftTypeName(moduleName: String) -> SwiftTypeName {
             switch self {
             case .ui:
                 return .moduleUIAction(moduleName: moduleName)
@@ -156,13 +156,13 @@ extension AppAction {
     func insert(action: EnumCase, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
-        guard let actionEnum = swiftFile.find(byType: { $0 == .appAction },
-                                              withInheritedType: [.beaverAction],
-                                              recursive: true).first as? SwiftScanable & SwiftIndexable else {
+        guard let actionEnum = swiftFile.find(recursive: true, isMatching: {
+            $0.typeName == .appAction && $0.doesInherit(from: [.beaverAction])
+        }).first as? SwiftScanable & SwiftIndexable else {
             fatalError("Couldn't find AppAction in \(fileHandler) at path \(path)")
         }
 
-        let lastEnumcase = actionEnum.find(byKind: .enumcase).last
+        let lastEnumcase = actionEnum.find { $0.kind == .enumcase }.last
         let offset = lastEnumcase?.offset ?? actionEnum.offset
 
         fileHandler.insert(content: action.description.br.indented,

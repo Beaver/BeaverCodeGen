@@ -14,6 +14,7 @@
 		191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */; };
 		191BACC41F739F2A0071D2BA /* ModuleTwoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */; };
 		191BACC61F739F4A0071D2BA /* ModuleTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */; };
+		196DE0B91F9C36FF000396EA /* SwiftTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196DE0B81F9C36FF000396EA /* SwiftTypeName.swift */; };
 		19895C691F75E8B300FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C681F75E8B300FB754C /* AppDelegate.swift */; };
 		19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6A1F75E8DE00FB754C /* AppDelegate.swift */; };
 		19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */; };
@@ -73,6 +74,7 @@
 		191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoReducer.swift; sourceTree = "<group>"; };
 		191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoPresenter.swift; sourceTree = "<group>"; };
 		191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoViewController.swift; sourceTree = "<group>"; };
+		196DE0B81F9C36FF000396EA /* SwiftTypeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTypeName.swift; sourceTree = "<group>"; };
 		19895C681F75E8B300FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6A1F75E8DE00FB754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpecs.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				1995868F1F8FD42A0065E706 /* SwiftFile.swift */,
 				199586901F8FD42A0065E706 /* SwiftKind.swift */,
 				199586911F8FD42A0065E706 /* SwiftSubstructure.swift */,
+				196DE0B81F9C36FF000396EA /* SwiftTypeName.swift */,
 			);
 			path = SwiftModel;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196DE0B91F9C36FF000396EA /* SwiftTypeName.swift in Sources */,
 				762B87341EBB0A29002E4BD9 /* Project.swift in Sources */,
 				762B87331EBB0A29002E4BD9 /* Action.swift in Sources */,
 				199586951F8FD42A0065E706 /* SwiftSubstructure.swift in Sources */,

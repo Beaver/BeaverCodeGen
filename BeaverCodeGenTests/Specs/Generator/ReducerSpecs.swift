@@ -19,13 +19,41 @@ final class ReducerSpecs: QuickSpec {
             }
             
             describe("AppReducer") {
+                var generator: BeaverCodeGen.AppReducer!
+                
+                beforeEach {
+                    generator = BeaverCodeGen.AppReducer(moduleNames: ["ModuleOne", "ModuleTwo"])
+                }
+                
                 describe("description") {
                     it("should return a string containing the Reducer's code") {
-                        let code = BeaverCodeGen.AppReducer(moduleNames: ["ModuleOne", "ModuleTwo"]).description
+                        let code = generator.description
                         
                         self.printDiff(code: code, expected: self.expectedCode(AppType.reducer))
-                        
+
                         expect(code) == self.expectedCode(AppType.reducer)
+                    }
+                }
+                
+                describe("insert(module:in:)") {
+                    var fileHandlerMock: FileHandlerMock!
+                    let filePath = "App/AppReducer.swift"
+                    
+                    beforeEach {
+                        fileHandlerMock = FileHandlerMock()
+                    }
+
+                    it("should rewrite the reducer file with one more module") {
+                        fileHandlerMock.contents[filePath] = generator.description
+                        generator.insert(module: "Test", in: fileHandlerMock)
+                        generator.moduleNames.append("Test")
+                        expect(fileHandlerMock.contents[filePath]) == generator.description
+                    }
+                    
+                    afterEach {
+                        if let code = fileHandlerMock.contents[filePath] {
+                            self.printDiff(code: code, expected: generator.description)
+                        }
                     }
                 }
             }

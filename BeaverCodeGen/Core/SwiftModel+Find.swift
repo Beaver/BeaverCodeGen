@@ -1,9 +1,9 @@
 protocol SwiftIndexable {
     var parent: SwiftIndexable? { get }
     
-    var type: SwiftType? { get }
+    var typeName: SwiftTypeName? { get }
     var kind: SwiftKind { get }
-    var inheritedType: Set<SwiftType> { get }
+    var inheritedType: Set<SwiftTypeName> { get }
 
     var offset: Int { get }
     var bodyOffset: Int? { get }
@@ -19,16 +19,16 @@ extension SwiftIndexable {
             return nil
         }
     }
+    
+    func doesInherit(from types: [SwiftTypeName]) -> Bool {
+        return inheritedType.intersection(types).count == inheritedType.count
+    }
 }
 
 protocol SwiftScanable {
     var indexes: [SwiftIndexable] { get }
     
-    func find(byType type: ((SwiftType?) -> Bool)?,
-              byKind kind: SwiftKind?,
-              byParent parent: ((SwiftIndexable?) -> Bool)?,
-              withInheritedType inheritedType: [SwiftType],
-              recursive: Bool) -> [SwiftIndexable]
+    func find(recursive: Bool, isMatching: (SwiftIndexable) -> Bool) -> [SwiftIndexable]
 }
 
 extension SwiftScanable {
@@ -36,19 +36,11 @@ extension SwiftScanable {
         return nil
     }
 
-    func find(byType type: ((SwiftType?) -> Bool)? = nil,
-              byKind kind: SwiftKind? = nil,
-              byParent parent: ((SwiftIndexable?) -> Bool)? = nil,
-              withInheritedType inheritedType: [SwiftType] = [],
-              recursive: Bool = false) -> [SwiftIndexable] {
+    func find(recursive: Bool = false, isMatching: (SwiftIndexable) -> Bool) -> [SwiftIndexable] {
         return indexes.reduce([SwiftIndexable]()) { (result, index) in
-            let isIndexMatching = (type?(index.type) ?? true)
-                && (kind == nil ||  index.kind == kind)
-                && (parent?(index.parent) ?? true)
-                && index.inheritedType.intersection(inheritedType).count == inheritedType.count
-
+            let isIndexMatching = isMatching(index)
             let firstIndex: [SwiftIndexable] = isIndexMatching ? [index] : []
-            let subIndexes = (index as? SwiftScanable)?.find(byType: type) ?? []
+            let subIndexes = (index as? SwiftScanable)?.find(recursive: recursive, isMatching: isMatching) ?? []
             return result + firstIndex + subIndexes
         }
     }

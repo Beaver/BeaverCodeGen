@@ -75,14 +75,13 @@ extension AppState: CustomStringConvertible {
     func insert(module moduleName: String, in fileHandler: FileHandling) {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
         
-        guard let stateStruct = swiftFile.find(byType: { $0 == .appState },
-                                               byKind: .`struct`,
-                                               withInheritedType: [.beaverState],
-                                               recursive: true).first as? SwiftScanable & SwiftIndexable else {
+        guard let stateStruct = swiftFile.find(recursive: true, isMatching:  {
+            $0.typeName == .appState && $0.kind == .`struct` && $0.doesInherit(from: [.beaverState])
+        }).first as? SwiftScanable & SwiftIndexable else {
             fatalError("Couldn't find AppState in \(fileHandler)")
         }
         
-        let moduleVars = stateStruct.find(byType: { $0?.isModuleState ?? false }, byKind: .instance)
+        let moduleVars = stateStruct.find { ($0.typeName?.isModuleState ?? false) && $0.kind == .`var` }
         let varOffset = moduleVars.last?.offset ?? stateStruct.offset
 
         if moduleVars.count > 0 {
@@ -96,18 +95,17 @@ extension AppState: CustomStringConvertible {
                                withSelector: .matching(string: .br + .tab, insert: .after),
                                inFileAtPath: path)
         }
-        
-        guard let equalOperator = swiftFile.find(byType: { $0?.isEqualOperator ?? false },
-                                                 byKind: .staticMethod,
-                                                 byParent: { $0?.type?.isModuleState ?? false },
-                                                 recursive: true).first as? SwiftScanable & SwiftIndexable else {
+
+        guard let equalOperator = swiftFile.find(recursive: true, isMatching: {
+            $0.typeName == .equalOperator && $0.kind == .staticMethod && $0.parent?.typeName == .appState
+        }).first as? SwiftScanable & SwiftIndexable else {
             fatalError("Couldn't find AppState.==(_:_:) in \(fileHandler)")
         }
 
         guard let equalOffset = equalOperator.endOffset else {
             fatalError("Couldn't compute offset to insert at in \(fileHandler)")
         }
-        
+
         let equalString = "lhs.\(moduleName.varName)State == rhs.\(moduleName.varName)State"
         if moduleVars.count > 0 {
             fileHandler.insert(content: " &&".br + equalString.indented(count: 3),
