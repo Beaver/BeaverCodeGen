@@ -50,11 +50,11 @@ extension AppReducer {
         import Beaver
         
         struct AppReducer: Beaver.Reducing {
-            typealias StateType = AppState
-        
         \(moduleNames.count > 0 ? moduleNames.map {
             "let \($0.varName): \($0.typeName)Reducer"
         }.joined(separator: .br).indented.br : "")
+            typealias StateType = AppState
+
             func handle(envelop: ActionEnvelop,
                         state: AppState,
                         completion: @escaping (AppState) -> ()) -> AppState {
@@ -63,8 +63,7 @@ extension AppReducer {
                 switch envelop.action {
                 case AppAction.start(let startAction):
                     return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
-
-        \(moduleNames.count > 0 ? moduleActionCase(moduleNames).indented(count: 2).br : "")
+        \(moduleNames.count > 0 ? .br + moduleActionCase(moduleNames).indented(count: 2).br : "")
                 default: break
                 }
         

@@ -43,11 +43,30 @@ final class ReducerSpecs: QuickSpec {
                         fileHandlerMock = FileHandlerMock()
                     }
 
-                    it("should rewrite the reducer file with one more module") {
-                        fileHandlerMock.contents[filePath] = generator.description
-                        generator.insert(module: "Test", in: fileHandlerMock)
-                        generator.moduleNames.append("Test")
-                        expect(fileHandlerMock.contents[filePath]) == generator.description
+                    context("one or more modules already exist") {
+                        beforeEach {
+                            generator = BeaverCodeGen.AppReducer(moduleNames: ["ModuleOne", "ModuleTwo"])
+                        }
+
+                        it("should rewrite the reducer file with one more module") {
+                            fileHandlerMock.contents[filePath] = generator.description
+                            generator.insert(module: "Test", in: fileHandlerMock)
+                            generator.moduleNames.append("Test")
+                            expect(fileHandlerMock.contents[filePath]) == generator.description
+                        }
+                    }
+
+                    context("one or more modules already exist") {
+                        beforeEach {
+                            generator = BeaverCodeGen.AppReducer(moduleNames: [])
+                        }
+
+                        it("should rewrite the reducer file with one module") {
+                            fileHandlerMock.contents[filePath] = generator.description
+                            generator.insert(module: "Test", in: fileHandlerMock)
+                            generator.moduleNames.append("Test")
+                            expect(fileHandlerMock.contents[filePath]) == generator.description
+                        }
                     }
                     
                     afterEach {

@@ -1,10 +1,10 @@
 import Beaver
 
 struct AppReducer: Beaver.Reducing {
-    typealias StateType = AppState
-
     let moduleOne: ModuleOneReducer
     let moduleTwo: ModuleTwoReducer
+
+    typealias StateType = AppState
 
     func handle(envelop: ActionEnvelop,
                 state: AppState,
