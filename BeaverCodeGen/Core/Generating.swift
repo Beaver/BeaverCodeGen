@@ -4,7 +4,7 @@ public protocol Generating: CustomStringConvertible {
     var objectType: ObjectType { get }
 
     func generate(in fileHandler: FileHandling)
-    func insert(module moduleName: String, in fileHanlder: FileHandling)
+    func byInserting(module moduleName: String, in fileHanlder: FileHandling) -> Self
 }
 
 extension Generating {
@@ -12,7 +12,8 @@ extension Generating {
         fileHandler.writeFile(atPath: path, content: description)
     }
     
-    func insert(module moduleName: String, in fileHanlder: FileHandling) {
+    func byInserting(module moduleName: String, in fileHanlder: FileHandling) -> Self {
+        return self
     }
 
     var path: String {

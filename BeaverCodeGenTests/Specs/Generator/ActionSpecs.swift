@@ -33,15 +33,13 @@ final class ActionSpecs: QuickSpec {
                     
                     it("should rewrite the action file with one more ui action") {
                         fileHandlerMock.contents[filePath] = generator.description
-                        generator.insert(action: .ui(EnumCase(name: "Test")), in: fileHandlerMock)
-                        generator.actions.append(.ui(EnumCase(name: "Test")))
+                        generator = generator.byInserting(action: .ui(EnumCase(name: "Test")), in: fileHandlerMock)
                         expect(fileHandlerMock.contents[filePath]) == generator.description
                     }
                     
                     it("should rewrite the action file with one more routing action") {
                         fileHandlerMock.contents[filePath] = generator.description
-                        generator.insert(action: .routing(EnumCase(name: "Test")), in: fileHandlerMock)
-                        generator.actions.append(.routing(EnumCase(name: "Test")))
+                        generator = generator.byInserting(action: .routing(EnumCase(name: "Test")), in: fileHandlerMock)
                         expect(fileHandlerMock.contents[filePath]) == generator.description
                     }
                     
@@ -80,8 +78,7 @@ final class ActionSpecs: QuickSpec {
                     
                     it("should rewrite the action file with one more routing action") {
                         fileHandlerMock.contents[filePath] = generator.description
-                        generator.insert(action: EnumCase(name: "Test"), in: fileHandlerMock)
-                        generator.actions.append(EnumCase(name: "Test"))
+                        generator = generator.byInserting(action: EnumCase(name: "Test"), in: fileHandlerMock)
                         expect(fileHandlerMock.contents[filePath]) == generator.description
                     }
                     

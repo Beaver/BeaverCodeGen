@@ -47,7 +47,7 @@ extension ModuleAction {
         """
     }
     
-    func insert(action: ActionType, in fileHandler: FileHandling) {
+    func byInserting(action: ActionType, in fileHandler: FileHandling) -> ModuleAction {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
         guard let actionEnum = swiftFile.find(recursive: true, isMatching: {
@@ -63,6 +63,8 @@ extension ModuleAction {
                                atOffset: offset,
                                withSelector: .matching(string: .br, insert: .after),
                                inFileAtPath: path)
+        
+        return ModuleAction(moduleName: moduleName, actions: actions + [action])
     }
 }
 
@@ -153,7 +155,7 @@ extension AppAction {
         """
     }
     
-    func insert(action: EnumCase, in fileHandler: FileHandling) {
+    func byInserting(action: EnumCase, in fileHandler: FileHandling) -> AppAction {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
         guard let actionEnum = swiftFile.find(recursive: true, isMatching: {
@@ -169,6 +171,8 @@ extension AppAction {
                                atOffset: offset,
                                withSelector: .matching(string: .br, insert: .after),
                                inFileAtPath: path)
+        
+        return AppAction(actions: actions + [action])
     }
 }
 

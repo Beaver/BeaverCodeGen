@@ -89,7 +89,7 @@ extension AppReducer {
         }.joined(separator: .br(2))
     }
     
-    func insert(module moduleName: String, in fileHandler: FileHandling) {
+    func byInserting(module moduleName: String, in fileHandler: FileHandling) -> AppReducer {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
         guard let reducerStruct = swiftFile.find(recursive: true, isMatching: {
@@ -116,5 +116,7 @@ extension AppReducer {
                                atOffset: handleSwitch.offset + insertedCharacterCount,
                                withSelector: .matching(string: "default".indented(count: 2), insert: .before),
                                inFileAtPath: path)
+        
+        return AppReducer(moduleNames: moduleNames + [moduleName])
     }
 }

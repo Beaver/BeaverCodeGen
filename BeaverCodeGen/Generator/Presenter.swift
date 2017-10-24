@@ -105,7 +105,7 @@ extension AppPresenter {
         }.joined(separator: "".br(2))
     }
     
-    func insert(module moduleName: String, in fileHandler: FileHandling) {
+    func byInserting(module moduleName: String, in fileHandler: FileHandling) -> AppPresenter {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
 
         guard let modulesContainer = swiftFile.find(isMatching: {
@@ -161,6 +161,8 @@ extension AppPresenter {
                                atOffset: stateDidUpdateSwitchOffset,
                                withSelector: .matching(string: "completion()".indented(count: 2), insert: .before),
                                inFileAtPath: path)
+        
+        return AppPresenter(moduleNames: moduleNames + [moduleName])
     }
 }
 

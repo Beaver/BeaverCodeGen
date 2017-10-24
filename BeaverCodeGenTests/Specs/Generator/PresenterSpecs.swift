@@ -48,8 +48,7 @@ final class PresenterSpecs: QuickSpec {
                         
                         it("should rewrite the reducer file with one more module") {
                             fileHandlerMock.contents[filePath] = generator.description
-                            generator.insert(module: "Test", in: fileHandlerMock)
-                            generator.moduleNames.append("Test")
+                            generator = generator.byInserting(module: "Test", in: fileHandlerMock)
                             expect(fileHandlerMock.contents[filePath]) == generator.description
                         }
                     }

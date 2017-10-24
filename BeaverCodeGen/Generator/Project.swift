@@ -16,14 +16,16 @@ public struct ProjectGenetator: Generating {
         }
     }
     
-    public func insert(module moduleName: String, in filehandler: FileHandling) {
+    public func byInserting(module moduleName: String, in filehandler: FileHandling) -> ProjectGenetator {
         modulesGenerators([moduleName]).forEach {
             $0.generate(in: filehandler)
         }
         
         appGenerators.forEach {
-            $0.insert(module: moduleName, in: filehandler)
+            _ = $0.byInserting(module: moduleName, in: filehandler)
         }
+        
+        return ProjectGenetator(name: name, moduleNames: moduleNames + [moduleName])
     }
 }
 

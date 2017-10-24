@@ -72,7 +72,7 @@ extension AppState: CustomStringConvertible {
         """
     }
     
-    func insert(module moduleName: String, in fileHandler: FileHandling) {
+    func byInserting(module moduleName: String, in fileHandler: FileHandling) -> AppState {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
         
         guard let stateStruct = swiftFile.find(recursive: true, isMatching:  {
@@ -119,5 +119,7 @@ extension AppState: CustomStringConvertible {
                                    withSelector: .matching(string: "return true", insert: .over),
                                    inFileAtPath: path)
         }
+        
+        return AppState(moduleNames: moduleNames + [moduleName])
     }
 }
