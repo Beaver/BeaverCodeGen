@@ -73,7 +73,7 @@ final class ProjectSpecs: QuickSpec {
                 }
             }
             
-            describe("insert(module:in:)") {
+            describe("byInserting(module:in:)") {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
 

@@ -35,7 +35,7 @@ final class ReducerSpecs: QuickSpec {
                     }
                 }
                 
-                describe("insert(module:in:)") {
+                describe("byInserting(module:in:)") {
                     var fileHandlerMock: FileHandlerMock!
                     let filePath = "App/AppReducer.swift"
                     
