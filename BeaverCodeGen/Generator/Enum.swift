@@ -1,21 +1,21 @@
-struct EnumCase {
+public struct EnumCase {
     let name: String
     let arguments: [Argument]
     
-    init(name: String,
-         arguments: [Argument] = []) {
+    public init(name: String,
+                arguments: [Argument] = []) {
         self.name = name
         self.arguments = arguments
     }
 }
 
 extension EnumCase {
-    struct Argument {
+    public struct Argument {
         let name: String?
         let type: String
         
-        init(name: String? = nil,
-             type: String) {
+        public init(name: String? = nil,
+                    type: String) {
             self.name = name
             self.type = type
         }
@@ -23,7 +23,7 @@ extension EnumCase {
 }
 
 extension EnumCase: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         var s = ""
         
         s += "case \(name.varName)"

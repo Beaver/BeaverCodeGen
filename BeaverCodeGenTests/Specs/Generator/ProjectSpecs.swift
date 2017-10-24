@@ -132,6 +132,42 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["Test3/Test3ViewController.swift"]) == ViewController(moduleName: "Test3").description
                 }
             }
+            
+            describe("byInserting(action:toModule:in:)") {
+                it("generates the code and stores it on the file system") {
+                    generator.generate(in: fileHandlerMock)
+                    
+                    let actionTest = ModuleAction.ActionType.routing(EnumCase(name: "ActionTest"))
+                    _ = generator.byInserting(action: actionTest,
+                                              toModule: "Test2",
+                                              in: fileHandlerMock)
+                    
+                    // App
+                    
+                    expect(fileHandlerMock.paths["Core/AppState.swift"]) == 1
+                    expect(fileHandlerMock.paths["App/AppAction.swift"]) == 1
+                    expect(fileHandlerMock.paths["App/AppReducer.swift"]) == 1
+                    expect(fileHandlerMock.paths["App/AppPresenter.swift"]) == 1
+                    expect(fileHandlerMock.paths["App/AppDelegate.swift"]) == 1
+                    
+                    // Test1 Module
+                    
+                    expect(fileHandlerMock.paths["Core/Test1State.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test1/Test1Action.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test1/Test1Reducer.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test1/Test1Presenter.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test1/Test1ViewController.swift"]) == 1
+                    
+                    // Test2 Module
+                    
+                    expect(fileHandlerMock.paths["Core/Test2State.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test2/Test2Action.swift"]) >= 2
+                    expect(fileHandlerMock.contents["Test2/Test2Action.swift"]) == ModuleAction(moduleName: "Test2", actions: [actionTest]).description
+                    expect(fileHandlerMock.paths["Test2/Test2Reducer.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test2/Test2Presenter.swift"]) == 1
+                    expect(fileHandlerMock.paths["Test2/Test2ViewController.swift"]) == 1
+                }
+            }
         }
     }
 }

@@ -8,11 +8,11 @@ public protocol Generating: CustomStringConvertible {
 }
 
 extension Generating {
-    func generate(in fileHandler: FileHandling) {
+    public func generate(in fileHandler: FileHandling) {
         fileHandler.writeFile(atPath: path, content: description)
     }
     
-    func byInserting(module moduleName: String, in fileHanlder: FileHandling) -> Self {
+    public func byInserting(module moduleName: String, in fileHanlder: FileHandling) -> Self {
         return self
     }
 

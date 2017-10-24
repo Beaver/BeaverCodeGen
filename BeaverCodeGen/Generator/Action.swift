@@ -1,5 +1,5 @@
-struct ModuleAction: Generating {
-    let objectType: ObjectType = .action
+public struct ModuleAction: Generating {
+    public let objectType: ObjectType = .action
     var moduleName: String
 
     var actions: [ActionType]
@@ -17,7 +17,7 @@ struct ModuleAction: Generating {
 // MARK: - Generation methods
 
 extension ModuleAction {
-    var name: String {
+    public var name: String {
         return moduleName
     }
     
@@ -29,7 +29,7 @@ extension ModuleAction {
         return defaultActions.filter { $0.isRouting } + actions.filter { $0.isRouting }
     }
 
-    var description: String {
+    public var description: String {
         return """
         import Beaver
         
@@ -71,7 +71,7 @@ extension ModuleAction {
 // MARK: - ActionType
 
 extension ModuleAction {
-    enum ActionType: CustomStringConvertible {
+    public enum ActionType: CustomStringConvertible {
         case ui(EnumCase)
         case routing(EnumCase)
         
@@ -111,7 +111,7 @@ extension ModuleAction {
             }
         }
         
-        var description: String {
+        public var description: String {
             switch self {
             case .ui(let enumCase):
                 return enumCase.description

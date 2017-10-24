@@ -27,6 +27,14 @@ public struct ProjectGenetator: Generating {
         
         return ProjectGenetator(name: name, moduleNames: moduleNames + [moduleName])
     }
+    
+    public func byInserting(action: ModuleAction.ActionType,
+                            toModule moduleName: String,
+                            in fileHandler: FileHandling) -> ProjectGenetator {
+        let moduleAction = ModuleAction(moduleName: moduleName, actions: [])
+        _ = moduleAction.byInserting(action: action, in: fileHandler)
+        return self
+    }
 }
 
 extension ProjectGenetator: CustomStringConvertible {
