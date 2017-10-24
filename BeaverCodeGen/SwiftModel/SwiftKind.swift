@@ -11,6 +11,8 @@ enum SwiftKind {
     case staticMethod
     case `switch`
     case call
+    case `class`
+    case argument
     case unknown(value: String)
 }
 
@@ -42,6 +44,10 @@ extension SwiftKind: Decodable {
             self = .`switch`
         case "source.lang.swift.expr.call":
             self = .call
+        case "source.lang.swift.decl.class":
+            self = .`class`
+        case "source.lang.swift.expr.argument":
+            self = .argument
         default:
             self = .unknown(value: value)
         }
@@ -75,6 +81,10 @@ extension SwiftKind {
             return "switch"
         case .call:
             return "call"
+        case .`class`:
+            return "class"
+        case .argument:
+            return "argument"
         case .unknown(let value):
             return value
         }

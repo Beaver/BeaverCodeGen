@@ -8,31 +8,33 @@ public protocol FileHandling: CustomStringConvertible {
 
     func insert(content: String,
                 atOffset offset: Int,
-                withSelector offsetSelector: OffsetSelector,
-                inFileAtPath path: String)
+                withSelector offsetSelector: OffsetSelector?,
+                inFileAtPath path: String) -> Int
     
     func sourceKittenFile(atPath path: String) -> File
 }
 
-public indirect enum OffsetSelector {
+public struct OffsetSelector {
     public enum InsertionType {
         case after
         case before
         case over
     }
     
-    case matching(string: String, insert: InsertionType)
-    case none
-}
-
-extension OffsetSelector {
-    var string: String? {
-        switch self {
-        case .matching(let string, _):
-            return string
-        default:
-            return nil
-        }
+    let matchingString: String
+    let insert: InsertionType
+    let reversed: Bool
+    
+    public init(matching matchingString: String,
+                insert: InsertionType,
+                reversed: Bool = false) {
+        self.matchingString = reversed ? String(matchingString.reversed()) : matchingString
+        self.insert = insert
+        self.reversed = reversed
+    }
+    
+    static func matching(string: String, insert: InsertionType, reversed: Bool = false) -> OffsetSelector {
+        return OffsetSelector(matching: string, insert: insert, reversed: reversed)
     }
 }
 
@@ -47,22 +49,31 @@ extension FileHandling {
     
     public func insert(content: String,
                        atOffset offset: Int,
-                       withSelector offsetSelector: OffsetSelector = .none,
-                       inFileAtPath path: String) {
-        var fileContent = readFile(atPath: path)
-        var index = fileContent.index(fileContent.startIndex, offsetBy: offset)
+                       withSelector offsetSelector: OffsetSelector? = nil,
+                       inFileAtPath path: String) -> Int {
+        let reversed = offsetSelector?.reversed ?? false
         
-        if let matchingString = offsetSelector.string,
-            let range = fileContent.range(of: matchingString, range: index..<fileContent.endIndex) {
+        var fileContent = readFile(atPath: path)
+        if reversed {
+            fileContent = String(fileContent.reversed())
+        }
+        
+        var index = fileContent.index(fileContent.startIndex,
+                                      offsetBy: reversed ? fileContent.characters.count - offset : offset)
+        
+        if let matchingString = offsetSelector?.matchingString,
+            let range = fileContent.range(of: reversed ? String(matchingString.reversed()) : matchingString,
+                                          range: index..<fileContent.endIndex) {
             index = range.lowerBound
             
-            switch offsetSelector {
-            case .matching(_, insert: .after):
+            switch offsetSelector?.insert {
+            case .after?:
                 index = fileContent.index(index, offsetBy: matchingString.characters.count)
 
-            case .matching(_, insert: .over):
+            case .over?:
                 let distance = fileContent.distance(from: fileContent.startIndex, to: index)
-                fileContent = fileContent.replacingOccurrences(of: matchingString, with: "")
+                let matchingStringEnd = fileContent.index(index, offsetBy: matchingString.characters.count)
+                fileContent.removeSubrange(index..<matchingStringEnd)
                 index = fileContent.index(fileContent.startIndex, offsetBy: distance)
 
             default:
@@ -70,8 +81,19 @@ extension FileHandling {
             }
         }
         
-        fileContent.insert(contentsOf: content, at: index)
+        fileContent.insert(contentsOf: reversed ? String(content.reversed()) : content, at: index)
+
+        if reversed {
+            fileContent = String(fileContent.reversed())
+        }
+
         writeFile(atPath: path, content: fileContent)
+        
+        if let offsetSelector = offsetSelector, offsetSelector.insert == .over {
+            return content.characters.count - min(offsetSelector.matchingString.characters.count, content.characters.count)
+        } else {
+            return content.characters.count
+        }
     }
 }
 

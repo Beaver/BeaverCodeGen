@@ -17,12 +17,48 @@ final class PresenterSpecs: QuickSpec {
             }
             
             describe("AppPresenter") {
-                it("should return a string containing the Presenter's code") {
-                    let code = BeaverCodeGen.AppPresenter(moduleNames: ["ModuleOne", "ModuleTwo"]).description
+                var generator: BeaverCodeGen.AppPresenter!
+                
+                beforeEach {
+                    generator = BeaverCodeGen.AppPresenter(moduleNames: ["ModuleOne", "ModuleTwo"])
+                }
+                
+                describe("description") {
+                    it("should return a string containing the Presenter's code") {
+                        let code = generator.description
+                        
+                        self.printDiff(code: code, expected: self.expectedCode(AppType.presenter))
+                        
+                        expect(code) == self.expectedCode(AppType.presenter)
+                    }
+                }
+                
+                describe("insert(module:in:)") {
+                    var fileHandlerMock: FileHandlerMock!
+                    let filePath = "App/AppPresenter.swift"
                     
-                    self.printDiff(code: code, expected: self.expectedCode(AppType.presenter))
+                    beforeEach {
+                        fileHandlerMock = FileHandlerMock()
+                    }
                     
-                    expect(code) == self.expectedCode(AppType.presenter)
+                    context("one or more modules already exist") {
+                        beforeEach {
+                            generator = BeaverCodeGen.AppPresenter(moduleNames: ["ModuleOne", "ModuleTwo"])
+                        }
+                        
+                        it("should rewrite the reducer file with one more module") {
+                            fileHandlerMock.contents[filePath] = generator.description
+                            generator.insert(module: "Test", in: fileHandlerMock)
+                            generator.moduleNames.append("Test")
+                            expect(fileHandlerMock.contents[filePath]) == generator.description
+                        }
+                    }
+                    
+                    afterEach {
+                        if let code = fileHandlerMock.contents[filePath] {
+                            self.printDiff(code: code, expected: generator.description)
+                        }
+                    }
                 }
             }
         }

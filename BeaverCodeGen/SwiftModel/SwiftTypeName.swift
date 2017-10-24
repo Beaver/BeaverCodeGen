@@ -13,6 +13,11 @@ enum SwiftTypeName {
     case beaverReducing
     case beaverReducingHandleMethod
     case moduleReducer(moduleName: String)
+    case modulesContainer
+    case modulePresenter(moduleName: String)
+    case appPresenter
+    case appPresenterBootstrapMethod
+    case presentingStateDidUpdateMethod
     case unknown(name: String)
 }
 
@@ -54,6 +59,18 @@ extension SwiftTypeName: Decodable {
             self = .beaverReducingHandleMethod
         case ".*Reducer$":
             self = .moduleReducer(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Reducer".characters.count)]))
+        case _ where name == "ModulesContainer":
+            self = .modulesContainer
+        case _ where name == "AppPresenter":
+            self = .appPresenter
+        case ".*Presenter\\?$":
+            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter?".characters.count)]))
+        case ".*Presenter$":
+            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter".characters.count)]))
+        case _ where name == "bootstrap(state:middlewares:)":
+            self = .appPresenterBootstrapMethod
+        case _ where name == "stateDidUpdate(oldState:newState:completion:)":
+            self = .presentingStateDidUpdateMethod
         default:
             self = .unknown(name: name)
         }
@@ -77,6 +94,15 @@ extension SwiftTypeName {
     var isModuleReducer: Bool {
         switch self {
         case .moduleReducer:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var isModulePresenter: Bool {
+        switch self {
+        case .modulePresenter:
             return true
         default:
             return false
@@ -113,6 +139,16 @@ extension SwiftTypeName {
             return "Beaver.Reducing.handle(envelop:state:completion:)"
         case .moduleReducer(let moduleName):
             return "\(moduleName)Reducer"
+        case .modulesContainer:
+            return "ModulesContainer"
+        case .modulePresenter(let moduleName):
+            return "\(moduleName)Presenter"
+        case .appPresenter:
+            return "AppPresenter"
+        case .appPresenterBootstrapMethod:
+            return "AppPresenter.bootstrap(state:middlewares:)"
+        case .presentingStateDidUpdateMethod:
+            return "Beaver.Presenting.presentingStateDidUpdateMethod"
         case .unknown(let name):
             return name
         }

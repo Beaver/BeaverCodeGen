@@ -101,10 +101,10 @@ extension AppReducer {
         let reducerVars = reducerStruct.find { ($0.typeName?.isModuleReducer ?? false) && $0.kind == .`var` }
         let varOffset = reducerVars.last?.offset ?? reducerStruct.offset
         
-        fileHandler.insert(content: "let \(moduleName.varName): \(moduleName.typeName)Reducer".indented.br,
-                           atOffset: varOffset,
-                           withSelector: .matching(string: .br, insert: .after),
-                           inFileAtPath: path)
+        let insertedCharacterCount = fileHandler.insert(content: "let \(moduleName.varName): \(moduleName.typeName)Reducer".indented.br,
+                                                        atOffset: varOffset,
+                                                        withSelector: .matching(string: .br, insert: .after),
+                                                        inFileAtPath: path)
         
         guard let handleSwitch = reducerStruct.find(recursive: true, isMatching: {
             $0.kind == .`switch` && $0.parent?.typeName == .beaverReducingHandleMethod
@@ -112,9 +112,9 @@ extension AppReducer {
             fatalError("Couldn't find switch in \(SwiftTypeName.beaverReducingHandleMethod.name) in \(fileHandler)")
         }
 
-        fileHandler.insert(content: moduleActionCase([moduleName]).indented(count: 2).br(2),
-                           atOffset: handleSwitch.offset,
-                           withSelector: .matching(string: "default".indented(count: 2), insert: .before),
-                           inFileAtPath: path)
+        _ = fileHandler.insert(content: moduleActionCase([moduleName]).indented(count: 2).br(2),
+                               atOffset: handleSwitch.offset + insertedCharacterCount,
+                               withSelector: .matching(string: "default".indented(count: 2), insert: .before),
+                               inFileAtPath: path)
     }
 }

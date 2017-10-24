@@ -84,16 +84,17 @@ extension AppState: CustomStringConvertible {
         let moduleVars = stateStruct.find { ($0.typeName?.isModuleState ?? false) && $0.kind == .`var` }
         let varOffset = moduleVars.last?.offset ?? stateStruct.offset
 
+        let insertedCharacterCount: Int
         if moduleVars.count > 0 {
-            fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br.indented,
-                               atOffset: varOffset,
-                               withSelector: .matching(string: .br, insert: .after),
-                               inFileAtPath: path)
+            insertedCharacterCount = fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br.indented,
+                                                        atOffset: varOffset,
+                                                        withSelector: .matching(string: .br, insert: .after),
+                                                        inFileAtPath: path)
         } else {
-            fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br,
-                               atOffset: varOffset,
-                               withSelector: .matching(string: .br + .tab, insert: .after),
-                               inFileAtPath: path)
+            insertedCharacterCount = fileHandler.insert(content: "public var \(moduleName.varName)State: \(moduleName.typeName)State?".br,
+                                                        atOffset: varOffset,
+                                                        withSelector: .matching(string: .br + .tab, insert: .after, reversed: false),
+                                                        inFileAtPath: path)
         }
 
         guard let equalOperator = swiftFile.find(recursive: true, isMatching: {
@@ -102,21 +103,21 @@ extension AppState: CustomStringConvertible {
             fatalError("Couldn't find AppState.==(_:_:) in \(fileHandler)")
         }
 
-        guard let equalOffset = equalOperator.endOffset else {
-            fatalError("Couldn't compute offset to insert at in \(fileHandler)")
-        }
-
         let equalString = "lhs.\(moduleName.varName)State == rhs.\(moduleName.varName)State"
         if moduleVars.count > 0 {
-            fileHandler.insert(content: " &&".br + equalString.indented(count: 3),
-                               atOffset: equalOffset,
-                               withSelector: .matching(string: .br, insert: .before),
-                               inFileAtPath: path)
+            guard let equalOffset = equalOperator.endOffset.flatMap({ $0 + insertedCharacterCount }) else {
+                fatalError("Couldn't compute offset to insert code in \(fileHandler)")
+            }
+            _ = fileHandler.insert(content: " &&".br + equalString.indented(count: 3),
+                                   atOffset: equalOffset,
+                                   withSelector: .matching(string: .br, insert: .after, reversed: true),
+                                   inFileAtPath: path)
         } else {
-            fileHandler.insert(content: "return " + equalString,
-                               atOffset: equalOffset,
-                               withSelector: .matching(string: "return true", insert: .over),
-                               inFileAtPath: path)
+            let equalOffset = equalOperator.offset + insertedCharacterCount
+            _ = fileHandler.insert(content: "return " + equalString,
+                                   atOffset: equalOffset,
+                                   withSelector: .matching(string: "return true", insert: .over),
+                                   inFileAtPath: path)
         }
     }
 }

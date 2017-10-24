@@ -59,10 +59,10 @@ extension ModuleAction {
         let lastEnumcase = actionEnum.find { $0.kind == .enumcase }.last
         let offset = lastEnumcase?.offset ?? actionEnum.offset
 
-        fileHandler.insert(content: action.description.br.indented,
-                           atOffset: offset,
-                           withSelector: .matching(string: .br, insert: .after),
-                           inFileAtPath: path)
+        _ = fileHandler.insert(content: action.description.br.indented,
+                               atOffset: offset,
+                               withSelector: .matching(string: .br, insert: .after),
+                               inFileAtPath: path)
     }
 }
 
@@ -165,10 +165,10 @@ extension AppAction {
         let lastEnumcase = actionEnum.find { $0.kind == .enumcase }.last
         let offset = lastEnumcase?.offset ?? actionEnum.offset
 
-        fileHandler.insert(content: action.description.br.indented,
-                           atOffset: offset,
-                           withSelector: .matching(string: .br, insert: .after),
-                           inFileAtPath: path)
+        _ = fileHandler.insert(content: action.description.br.indented,
+                               atOffset: offset,
+                               withSelector: .matching(string: .br, insert: .after),
+                               inFileAtPath: path)
     }
 }
 

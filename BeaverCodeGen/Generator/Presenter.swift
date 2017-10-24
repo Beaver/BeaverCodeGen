@@ -1,7 +1,11 @@
 struct AppPresenter: Generating {
     let objectType: ObjectType = .presenter
     let name = "App"
-    let moduleNames: [String]
+    var moduleNames: [String]
+    
+    init(moduleNames: [String] = []) {
+        self.moduleNames = moduleNames
+    }
     
     var startModuleName: String {
         guard let name = moduleNames.first else {
@@ -73,7 +77,7 @@ extension AppPresenter {
             func stateDidUpdate(oldState: AppState?,
                                 newState: AppState,
                                 completion: @escaping () -> ()) {
-        \(stateDidUpdateBody.indented(count: 2))
+        \(stateDidUpdateBody(moduleNames).indented(count: 2))
         
                 completion()
             }
@@ -82,7 +86,7 @@ extension AppPresenter {
         """
     }
     
-    private var stateDidUpdateBody: String {
+    private func stateDidUpdateBody(_ moduleNames: [String]) -> String {
         return moduleNames.map {
             """
             switch (oldState?.\($0.varName)State, newState.\($0.varName)State) {
@@ -99,6 +103,64 @@ extension AppPresenter {
             }
             """
         }.joined(separator: "".br(2))
+    }
+    
+    func insert(module moduleName: String, in fileHandler: FileHandling) {
+        let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
+
+        guard let modulesContainer = swiftFile.find(isMatching: {
+            $0.typeName == .modulesContainer && $0.kind == .`class`
+        }).first as? SwiftIndexable & SwiftScanable else {
+            fatalError("Couldn't find ModulesContainer in \(fileHandler)")
+        }
+        
+        let moduleVars = modulesContainer.find {
+            ($0.typeName?.isModulePresenter ?? false) && $0.kind == .`var`
+        }
+        let moduleVarOffset = moduleVars.last?.offset ?? modulesContainer.offset
+
+        var insertedCharacterCount = fileHandler.insert(content: "var \(moduleName.varName): \(moduleName.typeName)Presenter?".indented.br,
+                                                        atOffset: moduleVarOffset,
+                                                        withSelector: .matching(string: .br, insert: .after),
+                                                        inFileAtPath: path)
+        
+        guard let appReducerCall = swiftFile.find(recursive: true, isMatching: {
+            $0.kind == .`call` &&
+                $0.typeName == .appReducer &&
+                $0.parent?.typeName == .appPresenterBootstrapMethod &&
+                $0.parent?.kind == .staticMethod
+        }).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find AppReducer call in \(fileHandler)")
+        }
+        
+        let appReducerArgs = appReducerCall.find(recursive: true) {
+            $0.kind == .`call` &&
+                ($0.typeName?.isModuleReducer ?? false) &&
+                $0.parent?.kind == .argument
+        }
+        let appReducerArgOffset = (appReducerArgs.last?.endOffset ?? appReducerCall.offset) + insertedCharacterCount
+        
+        insertedCharacterCount += fileHandler.insert(content: "," + .br + "\(moduleName.varName): \(moduleName.typeName)Reducer()".indented(count: 3).br,
+                                                     atOffset: appReducerArgOffset,
+                                                     withSelector: .matching(string: .br, insert: .over),
+                                                     inFileAtPath: path)
+        
+        guard let stateDidUpdateMethod = swiftFile.find(recursive: true, isMatching: {
+            $0.typeName == .presentingStateDidUpdateMethod &&
+                $0.kind == .method &&
+                $0.parent?.typeName == .appPresenter
+        }).first as? SwiftScanable & SwiftIndexable else {
+            fatalError("Couldn't find stateDidUpdate(oldState:newState:completion:) method in \(fileHandler)")
+        }
+
+        guard let stateDidUpdateSwitchOffset = stateDidUpdateMethod.endOffset else {
+            fatalError("Couldn't compute offset to insert code in \(fileHandler)")
+        }
+        
+        _ = fileHandler.insert(content: stateDidUpdateBody([moduleName]).indented(count: 2).br(2),
+                               atOffset: stateDidUpdateSwitchOffset,
+                               withSelector: .matching(string: "completion()".indented(count: 2), insert: .before),
+                               inFileAtPath: path)
     }
 }
 
