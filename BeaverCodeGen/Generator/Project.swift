@@ -15,6 +15,16 @@ public struct ProjectGenetator: Generating {
             $0.generate(in: fileHandler)
         }
     }
+    
+    public func insert(module moduleName: String, in filehandler: FileHandling) {
+        modulesGenerators([moduleName]).forEach {
+            $0.generate(in: filehandler)
+        }
+        
+        appGenerators.forEach {
+            $0.insert(module: moduleName, in: filehandler)
+        }
+    }
 }
 
 extension ProjectGenetator: CustomStringConvertible {
@@ -24,16 +34,18 @@ extension ProjectGenetator: CustomStringConvertible {
 }
 
 private extension ProjectGenetator {
-    var generators: [Generating] {
-        let appGenerators: [Generating] = [
+    var appGenerators: [Generating] {
+        return [
             AppAction(),
             AppState(moduleNames: moduleNames),
             AppReducer(moduleNames: moduleNames),
             AppPresenter(moduleNames: moduleNames),
             AppDelegate()
         ]
-        
-        let modulesGenerators = moduleNames.reduce([Generating]()) { generators, moduleName in
+    }
+    
+    func modulesGenerators(_ moduleNames: [String]) -> [Generating] {
+        return moduleNames.reduce([Generating]()) { generators, moduleName in
             return generators + [
                 ModuleAction(moduleName: moduleName),
                 ModuleState(moduleName: moduleName),
@@ -42,7 +54,10 @@ private extension ProjectGenetator {
                 ModulePresenter(moduleName: moduleName)
             ]
         }
-        return appGenerators + modulesGenerators
+    }
+    
+    var generators: [Generating] {
+        return appGenerators + modulesGenerators(moduleNames)
     }
 }
 

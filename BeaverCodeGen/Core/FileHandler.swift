@@ -1,28 +1,47 @@
 import SourceKittenFramework
 
+/// Protocol giving the ability to write and read a file
 public protocol FileHandling: CustomStringConvertible {
+    /// Base of all the path handled by this `FileHandler`
     var basePath: String { get }
-    
+
+    /// Returns the content of a file at a given path.
     func readFile(atPath path: String) -> String
+
+    /// Write the content in a file at a given path
     func writeFile(atPath path: String, content: Data)
 
+    /// Inserts in file a content at the given offset, following the selector parameter.
+    /// Returns the inserted characters count.
     func insert(content: String,
                 atOffset offset: Int,
                 withSelector offsetSelector: OffsetSelector?,
                 inFileAtPath path: String) -> Int
     
+    /// Returns a `SourceKitten.File`, created from the content of a file at a given path
     func sourceKittenFile(atPath path: String) -> File
 }
 
+/// A struct describing how to select an offset where to write
 public struct OffsetSelector {
     public enum InsertionType {
+        /// Writing after match
         case after
+        
+        /// Writing before match
         case before
+        
+        /// Writing over match
         case over
     }
-    
+
+    /// Permits to put the cursor to the first match with this `String`
     let matchingString: String
+    
+    /// Insertion type
     let insert: InsertionType
+    
+    /// Selecting forward if `false`, backward if `true`
     let reversed: Bool
     
     public init(matching matchingString: String,
@@ -46,7 +65,7 @@ extension FileHandling {
         
         writeFile(atPath: path, content: data)
     }
-    
+
     public func insert(content: String,
                        atOffset offset: Int,
                        withSelector offsetSelector: OffsetSelector? = nil,
