@@ -44,6 +44,7 @@ extension ModuleState {
 struct AppState: SwiftGenerating {
     let objectType: ObjectType = .state
     let framework = "Core"
+    let isModule = true
     let name = "App"
     var moduleNames: [String]
 }

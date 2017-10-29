@@ -37,7 +37,7 @@ final class ReducerSpecs: QuickSpec {
                 
                 describe("byInserting(module:in:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "App/App/AppReducer.swift"
+                    let filePath = "App/AppReducer.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()

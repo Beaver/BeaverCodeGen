@@ -35,7 +35,7 @@ final class StateSpecs: QuickSpec {
                 
                 describe("byInserting(module:in:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "Core/Core/AppState.swift"
+                    let filePath = "Module/Core/Core/AppState.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()

@@ -25,7 +25,7 @@ final class ActionSpecs: QuickSpec {
                 
                 describe("byInserting(action:in:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "ModuleOne/ModuleOne/ModuleOneAction.swift"
+                    let filePath = "Module/ModuleOne/ModuleOne/ModuleOneAction.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()
@@ -70,7 +70,7 @@ final class ActionSpecs: QuickSpec {
                 
                 describe("insert(action:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "App/App/AppAction.swift"
+                    let filePath = "App/AppAction.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()

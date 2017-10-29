@@ -13,7 +13,7 @@ extension QuickSpec {
         case appState = "AppState"
         
         var filePath: String {
-            return "GeneratedCode/Core/Core/\(rawValue).swift"
+            return "GeneratedCode/Module/Core/Core/\(rawValue).swift"
         }
     }
     
@@ -24,7 +24,7 @@ extension QuickSpec {
         case viewController = "ViewController"
 
         var filePath: String {
-            return "GeneratedCode/ModuleOne/ModuleOne/ModuleOne\(rawValue).swift"
+            return "GeneratedCode/Module/ModuleOne/ModuleOne/ModuleOne\(rawValue).swift"
         }
     }
 
@@ -36,13 +36,13 @@ extension QuickSpec {
         case reducer = "Reducer"
         
         var filePath: String {
-            return "GeneratedCode/App/App/App\(rawValue).swift"
+            return "GeneratedCode/App/App\(rawValue).swift"
         }
     }
     
     enum ConfigType: String, FilePathRepresentable {
         case cakefile = "Cakefile"
-        case targetCakefile = "ModuleOne/Cakefile.rb"
+        case targetCakefile = "Module/ModuleOne/Cakefile.rb"
         
         var filePath: String {
             return "GeneratedCode/\(rawValue)"

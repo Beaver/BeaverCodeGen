@@ -20,12 +20,14 @@ public protocol SwiftGenerating: Generating {
     var name: String { get }
     var objectType: ObjectType { get }
     var isTestClass: Bool { get }
+    var isModule: Bool { get }
 }
 
 extension SwiftGenerating {
     public var path: String {
         let nameSuffix = isTestClass ? "Tests" : ""
-        return "\(framework)/\(framework)\(nameSuffix)/\(name)\(objectType.rawValue)\(nameSuffix).swift"
+        let basePath = isModule ? "Module/\(framework)/" : ""
+        return "\(basePath)\(framework)\(nameSuffix)/\(name)\(objectType.rawValue)\(nameSuffix).swift"
     }
     
     public var framework: String {
@@ -34,5 +36,9 @@ extension SwiftGenerating {
     
     public var isTestClass: Bool {
         return false
+    }
+    
+    public var isModule: Bool {
+        return name != "App"
     }
 }

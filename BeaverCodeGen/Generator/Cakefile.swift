@@ -116,7 +116,7 @@ struct TargetCakefile: Generating {
     let targetName: String
     
     var path: String {
-        return "\(targetName.typeName)/Cakefile.rb"
+        return "Module/\(targetName.typeName)/Cakefile.rb"
     }
 }
 
