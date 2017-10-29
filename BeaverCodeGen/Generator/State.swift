@@ -1,4 +1,4 @@
-struct ModuleState: Generating {
+struct ModuleState: SwiftGenerating {
     let objectType: ObjectType = .state
     let framework = "Core"
     let moduleName: String
@@ -41,7 +41,7 @@ extension ModuleState {
     }
 }
 
-struct AppState: Generating {
+struct AppState: SwiftGenerating {
     let objectType: ObjectType = .state
     let framework = "Core"
     let name = "App"

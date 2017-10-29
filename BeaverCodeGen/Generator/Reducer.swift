@@ -1,4 +1,4 @@
-struct ModuleReducer: Generating {
+struct ModuleReducer: SwiftGenerating {
     let objectType: ObjectType = .reducer
     let moduleName: String
 }
@@ -35,7 +35,7 @@ extension ModuleReducer {
 }
 
 
-struct AppReducer: Generating {
+struct AppReducer: SwiftGenerating {
     let objectType: ObjectType = .reducer
     var moduleNames: [String]
 }

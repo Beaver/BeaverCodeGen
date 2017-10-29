@@ -20,6 +20,22 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
+                    expect(fileHandlerMock.paths.count) == 19
+                    
+                    // Config
+                    
+                    expect(fileHandlerMock.paths["Cakefile"]) == 1
+                    expect(fileHandlerMock.contents["Cakefile"]) == RootCakefile().description
+                    
+                    expect(fileHandlerMock.paths["Core/Cakefile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Core/Cakefile.rb"]) == TargetCakefile(targetName: "Core").description
+
+                    expect(fileHandlerMock.paths["Test1/Cakefile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Test1/Cakefile.rb"]) == TargetCakefile(targetName: "Test1").description
+
+                    expect(fileHandlerMock.paths["Test2/Cakefile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Test2/Cakefile.rb"]) == TargetCakefile(targetName: "Test2").description
+
                     // App
                     
                     expect(fileHandlerMock.paths["Core/AppState.swift"]) == 1

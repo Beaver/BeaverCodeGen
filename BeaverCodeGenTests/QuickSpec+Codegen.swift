@@ -34,9 +34,18 @@ extension QuickSpec {
         case action = "Action"
         case appDelegate = "Delegate"
         case reducer = "Reducer"
-
+        
         var filePath: String {
             return "GeneratedCode/App/App\(rawValue).swift"
+        }
+    }
+    
+    enum ConfigType: String, FilePathRepresentable {
+        case cakefile = "Cakefile"
+        case targetCakefile = "ModuleOne/Cakefile.rb"
+        
+        var filePath: String {
+            return "GeneratedCode/\(rawValue)"
         }
     }
 

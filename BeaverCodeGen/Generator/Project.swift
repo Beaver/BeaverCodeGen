@@ -1,4 +1,4 @@
-public struct ProjectGenetator: Generating {
+public struct ProjectGenetator: SwiftGenerating {
     public let objectType: ObjectType = .project
     
     public let name: String
@@ -20,6 +20,8 @@ public struct ProjectGenetator: Generating {
         modulesGenerators([moduleName]).forEach {
             $0.generate(in: filehandler)
         }
+        
+        TargetCakefile(targetName: moduleName).generate(in: filehandler)
         
         appGenerators.forEach {
             _ = $0.byInserting(module: moduleName, in: filehandler)
@@ -55,7 +57,7 @@ private extension ProjectGenetator {
     }
     
     func modulesGenerators(_ moduleNames: [String]) -> [Generating] {
-        return moduleNames.reduce([Generating]()) { generators, moduleName in
+        return moduleNames.reduce([SwiftGenerating]()) { generators, moduleName in
             return generators + [
                 ModuleAction(moduleName: moduleName),
                 ModuleState(moduleName: moduleName),
@@ -66,8 +68,15 @@ private extension ProjectGenetator {
         }
     }
     
+    func configGenerators(_ moduleNames: [String]) -> [Generating] {
+        return [
+            RootCakefile(),
+            TargetCakefile(targetName: "Core")
+        ] + moduleNames.map { TargetCakefile(targetName: $0) as Generating }
+    }
+    
     var generators: [Generating] {
-        return appGenerators + modulesGenerators(moduleNames)
+        return appGenerators + modulesGenerators(moduleNames) + configGenerators(moduleNames)
     }
 }
 

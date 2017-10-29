@@ -1,4 +1,4 @@
-struct AppPresenter: Generating {
+struct AppPresenter: SwiftGenerating {
     let objectType: ObjectType = .presenter
     let name = "App"
     var moduleNames: [String]
@@ -166,7 +166,7 @@ extension AppPresenter {
     }
 }
 
-struct ModulePresenter: Generating {
+struct ModulePresenter: SwiftGenerating {
     let objectType: ObjectType = .presenter
     let moduleName: String
 }

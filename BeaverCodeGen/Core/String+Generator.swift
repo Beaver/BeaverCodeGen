@@ -55,6 +55,15 @@ extension String {
         let other = String(characters.dropFirst())
         return first + other
     }
+    
+    var snakecase: String {
+        let pattern = "([a-z0-9])([A-Z])"
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
+            fatalError("Couldn't build regex with pattern: \(pattern)")
+        }
+        let range = NSRange(location: 0, length: self.characters.count)
+        return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "$1_$2").lowercased()
+    }
 }
 
 func br(_ s: String, count: Int = 1) -> String {

@@ -1,4 +1,4 @@
-struct ViewController: Generating {
+struct ViewController: SwiftGenerating {
     let objectType: ObjectType = .viewController
     let moduleName: String
 }

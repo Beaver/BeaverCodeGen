@@ -1,4 +1,4 @@
-public struct ModuleAction: Generating {
+public struct ModuleAction: SwiftGenerating {
     public let objectType: ObjectType = .action
     var moduleName: String
 
@@ -124,7 +124,7 @@ extension ModuleAction {
 
 // MARK: - App Action
 
-struct AppAction: Generating {
+struct AppAction: SwiftGenerating {
     let objectType: ObjectType = .action
     let name = "App"
     

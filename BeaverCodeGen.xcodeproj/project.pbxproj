@@ -26,6 +26,10 @@
 		199586951F8FD42A0065E706 /* SwiftSubstructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199586911F8FD42A0065E706 /* SwiftSubstructure.swift */; };
 		19A29BFE1F873F2E0030B486 /* Generating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFD1F873F2E0030B486 /* Generating.swift */; };
 		19A29C001F87412A0030B486 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A29BFF1F87412A0030B486 /* ObjectType.swift */; };
+		19BE372B1FA58AD70016AC93 /* Cakefile.rb in Resources */ = {isa = PBXBuildFile; fileRef = 19BE372A1FA58AD70016AC93 /* Cakefile.rb */; };
+		19CCC0611FA57EC600EC869A /* Cakefile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CCC0601FA57EC600EC869A /* Cakefile.swift */; };
+		19CCC0631FA5807D00EC869A /* Cakefile in Resources */ = {isa = PBXBuildFile; fileRef = 19CCC0621FA5807D00EC869A /* Cakefile */; };
+		19CCC0651FA5813000EC869A /* CakefileSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CCC0641FA5813000EC869A /* CakefileSpecs.swift */; };
 		19E014131F7FF301005F30F9 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E014121F7FF301005F30F9 /* FileHandler.swift */; };
 		19E014161F8015D6005F30F9 /* FileHandlerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E014151F8015D6005F30F9 /* FileHandlerSpecs.swift */; };
 		19E014181F8020D2005F30F9 /* ProjectSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E014171F8020D2005F30F9 /* ProjectSpecs.swift */; };
@@ -86,6 +90,10 @@
 		199586911F8FD42A0065E706 /* SwiftSubstructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSubstructure.swift; sourceTree = "<group>"; };
 		19A29BFD1F873F2E0030B486 /* Generating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generating.swift; sourceTree = "<group>"; };
 		19A29BFF1F87412A0030B486 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
+		19BE372A1FA58AD70016AC93 /* Cakefile.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = Cakefile.rb; sourceTree = "<group>"; };
+		19CCC0601FA57EC600EC869A /* Cakefile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cakefile.swift; sourceTree = "<group>"; };
+		19CCC0621FA5807D00EC869A /* Cakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cakefile; sourceTree = "<group>"; };
+		19CCC0641FA5813000EC869A /* CakefileSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakefileSpecs.swift; sourceTree = "<group>"; };
 		19E014121F7FF301005F30F9 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		19E014151F8015D6005F30F9 /* FileHandlerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandlerSpecs.swift; sourceTree = "<group>"; };
 		19E014171F8020D2005F30F9 /* ProjectSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSpecs.swift; sourceTree = "<group>"; };
@@ -207,6 +215,7 @@
 				191BACB71F7390950071D2BA /* StateSpecs.swift */,
 				19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */,
 				19E014171F8020D2005F30F9 /* ProjectSpecs.swift */,
+				19CCC0641FA5813000EC869A /* CakefileSpecs.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 				516DD7E214952DCDD6AD90CB /* Presenter.swift */,
 				19895C6A1F75E8DE00FB754C /* AppDelegate.swift */,
 				1995868B1F8F1FA20065E706 /* Enum.swift */,
+				19CCC0601FA57EC600EC869A /* Cakefile.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -313,6 +323,7 @@
 		CC6F8899807A0C4A15105C9F /* GeneratedCode */ = {
 			isa = PBXGroup;
 			children = (
+				19CCC0621FA5807D00EC869A /* Cakefile */,
 				191BACB91F73932E0071D2BA /* Core */,
 				CC6F8854BAFDE6E66076E90C /* App */,
 				CC6F8977A66D99788792CDF6 /* ModuleOne */,
@@ -328,6 +339,7 @@
 				CC6F80F381B61451BF77C6DF /* ModuleOneReducer.swift */,
 				CC6F8E79CB200692FD0E596E /* ModuleOnePresenter.swift */,
 				CC6F8A46EF113737B2BDD463 /* ModuleOneViewController.swift */,
+				19BE372A1FA58AD70016AC93 /* Cakefile.rb */,
 			);
 			path = ModuleOne;
 			sourceTree = "<group>";
@@ -438,6 +450,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CCC0631FA5807D00EC869A /* Cakefile in Resources */,
+				19BE372B1FA58AD70016AC93 /* Cakefile.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +570,7 @@
 				516DD0C752FE36A6A1614288 /* ViewController.swift in Sources */,
 				199586931F8FD42A0065E706 /* SwiftFile.swift in Sources */,
 				19A29C001F87412A0030B486 /* ObjectType.swift in Sources */,
+				19CCC0611FA57EC600EC869A /* Cakefile.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
 				199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */,
 				199586921F8FD42A0065E706 /* SwiftElement.swift in Sources */,
@@ -586,6 +601,7 @@
 				CC6F8422CF16A863BF237222 /* AppPresenter.swift in Sources */,
 				CC6F890ACCF33FF7D4E822B0 /* AppState.swift in Sources */,
 				191BACC61F739F4A0071D2BA /* ModuleTwoViewController.swift in Sources */,
+				19CCC0651FA5813000EC869A /* CakefileSpecs.swift in Sources */,
 				CC6F8EBD72BC2B71DE9C5F37 /* AppAction.swift in Sources */,
 				CC6F894004CDF618F3FD3F83 /* ModuleOneAction.swift in Sources */,
 				191BACC41F739F2A0071D2BA /* ModuleTwoPresenter.swift in Sources */,

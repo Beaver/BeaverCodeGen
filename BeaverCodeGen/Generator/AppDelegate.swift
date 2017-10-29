@@ -1,4 +1,4 @@
-struct AppDelegate: Generating {
+struct AppDelegate: SwiftGenerating {
     let objectType: ObjectType = .delegate
     let name = "App"
 }
