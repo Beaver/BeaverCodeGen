@@ -155,9 +155,8 @@
 		191BACB91F73932E0071D2BA /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CC6F806E61B8DA1B62168722 /* AppState.swift */,
-				191BACB51F7389380071D2BA /* ModuleOneState.swift */,
-				191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */,
+				19BE372F1FA5911C0016AC93 /* CoreTests */,
+				19BE372E1FA591110016AC93 /* Core */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -165,10 +164,8 @@
 		191BACBE1F739EAD0071D2BA /* ModuleTwo */ = {
 			isa = PBXGroup;
 			children = (
-				191BACBF1F739EDF0071D2BA /* ModuleTwoAction.swift */,
-				191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */,
-				191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */,
-				191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */,
+				19BE37331FA591500016AC93 /* ModuleTwoTests */,
+				19BE37321FA591450016AC93 /* ModuleTwo */,
 			);
 			path = ModuleTwo;
 			sourceTree = "<group>";
@@ -183,6 +180,77 @@
 				196DE0B81F9C36FF000396EA /* SwiftTypeName.swift */,
 			);
 			path = SwiftModel;
+			sourceTree = "<group>";
+		};
+		19BE372C1FA590EC0016AC93 /* ModuleOne */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F8BAC560C5BF0F76F3EE6 /* ModuleOneAction.swift */,
+				CC6F80F381B61451BF77C6DF /* ModuleOneReducer.swift */,
+				CC6F8E79CB200692FD0E596E /* ModuleOnePresenter.swift */,
+				CC6F8A46EF113737B2BDD463 /* ModuleOneViewController.swift */,
+			);
+			path = ModuleOne;
+			sourceTree = "<group>";
+		};
+		19BE372D1FA591010016AC93 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F88D59B5722E0E01CA280 /* AppPresenter.swift */,
+				CC6F81E68DB38F2FE87F5868 /* AppAction.swift */,
+				516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */,
+				19895C681F75E8B300FB754C /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		19BE372E1FA591110016AC93 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F806E61B8DA1B62168722 /* AppState.swift */,
+				191BACB51F7389380071D2BA /* ModuleOneState.swift */,
+				191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		19BE372F1FA5911C0016AC93 /* CoreTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreTests;
+			sourceTree = "<group>";
+		};
+		19BE37301FA591340016AC93 /* AppTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppTests;
+			sourceTree = "<group>";
+		};
+		19BE37311FA5913C0016AC93 /* ModuleOneTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModuleOneTests;
+			sourceTree = "<group>";
+		};
+		19BE37321FA591450016AC93 /* ModuleTwo */ = {
+			isa = PBXGroup;
+			children = (
+				191BACBF1F739EDF0071D2BA /* ModuleTwoAction.swift */,
+				191BACC11F739F0D0071D2BA /* ModuleTwoReducer.swift */,
+				191BACC31F739F2A0071D2BA /* ModuleTwoPresenter.swift */,
+				191BACC51F739F4A0071D2BA /* ModuleTwoViewController.swift */,
+			);
+			path = ModuleTwo;
+			sourceTree = "<group>";
+		};
+		19BE37331FA591500016AC93 /* ModuleTwoTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModuleTwoTests;
 			sourceTree = "<group>";
 		};
 		19E014111F7FF2E4005F30F9 /* Core */ = {
@@ -312,10 +380,8 @@
 		CC6F8854BAFDE6E66076E90C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				CC6F88D59B5722E0E01CA280 /* AppPresenter.swift */,
-				CC6F81E68DB38F2FE87F5868 /* AppAction.swift */,
-				516DD3C1ACC943A7EBF0CBF8 /* AppReducer.swift */,
-				19895C681F75E8B300FB754C /* AppDelegate.swift */,
+				19BE37301FA591340016AC93 /* AppTests */,
+				19BE372D1FA591010016AC93 /* App */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -335,10 +401,8 @@
 		CC6F8977A66D99788792CDF6 /* ModuleOne */ = {
 			isa = PBXGroup;
 			children = (
-				CC6F8BAC560C5BF0F76F3EE6 /* ModuleOneAction.swift */,
-				CC6F80F381B61451BF77C6DF /* ModuleOneReducer.swift */,
-				CC6F8E79CB200692FD0E596E /* ModuleOnePresenter.swift */,
-				CC6F8A46EF113737B2BDD463 /* ModuleOneViewController.swift */,
+				19BE37311FA5913C0016AC93 /* ModuleOneTests */,
+				19BE372C1FA590EC0016AC93 /* ModuleOne */,
 				19BE372A1FA58AD70016AC93 /* Cakefile.rb */,
 			);
 			path = ModuleOne;

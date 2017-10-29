@@ -35,7 +35,7 @@ final class PresenterSpecs: QuickSpec {
                 
                 describe("byInserting(module:in:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "App/AppPresenter.swift"
+                    let filePath = "App/App/AppPresenter.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()

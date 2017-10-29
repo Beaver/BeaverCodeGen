@@ -13,7 +13,7 @@ extension QuickSpec {
         case appState = "AppState"
         
         var filePath: String {
-            return "GeneratedCode/Core/\(rawValue).swift"
+            return "GeneratedCode/Core/Core/\(rawValue).swift"
         }
     }
     
@@ -24,7 +24,7 @@ extension QuickSpec {
         case viewController = "ViewController"
 
         var filePath: String {
-            return "GeneratedCode/ModuleOne/ModuleOne\(rawValue).swift"
+            return "GeneratedCode/ModuleOne/ModuleOne/ModuleOne\(rawValue).swift"
         }
     }
 
@@ -36,7 +36,7 @@ extension QuickSpec {
         case reducer = "Reducer"
         
         var filePath: String {
-            return "GeneratedCode/App/App\(rawValue).swift"
+            return "GeneratedCode/App/App/App\(rawValue).swift"
         }
     }
     

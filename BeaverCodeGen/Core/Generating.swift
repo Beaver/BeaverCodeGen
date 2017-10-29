@@ -19,15 +19,20 @@ public protocol SwiftGenerating: Generating {
     var framework: String { get }
     var name: String { get }
     var objectType: ObjectType { get }
+    var isTestClass: Bool { get }
 }
 
 extension SwiftGenerating {
     public var path: String {
-        return "\(framework)/\(name)\(objectType.rawValue).swift"
+        let nameSuffix = isTestClass ? "Tests" : ""
+        return "\(framework)/\(framework)\(nameSuffix)/\(name)\(objectType.rawValue)\(nameSuffix).swift"
     }
     
     public var framework: String {
         return name
     }
+    
+    public var isTestClass: Bool {
+        return false
+    }
 }
-
