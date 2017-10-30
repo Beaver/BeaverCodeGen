@@ -11,6 +11,7 @@
 		1909558B1FA5A94600885F3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1909558A1FA5A94600885F3E /* Podfile */; };
 		1909558D1FA5AA3100885F3E /* PodfileSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1909558C1FA5AA3100885F3E /* PodfileSpecs.swift */; };
 		1909558F1FA5AB2C00885F3E /* Podfile.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1909558E1FA5AB2C00885F3E /* Podfile.rb */; };
+		190955931FA6AF6400885F3E /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190955921FA6AF6400885F3E /* InfoPList.swift */; };
 		191BACB61F7389380071D2BA /* ModuleOneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB51F7389380071D2BA /* ModuleOneState.swift */; };
 		191BACB81F7390950071D2BA /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB71F7390950071D2BA /* StateSpecs.swift */; };
 		191BACBD1F739D1C0071D2BA /* ModuleTwoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */; };
@@ -79,6 +80,7 @@
 		1909558A1FA5A94600885F3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		1909558C1FA5AA3100885F3E /* PodfileSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodfileSpecs.swift; sourceTree = "<group>"; };
 		1909558E1FA5AB2C00885F3E /* Podfile.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = Podfile.rb; sourceTree = "<group>"; };
+		190955921FA6AF6400885F3E /* InfoPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPList.swift; sourceTree = "<group>"; };
 		191BACB51F7389380071D2BA /* ModuleOneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOneState.swift; sourceTree = "<group>"; };
 		191BACB71F7390950071D2BA /* StateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoState.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				1995868B1F8F1FA20065E706 /* Enum.swift */,
 				19CCC0601FA57EC600EC869A /* Cakefile.swift */,
 				190955881FA59FA900885F3E /* Podfile.swift */,
+				190955921FA6AF6400885F3E /* InfoPList.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				19CCC0611FA57EC600EC869A /* Cakefile.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
 				190955891FA59FA900885F3E /* Podfile.swift in Sources */,
+				190955931FA6AF6400885F3E /* InfoPList.swift in Sources */,
 				199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */,
 				199586921F8FD42A0065E706 /* SwiftElement.swift in Sources */,
 				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,

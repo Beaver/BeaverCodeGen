@@ -20,10 +20,7 @@ public struct ProjectGenetator: SwiftGenerating {
         modulesGenerators([moduleName]).forEach {
             $0.generate(in: filehandler)
         }
-        
-        TargetCakefile(targetName: moduleName).generate(in: filehandler)
-        TargetPodfile(targetName: moduleName).generate(in: filehandler)
-        
+
         appGenerators.forEach {
             _ = $0.byInserting(module: moduleName, in: filehandler)
         }
@@ -53,7 +50,11 @@ private extension ProjectGenetator {
             AppState(moduleNames: moduleNames),
             AppReducer(moduleNames: moduleNames),
             AppPresenter(moduleNames: moduleNames),
-            AppDelegate()
+            AppDelegate(),
+            RootCakefile(),
+            RootPodfile(),
+            AppInfoPList(isTest: false),
+            AppInfoPList(isTest: true)
         ]
     }
     
@@ -64,24 +65,26 @@ private extension ProjectGenetator {
                 ModuleState(moduleName: moduleName),
                 ModuleReducer(moduleName: moduleName),
                 ViewController(moduleName: moduleName),
-                ModulePresenter(moduleName: moduleName)
+                ModulePresenter(moduleName: moduleName),
+                TargetCakefile(targetName: moduleName),
+                TargetPodfile(targetName: moduleName),
+                ModuleInfoPList(moduleName: moduleName, isTest: false),
+                ModuleInfoPList(moduleName: moduleName, isTest: true)
             ]
         }
     }
     
-    func configGenerators(_ moduleNames: [String]) -> [Generating] {
+    var coreGenerators: [Generating] {
         return [
-            RootCakefile(),
             TargetCakefile(targetName: "Core"),
-            RootPodfile(),
-            TargetPodfile(targetName: "Core")
+            TargetPodfile(targetName: "Core"),
+            ModuleInfoPList(moduleName: "Core", isTest: false),
+            ModuleInfoPList(moduleName: "Core", isTest: true)
         ]
-            + moduleNames.map { TargetCakefile(targetName: $0) as Generating }
-            + moduleNames.map { TargetPodfile(targetName: $0) as Generating }
     }
     
     var generators: [Generating] {
-        return appGenerators + modulesGenerators(moduleNames) + configGenerators(moduleNames)
+        return appGenerators + modulesGenerators(moduleNames) + coreGenerators
     }
 }
 

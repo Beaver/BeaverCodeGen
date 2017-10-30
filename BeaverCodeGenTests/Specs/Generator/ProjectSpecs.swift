@@ -20,7 +20,7 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
-                    expect(fileHandlerMock.paths.count) == 23
+                    expect(fileHandlerMock.paths.count) == 31
                     
                     // Cakefile
                     
@@ -50,6 +50,30 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.paths["Module/Test2/Podfile.rb"]) == 1
                     expect(fileHandlerMock.contents["Module/Test2/Podfile.rb"]) == TargetPodfile(targetName: "Test2").description
                     
+                    // Info.plist
+                    
+                    expect(fileHandlerMock.paths["App/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["App/Info.plist"]) == AppInfoPList(isTest: false).description
+                    
+                    expect(fileHandlerMock.paths["Module/Core/Core/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Core/Info.plist"]) == ModuleInfoPList(moduleName: "Core", isTest: false).description
+
+                    expect(fileHandlerMock.paths["Module/Core/CoreTests/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/CoreTests/Info.plist"]) == ModuleInfoPList(moduleName: "Core", isTest: true).description
+                    
+                    expect(fileHandlerMock.paths["Module/Test1/Test1/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test1/Test1/Info.plist"]) == ModuleInfoPList(moduleName: "Test1", isTest: false).description
+                    
+                    expect(fileHandlerMock.paths["Module/Test1/Test1Tests/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test1/Test1Tests/Info.plist"]) == ModuleInfoPList(moduleName: "Test1", isTest: true).description
+                    
+                    expect(fileHandlerMock.paths["Module/Test2/Test2/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test2/Test2/Info.plist"]) == ModuleInfoPList(moduleName: "Test2", isTest: false).description
+                    
+                    expect(fileHandlerMock.paths["Module/Test2/Test2Tests/Info.plist"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test2/Test2Tests/Info.plist"]) == ModuleInfoPList(moduleName: "Test2", isTest: true).description
+
+
                     // App
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/AppState.swift"]) == 1
