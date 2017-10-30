@@ -11,6 +11,7 @@ extension ModuleReducer {
     var description: String {
         return """
         import Beaver
+        import Core
         
         public struct \(moduleName.typeName)Reducer: Beaver.ChildReducing {
             public typealias ActionType = \(moduleName.typeName)Action

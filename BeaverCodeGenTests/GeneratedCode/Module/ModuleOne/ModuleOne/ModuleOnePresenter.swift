@@ -1,4 +1,5 @@
 import Beaver
+import Core
 
 public final class ModuleOnePresenter: Beaver.Presenting, Beaver.ChildStoring {
     public typealias StateType = ModuleOneState

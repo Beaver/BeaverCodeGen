@@ -179,6 +179,7 @@ extension ModulePresenter {
     var description: String {
         return """
         import Beaver
+        import Core
         
         public final class \(moduleName.typeName)Presenter: Beaver.Presenting, Beaver.ChildStoring {
             public typealias StateType = \(moduleName.typeName)State
