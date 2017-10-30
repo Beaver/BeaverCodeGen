@@ -78,6 +78,10 @@ struct TargetPodfile: Generating {
 }
 
 extension TargetPodfile {
+    private var dependOnCore: Bool {
+        return targetName != "Core"
+    }
+
     var description: String {
         return """
         def \(targetName.snakecase)_pods
@@ -86,6 +90,7 @@ extension TargetPodfile {
         
         def \(targetName.snakecase)_target
             target '\(targetName.typeName)' do
+                \(dependOnCore ? "core_pods" : "")
                 \(targetName.snakecase)_pods
         
                 target '\(targetName.typeName)Tests' do
