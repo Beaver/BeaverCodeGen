@@ -106,8 +106,7 @@ extension RootCakefile {
         end
         
         project.after_save do
-            # Uncomment if you're project is using Cocoapods
-            # `pod install`
+            `pod install`
         end
         
         """
