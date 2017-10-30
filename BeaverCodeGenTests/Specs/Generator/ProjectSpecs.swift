@@ -20,9 +20,9 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
-                    expect(fileHandlerMock.paths.count) == 19
+                    expect(fileHandlerMock.paths.count) == 23
                     
-                    // Config
+                    // Cakefile
                     
                     expect(fileHandlerMock.paths["Cakefile"]) == 1
                     expect(fileHandlerMock.contents["Cakefile"]) == RootCakefile().description
@@ -36,6 +36,20 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.paths["Module/Test2/Cakefile.rb"]) == 1
                     expect(fileHandlerMock.contents["Module/Test2/Cakefile.rb"]) == TargetCakefile(targetName: "Test2").description
 
+                    // Podfile
+                    
+                    expect(fileHandlerMock.paths["Podfile"]) == 1
+                    expect(fileHandlerMock.contents["Podfile"]) == RootPodfile().description
+                    
+                    expect(fileHandlerMock.paths["Module/Core/Podfile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Podfile.rb"]) == TargetPodfile(targetName: "Core").description
+                    
+                    expect(fileHandlerMock.paths["Module/Test1/Podfile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test1/Podfile.rb"]) == TargetPodfile(targetName: "Test1").description
+                    
+                    expect(fileHandlerMock.paths["Module/Test2/Podfile.rb"]) == 1
+                    expect(fileHandlerMock.contents["Module/Test2/Podfile.rb"]) == TargetPodfile(targetName: "Test2").description
+                    
                     // App
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/AppState.swift"]) == 1

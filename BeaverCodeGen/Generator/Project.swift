@@ -22,6 +22,7 @@ public struct ProjectGenetator: SwiftGenerating {
         }
         
         TargetCakefile(targetName: moduleName).generate(in: filehandler)
+        TargetPodfile(targetName: moduleName).generate(in: filehandler)
         
         appGenerators.forEach {
             _ = $0.byInserting(module: moduleName, in: filehandler)
@@ -71,8 +72,12 @@ private extension ProjectGenetator {
     func configGenerators(_ moduleNames: [String]) -> [Generating] {
         return [
             RootCakefile(),
-            TargetCakefile(targetName: "Core")
-        ] + moduleNames.map { TargetCakefile(targetName: $0) as Generating }
+            TargetCakefile(targetName: "Core"),
+            RootPodfile(),
+            TargetPodfile(targetName: "Core")
+        ]
+            + moduleNames.map { TargetCakefile(targetName: $0) as Generating }
+            + moduleNames.map { TargetPodfile(targetName: $0) as Generating }
     }
     
     var generators: [Generating] {

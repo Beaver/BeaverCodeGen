@@ -43,6 +43,8 @@ extension QuickSpec {
     enum ConfigType: String, FilePathRepresentable {
         case cakefile = "Cakefile"
         case targetCakefile = "Module/ModuleOne/Cakefile.rb"
+        case podfile = "Podfile"
+        case targetPodfile = "Module/ModuleOne/Podfile.rb"
         
         var filePath: String {
             return "GeneratedCode/\(rawValue)"

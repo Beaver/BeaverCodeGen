@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190955891FA59FA900885F3E /* Podfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190955881FA59FA900885F3E /* Podfile.swift */; };
+		1909558B1FA5A94600885F3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1909558A1FA5A94600885F3E /* Podfile */; };
+		1909558D1FA5AA3100885F3E /* PodfileSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1909558C1FA5AA3100885F3E /* PodfileSpecs.swift */; };
+		1909558F1FA5AB2C00885F3E /* Podfile.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1909558E1FA5AB2C00885F3E /* Podfile.rb */; };
 		191BACB61F7389380071D2BA /* ModuleOneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB51F7389380071D2BA /* ModuleOneState.swift */; };
 		191BACB81F7390950071D2BA /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB71F7390950071D2BA /* StateSpecs.swift */; };
 		191BACBD1F739D1C0071D2BA /* ModuleTwoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */; };
@@ -71,6 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190955881FA59FA900885F3E /* Podfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podfile.swift; sourceTree = "<group>"; };
+		1909558A1FA5A94600885F3E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		1909558C1FA5AA3100885F3E /* PodfileSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodfileSpecs.swift; sourceTree = "<group>"; };
+		1909558E1FA5AB2C00885F3E /* Podfile.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = Podfile.rb; sourceTree = "<group>"; };
 		191BACB51F7389380071D2BA /* ModuleOneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOneState.swift; sourceTree = "<group>"; };
 		191BACB71F7390950071D2BA /* StateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoState.swift; sourceTree = "<group>"; };
@@ -294,6 +302,7 @@
 				19895C6C1F75E93A00FB754C /* AppDelegateSpecs.swift */,
 				19E014171F8020D2005F30F9 /* ProjectSpecs.swift */,
 				19CCC0641FA5813000EC869A /* CakefileSpecs.swift */,
+				1909558C1FA5AA3100885F3E /* PodfileSpecs.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 				19895C6A1F75E8DE00FB754C /* AppDelegate.swift */,
 				1995868B1F8F1FA20065E706 /* Enum.swift */,
 				19CCC0601FA57EC600EC869A /* Cakefile.swift */,
+				190955881FA59FA900885F3E /* Podfile.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -391,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				19CCC0621FA5807D00EC869A /* Cakefile */,
+				1909558A1FA5A94600885F3E /* Podfile */,
 				19BE37351FA599BF0016AC93 /* App */,
 				19BE37301FA591340016AC93 /* AppTests */,
 				19BE37341FA5984B0016AC93 /* Module */,
@@ -404,6 +415,7 @@
 				19BE37311FA5913C0016AC93 /* ModuleOneTests */,
 				19BE372C1FA590EC0016AC93 /* ModuleOne */,
 				19BE372A1FA58AD70016AC93 /* Cakefile.rb */,
+				1909558E1FA5AB2C00885F3E /* Podfile.rb */,
 			);
 			path = ModuleOne;
 			sourceTree = "<group>";
@@ -514,8 +526,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1909558B1FA5A94600885F3E /* Podfile in Resources */,
 				19CCC0631FA5807D00EC869A /* Cakefile in Resources */,
 				19BE372B1FA58AD70016AC93 /* Cakefile.rb in Resources */,
+				1909558F1FA5AB2C00885F3E /* Podfile.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +650,7 @@
 				19A29C001F87412A0030B486 /* ObjectType.swift in Sources */,
 				19CCC0611FA57EC600EC869A /* Cakefile.swift in Sources */,
 				516DDFF9A29707585AB5E306 /* String+Generator.swift in Sources */,
+				190955891FA59FA900885F3E /* Podfile.swift in Sources */,
 				199586881F8DCB640065E706 /* SwiftModel+Find.swift in Sources */,
 				199586921F8FD42A0065E706 /* SwiftElement.swift in Sources */,
 				19895C6B1F75E8DE00FB754C /* AppDelegate.swift in Sources */,
@@ -675,6 +690,7 @@
 				CC6F8FC744ADDFE7162C2FF1 /* ModuleOnePresenter.swift in Sources */,
 				19E0141A1F80210F005F30F9 /* Mocks.swift in Sources */,
 				CC6F8CE111B375955E36685E /* ModuleOneViewController.swift in Sources */,
+				1909558D1FA5AA3100885F3E /* PodfileSpecs.swift in Sources */,
 				191BACC21F739F0D0071D2BA /* ModuleTwoReducer.swift in Sources */,
 				19895C6D1F75E93A00FB754C /* AppDelegateSpecs.swift in Sources */,
 			);

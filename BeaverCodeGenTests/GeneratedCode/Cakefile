@@ -16,18 +16,20 @@ def module_target(name)
     MODULE_TARGETS[name]
 end
 
+def snakecase(str)
+    str.gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+        .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+        .tr('-', '_')
+        .gsub(/\s/, '_')
+        .gsub(/__+/, '_')
+        .downcase
+end
+
 def declare_module_targets
     Dir["Module/*"].each { |module_path|
         require "./#{module_path}/Cakefile"
-        # to snakecase
-        module_name = module_path.gsub("Module/", "")
-            .gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
-            .gsub(/([a-z\d])([A-Z])/,'\1_\2')
-            .tr('-', '_')
-            .gsub(/\s/, '_')
-            .gsub(/__+/, '_')
-            .downcase
-        module_target(module_name)
+        module_name = snakecase(module_path.gsub("Module/", ""))
+        module_target(module_name.to_sym)
     }
 end
 
