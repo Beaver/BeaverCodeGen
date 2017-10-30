@@ -19,6 +19,10 @@ extension AppPresenter {
     var description: String {
         return """
         import Beaver
+        import Core
+        \(moduleNames.map {
+            "import \($0.typeName)"
+        }.joined(separator: .br))
         
         #if os(iOS)
         import UIKit
@@ -65,7 +69,7 @@ extension AppPresenter {
                 let presenter = AppPresenter(context: context, store: store)
         
                 presenter.subscribe()
-                presenter.dispatch(AppAction.start(withFirstAction: \(startModuleName)Action.start), recipients: .emitter)
+                presenter.dispatch(AppAction.start(module: \(startModuleName)RoutingAction.start), recipients: .emitter)
         
                 return (window, presenter)
             }
@@ -107,7 +111,7 @@ extension AppPresenter {
     
     func byInserting(module moduleName: String, in fileHandler: FileHandling) -> AppPresenter {
         let swiftFile = SwiftFile.read(from: fileHandler, atPath: path)
-
+        
         guard let modulesContainer = swiftFile.find(isMatching: {
             $0.typeName == .modulesContainer && $0.kind == .`class`
         }).first as? SwiftIndexable & SwiftScanable else {
@@ -119,10 +123,18 @@ extension AppPresenter {
         }
         let moduleVarOffset = moduleVars.last?.offset ?? modulesContainer.offset
 
-        var insertedCharacterCount = fileHandler.insert(content: "var \(moduleName.varName): \(moduleName.typeName)Presenter?".indented.br,
-                                                        atOffset: moduleVarOffset,
-                                                        withSelector: .matching(string: .br, insert: .after),
+        // Insert module import
+        let selectorString = "import \(moduleVars.last?.typeName?.name.replacingOccurrences(of: "Presenter", with: "") ?? "Core")".br
+        var insertedCharacterCount = fileHandler.insert(content: "import \(moduleName.typeName)".br,
+                                                        atOffset: 0,
+                                                        withSelector: .matching(string: selectorString, insert: .after),
                                                         inFileAtPath: path)
+
+        // Insert module var
+        insertedCharacterCount += fileHandler.insert(content: "var \(moduleName.varName): \(moduleName.typeName)Presenter?".indented.br,
+                                                     atOffset: moduleVarOffset + insertedCharacterCount,
+                                                     withSelector: .matching(string: .br, insert: .after),
+                                                     inFileAtPath: path)
         
         guard let appReducerCall = swiftFile.find(recursive: true, isMatching: {
             $0.kind == .`call` &&
@@ -140,6 +152,7 @@ extension AppPresenter {
         }
         let appReducerArgOffset = (appReducerArgs.last?.endOffset ?? appReducerCall.offset) + insertedCharacterCount
         
+        // Insert module reducer
         insertedCharacterCount += fileHandler.insert(content: "," + .br + "\(moduleName.varName): \(moduleName.typeName)Reducer()".indented(count: 3).br,
                                                      atOffset: appReducerArgOffset,
                                                      withSelector: .matching(string: .br, insert: .over),
@@ -157,6 +170,7 @@ extension AppPresenter {
             fatalError("Couldn't compute offset to insert code in \(fileHandler)")
         }
         
+        // Insert module switch case
         _ = fileHandler.insert(content: stateDidUpdateBody([moduleName]).indented(count: 2).br(2),
                                atOffset: stateDidUpdateSwitchOffset,
                                withSelector: .matching(string: "completion()".indented(count: 2), insert: .before),

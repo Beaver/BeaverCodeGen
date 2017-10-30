@@ -1,4 +1,7 @@
 import Beaver
+import Core
+import ModuleOne
+import ModuleTwo
 
 struct AppReducer: Beaver.Reducing {
     let moduleOne: ModuleOneReducer

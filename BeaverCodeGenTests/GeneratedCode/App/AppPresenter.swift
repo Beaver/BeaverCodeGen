@@ -1,4 +1,7 @@
 import Beaver
+import Core
+import ModuleOne
+import ModuleTwo
 
 #if os(iOS)
 import UIKit
@@ -43,7 +46,7 @@ extension AppPresenter {
         let presenter = AppPresenter(context: context, store: store)
 
         presenter.subscribe()
-        presenter.dispatch(AppAction.start(withFirstAction: ModuleOneAction.start), recipients: .emitter)
+        presenter.dispatch(AppAction.start(module: ModuleOneRoutingAction.start), recipients: .emitter)
 
         return (window, presenter)
     }

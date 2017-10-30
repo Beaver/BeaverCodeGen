@@ -14,6 +14,10 @@
 		190955931FA6AF6400885F3E /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190955921FA6AF6400885F3E /* InfoPList.swift */; };
 		190955A71FA6BB2E00885F3E /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955A51FA6BB2E00885F3E /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		190955AB1FA6BB3900885F3E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955A31FA6BB2E00885F3E /* Core.framework */; };
+		190955B51FA6BCCC00885F3E /* ModuleOne.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955B31FA6BCCC00885F3E /* ModuleOne.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		190955C21FA6BCD400885F3E /* ModuleTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955C01FA6BCD400885F3E /* ModuleTwo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		190955C61FA6BCDE00885F3E /* ModuleOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955B11FA6BCCC00885F3E /* ModuleOne.framework */; };
+		190955C71FA6BCDE00885F3E /* ModuleTwo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955BE1FA6BCD400885F3E /* ModuleTwo.framework */; };
 		191BACB61F7389380071D2BA /* ModuleOneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB51F7389380071D2BA /* ModuleOneState.swift */; };
 		191BACB81F7390950071D2BA /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACB71F7390950071D2BA /* StateSpecs.swift */; };
 		191BACBD1F739D1C0071D2BA /* ModuleTwoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */; };
@@ -86,6 +90,12 @@
 		190955A31FA6BB2E00885F3E /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190955A51FA6BB2E00885F3E /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		190955A61FA6BB2E00885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		190955B11FA6BCCC00885F3E /* ModuleOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		190955B31FA6BCCC00885F3E /* ModuleOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleOne.h; sourceTree = "<group>"; };
+		190955B41FA6BCCC00885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		190955BE1FA6BCD400885F3E /* ModuleTwo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleTwo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		190955C01FA6BCD400885F3E /* ModuleTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleTwo.h; sourceTree = "<group>"; };
+		190955C11FA6BCD400885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		191BACB51F7389380071D2BA /* ModuleOneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOneState.swift; sourceTree = "<group>"; };
 		191BACB71F7390950071D2BA /* StateSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		191BACBC1F739D1C0071D2BA /* ModuleTwoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTwoState.swift; sourceTree = "<group>"; };
@@ -154,6 +164,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		190955AD1FA6BCCC00885F3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190955BA1FA6BCD400885F3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7C76A7951EB84F3D00D24A38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +190,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190955C61FA6BCDE00885F3E /* ModuleOne.framework in Frameworks */,
+				190955C71FA6BCDE00885F3E /* ModuleTwo.framework in Frameworks */,
 				190955AB1FA6BB3900885F3E /* Core.framework in Frameworks */,
 				7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */,
 				FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */,
@@ -182,6 +208,24 @@
 				190955A61FA6BB2E00885F3E /* Info.plist */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		190955B21FA6BCCC00885F3E /* ModuleOne */ = {
+			isa = PBXGroup;
+			children = (
+				190955B31FA6BCCC00885F3E /* ModuleOne.h */,
+				190955B41FA6BCCC00885F3E /* Info.plist */,
+			);
+			path = ModuleOne;
+			sourceTree = "<group>";
+		};
+		190955BF1FA6BCD400885F3E /* ModuleTwo */ = {
+			isa = PBXGroup;
+			children = (
+				190955C01FA6BCD400885F3E /* ModuleTwo.h */,
+				190955C11FA6BCD400885F3E /* Info.plist */,
+			);
+			path = ModuleTwo;
 			sourceTree = "<group>";
 		};
 		191BACB91F73932E0071D2BA /* Core */ = {
@@ -384,6 +428,8 @@
 				7C76A79B1EB84F3D00D24A38 /* BeaverCodeGen */,
 				7C76A7A61EB84F3D00D24A38 /* BeaverCodeGenTests */,
 				190955A41FA6BB2E00885F3E /* Core */,
+				190955B21FA6BCCC00885F3E /* ModuleOne */,
+				190955BF1FA6BCD400885F3E /* ModuleTwo */,
 				7C76A79A1EB84F3D00D24A38 /* Products */,
 				71C8AA92249C876C2856F843 /* Pods */,
 				5ABCD8BD1E4F9386EEF9CD28 /* Frameworks */,
@@ -396,6 +442,8 @@
 				7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */,
 				7C76A7A21EB84F3D00D24A38 /* BeaverCodeGenTests.xctest */,
 				190955A31FA6BB2E00885F3E /* Core.framework */,
+				190955B11FA6BCCC00885F3E /* ModuleOne.framework */,
+				190955BE1FA6BCD400885F3E /* ModuleTwo.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -458,6 +506,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		190955AE1FA6BCCC00885F3E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190955B51FA6BCCC00885F3E /* ModuleOne.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190955BB1FA6BCD400885F3E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190955C21FA6BCD400885F3E /* ModuleTwo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7C76A7961EB84F3D00D24A38 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -485,6 +549,42 @@
 			name = Core;
 			productName = Core;
 			productReference = 190955A31FA6BB2E00885F3E /* Core.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		190955B01FA6BCCC00885F3E /* ModuleOne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190955B61FA6BCCC00885F3E /* Build configuration list for PBXNativeTarget "ModuleOne" */;
+			buildPhases = (
+				190955AC1FA6BCCC00885F3E /* Sources */,
+				190955AD1FA6BCCC00885F3E /* Frameworks */,
+				190955AE1FA6BCCC00885F3E /* Headers */,
+				190955AF1FA6BCCC00885F3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ModuleOne;
+			productName = ModuleOne;
+			productReference = 190955B11FA6BCCC00885F3E /* ModuleOne.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		190955BD1FA6BCD400885F3E /* ModuleTwo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190955C31FA6BCD400885F3E /* Build configuration list for PBXNativeTarget "ModuleTwo" */;
+			buildPhases = (
+				190955B91FA6BCD400885F3E /* Sources */,
+				190955BA1FA6BCD400885F3E /* Frameworks */,
+				190955BB1FA6BCD400885F3E /* Headers */,
+				190955BC1FA6BCD400885F3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ModuleTwo;
+			productName = ModuleTwo;
+			productReference = 190955BE1FA6BCD400885F3E /* ModuleTwo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7C76A7981EB84F3D00D24A38 /* BeaverCodeGen */ = {
@@ -542,6 +642,14 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
+					190955B01FA6BCCC00885F3E = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					190955BD1FA6BCD400885F3E = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					7C76A7981EB84F3D00D24A38 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Manual;
@@ -568,12 +676,28 @@
 				7C76A7981EB84F3D00D24A38 /* BeaverCodeGen */,
 				7C76A7A11EB84F3D00D24A38 /* BeaverCodeGenTests */,
 				190955A21FA6BB2E00885F3E /* Core */,
+				190955B01FA6BCCC00885F3E /* ModuleOne */,
+				190955BD1FA6BCD400885F3E /* ModuleTwo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		190955A11FA6BB2E00885F3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190955AF1FA6BCCC00885F3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190955BC1FA6BCD400885F3E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -707,6 +831,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		190955AC1FA6BCCC00885F3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190955B91FA6BCD400885F3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7C76A7941EB84F3D00D24A38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -834,6 +972,126 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.Core;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		190955B71FA6BCCC00885F3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModuleOne/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleOne;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		190955B81FA6BCCC00885F3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModuleOne/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleOne;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		190955C41FA6BCD400885F3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModuleTwo/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleTwo;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		190955C51FA6BCD400885F3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModuleTwo/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleTwo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1020,6 +1278,24 @@
 			buildConfigurations = (
 				190955A91FA6BB2E00885F3E /* Debug */,
 				190955AA1FA6BB2E00885F3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190955B61FA6BCCC00885F3E /* Build configuration list for PBXNativeTarget "ModuleOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190955B71FA6BCCC00885F3E /* Debug */,
+				190955B81FA6BCCC00885F3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190955C31FA6BCD400885F3E /* Build configuration list for PBXNativeTarget "ModuleTwo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190955C41FA6BCD400885F3E /* Debug */,
+				190955C51FA6BCD400885F3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
