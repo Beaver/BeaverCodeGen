@@ -13,7 +13,16 @@ public struct ModuleOneReducer: Beaver.ChildReducing {
                        completion: @escaping (ModuleOneState) -> ()) -> ModuleOneState {
         var newState = state
 
-        // Update the state here
+        switch action {
+        case ModuleOneRoutingAction.start:
+            newState.currentScreen = .main
+
+        case ModuleOneRoutingAction.stop:
+            newState.currentScreen = .none
+
+        default:
+            break
+        }
 
         return newState
     }

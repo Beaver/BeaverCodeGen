@@ -25,7 +25,16 @@ extension ModuleReducer {
                                completion: @escaping (\(moduleName.typeName)State) -> ()) -> \(moduleName.typeName)State {
                 var newState = state
         
-                // Update the state here
+                switch action {
+                case \(moduleName.typeName)RoutingAction.start:
+                    newState.currentScreen = .main
+        
+                case \(moduleName.typeName)RoutingAction.stop:
+                    newState.currentScreen = .none
+        
+                default:
+                    break
+                }
         
                 return newState
             }

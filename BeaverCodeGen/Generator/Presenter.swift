@@ -215,9 +215,21 @@ extension ModulePresenter {
                                        newState: \(moduleName.typeName)State,
                                        completion: @escaping () -> ()) {
         
-                // Present the stages or emit to the parent router here
+                switch (oldState?.currentScreen ?? .none, newState.currentScreen) {
+                case (.none, .main):
+                    #if os(iOS)
+                    let \(moduleName.varName)Controller = \(moduleName.typeName)ViewController(store: store)
+                    context.present(controller: \(moduleName.varName)Controller, completion: completion)
+                    #endif
         
-                completion()
+                case (.main, .none):
+                    #if os(iOS)
+                    context.dismiss(completion: completion)
+                    #endif
+        
+                default:
+                    completion()
+                }
             }
         }
         
