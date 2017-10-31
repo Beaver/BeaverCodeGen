@@ -74,8 +74,6 @@ extension AppInfoPList {
             <true/>
             <key>UILaunchStoryboardName</key>
             <string>LaunchScreen</string>
-            <key>UIMainStoryboardFile</key>
-            <string>Main</string>
             <key>UIRequiredDeviceCapabilities</key>
             <array>
                 <string>armv7</string>
