@@ -6,3 +6,4 @@ Pods/Pods.xcodeproj/xcuserdata/
 /.build
 .DS_Store
 .idea/
+Package.resolved
