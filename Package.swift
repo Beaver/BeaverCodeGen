@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "Commander",
+  name: "BeaverCodeGen",
   products: [
     .library(name: "BeaverCodeGen", targets: ["BeaverCodeGen"]),
   ],
