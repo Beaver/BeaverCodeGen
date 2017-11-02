@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190955A71FA6BB2E00885F3E /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955A51FA6BB2E00885F3E /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		190955AB1FA6BB3900885F3E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955A31FA6BB2E00885F3E /* Core.framework */; };
-		190955B51FA6BCCC00885F3E /* ModuleOne.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955B31FA6BCCC00885F3E /* ModuleOne.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		190955C21FA6BCD400885F3E /* ModuleTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = 190955C01FA6BCD400885F3E /* ModuleTwo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		190955C61FA6BCDE00885F3E /* ModuleOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955B11FA6BCCC00885F3E /* ModuleOne.framework */; };
 		190955C71FA6BCDE00885F3E /* ModuleTwo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955BE1FA6BCD400885F3E /* ModuleTwo.framework */; };
 		1998F3881FAB76D0000728FB /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1998F36D1FAB76D0000728FB /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +65,9 @@
 		1998F4081FAB7737000728FB /* ReducerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998F3CB1FAB7701000728FB /* ReducerSpecs.swift */; };
 		1998F4091FAB7737000728FB /* StateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998F3CC1FAB7701000728FB /* StateSpecs.swift */; };
 		1998F40A1FAB7737000728FB /* ViewControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998F3CD1FAB7701000728FB /* ViewControllerSpecs.swift */; };
+		1998F41A1FAB78D1000728FB /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 1998F40C1FAB78A9000728FB /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1998F41B1FAB78E0000728FB /* ModuleOne.h in Headers */ = {isa = PBXBuildFile; fileRef = 1998F4131FAB78A9000728FB /* ModuleOne.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1998F41C1FAB78E7000728FB /* ModuleTwo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1998F4101FAB78A9000728FB /* ModuleTwo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B88BE00EE987D36FCAF3984 /* Pods_BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F82ABDB979E74F33E5404AD /* Pods_BeaverCodeGen.framework */; };
 		7C76A7A31EB84F3D00D24A38 /* BeaverCodeGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C76A7991EB84F3D00D24A38 /* BeaverCodeGen.framework */; };
 		FB83602EE62912DA07FEA6C7 /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */; };
@@ -85,14 +85,8 @@
 
 /* Begin PBXFileReference section */
 		190955A31FA6BB2E00885F3E /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		190955A51FA6BB2E00885F3E /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
-		190955A61FA6BB2E00885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190955B11FA6BCCC00885F3E /* ModuleOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		190955B31FA6BCCC00885F3E /* ModuleOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleOne.h; sourceTree = "<group>"; };
-		190955B41FA6BCCC00885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190955BE1FA6BCD400885F3E /* ModuleTwo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleTwo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		190955C01FA6BCD400885F3E /* ModuleTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleTwo.h; sourceTree = "<group>"; };
-		190955C11FA6BCD400885F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1998F36D1FAB76D0000728FB /* BeaverCodeGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverCodeGen.h; sourceTree = "<group>"; };
 		1998F36F1FAB76D0000728FB /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		1998F3701FAB76D0000728FB /* Generating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generating.swift; sourceTree = "<group>"; };
@@ -149,6 +143,12 @@
 		1998F3CB1FAB7701000728FB /* ReducerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerSpecs.swift; sourceTree = "<group>"; };
 		1998F3CC1FAB7701000728FB /* StateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSpecs.swift; sourceTree = "<group>"; };
 		1998F3CD1FAB7701000728FB /* ViewControllerSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSpecs.swift; sourceTree = "<group>"; };
+		1998F40C1FAB78A9000728FB /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		1998F40D1FAB78A9000728FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1998F40F1FAB78A9000728FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1998F4101FAB78A9000728FB /* ModuleTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleTwo.h; sourceTree = "<group>"; };
+		1998F4121FAB78A9000728FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1998F4131FAB78A9000728FB /* ModuleOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleOne.h; sourceTree = "<group>"; };
 		1ABA4F32D829F7E24CA65FDB /* Pods-BeaverCodeGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen/Pods-BeaverCodeGen.release.xcconfig"; sourceTree = "<group>"; };
 		3C76AD5267405A64E41BBC74 /* Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaverCodeGen-BeaverCodeGenTests/Pods-BeaverCodeGen-BeaverCodeGenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D9D4989A876716E63A7086E /* Pods_BeaverCodeGen_BeaverCodeGenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaverCodeGen_BeaverCodeGenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,33 +204,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		190955A41FA6BB2E00885F3E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				190955A51FA6BB2E00885F3E /* Core.h */,
-				190955A61FA6BB2E00885F3E /* Info.plist */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		190955B21FA6BCCC00885F3E /* ModuleOne */ = {
-			isa = PBXGroup;
-			children = (
-				190955B31FA6BCCC00885F3E /* ModuleOne.h */,
-				190955B41FA6BCCC00885F3E /* Info.plist */,
-			);
-			path = ModuleOne;
-			sourceTree = "<group>";
-		};
-		190955BF1FA6BCD400885F3E /* ModuleTwo */ = {
-			isa = PBXGroup;
-			children = (
-				190955C01FA6BCD400885F3E /* ModuleTwo.h */,
-				190955C11FA6BCD400885F3E /* Info.plist */,
-			);
-			path = ModuleTwo;
-			sourceTree = "<group>";
-		};
 		1998F36B1FAB76D0000728FB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +277,9 @@
 		1998F39F1FAB7701000728FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				1998F40B1FAB78A9000728FB /* Core */,
+				1998F4111FAB78A9000728FB /* ModuleOne */,
+				1998F40E1FAB78A9000728FB /* ModuleTwo */,
 				1998F3A01FAB7701000728FB /* BeaverCodeGenTests */,
 			);
 			path = Tests;
@@ -445,6 +421,33 @@
 			path = Generator;
 			sourceTree = "<group>";
 		};
+		1998F40B1FAB78A9000728FB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1998F40C1FAB78A9000728FB /* Core.h */,
+				1998F40D1FAB78A9000728FB /* Info.plist */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1998F40E1FAB78A9000728FB /* ModuleTwo */ = {
+			isa = PBXGroup;
+			children = (
+				1998F40F1FAB78A9000728FB /* Info.plist */,
+				1998F4101FAB78A9000728FB /* ModuleTwo.h */,
+			);
+			path = ModuleTwo;
+			sourceTree = "<group>";
+		};
+		1998F4111FAB78A9000728FB /* ModuleOne */ = {
+			isa = PBXGroup;
+			children = (
+				1998F4121FAB78A9000728FB /* Info.plist */,
+				1998F4131FAB78A9000728FB /* ModuleOne.h */,
+			);
+			path = ModuleOne;
+			sourceTree = "<group>";
+		};
 		5ABCD8BD1E4F9386EEF9CD28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,9 +473,6 @@
 			children = (
 				1998F36B1FAB76D0000728FB /* Sources */,
 				1998F39F1FAB7701000728FB /* Tests */,
-				190955A41FA6BB2E00885F3E /* Core */,
-				190955B21FA6BCCC00885F3E /* ModuleOne */,
-				190955BF1FA6BCD400885F3E /* ModuleTwo */,
 				7C76A79A1EB84F3D00D24A38 /* Products */,
 				71C8AA92249C876C2856F843 /* Pods */,
 				5ABCD8BD1E4F9386EEF9CD28 /* Frameworks */,
@@ -498,7 +498,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190955A71FA6BB2E00885F3E /* Core.h in Headers */,
+				1998F41A1FAB78D1000728FB /* Core.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +506,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190955B51FA6BCCC00885F3E /* ModuleOne.h in Headers */,
+				1998F41B1FAB78E0000728FB /* ModuleOne.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +514,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190955C21FA6BCD400885F3E /* ModuleTwo.h in Headers */,
+				1998F41C1FAB78E7000728FB /* ModuleTwo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,7 +936,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = Tests/Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.Core;
@@ -966,7 +966,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = Tests/Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.Core;
@@ -996,7 +996,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ModuleOne/Info.plist;
+				INFOPLIST_FILE = Tests/ModuleOne/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleOne;
@@ -1026,7 +1026,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ModuleOne/Info.plist;
+				INFOPLIST_FILE = Tests/ModuleOne/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleOne;
@@ -1056,7 +1056,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ModuleTwo/Info.plist;
+				INFOPLIST_FILE = Tests/ModuleTwo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleTwo;
@@ -1086,7 +1086,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ModuleTwo/Info.plist;
+				INFOPLIST_FILE = Tests/ModuleTwo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.ModuleTwo;
