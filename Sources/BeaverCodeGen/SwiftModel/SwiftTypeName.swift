@@ -1,3 +1,5 @@
+import Foundation
+
 enum SwiftTypeName {
     case beaverAction
     case moduleAction(moduleName: String)

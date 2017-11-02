@@ -8,5 +8,8 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/jpsim/SourceKitten.git", from: "0.18.1")
+  ],
+  targets: [
+  	.target(name: "BeaverCodeGen", dependencies: ["SourceKittenFramework"])
   ]
 )

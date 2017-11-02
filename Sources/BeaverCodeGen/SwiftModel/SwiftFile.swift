@@ -1,4 +1,5 @@
 import SourceKittenFramework
+import Foundation
 
 struct SwiftFile {
     let diagnosticStage: String

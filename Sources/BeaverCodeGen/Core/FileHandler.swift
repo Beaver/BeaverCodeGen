@@ -1,4 +1,5 @@
 import SourceKittenFramework
+import Foundation
 
 /// Protocol giving the ability to write and read a file
 public protocol FileHandling: CustomStringConvertible {
