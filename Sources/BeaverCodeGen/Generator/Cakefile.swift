@@ -119,6 +119,10 @@ struct TargetCakefile: Generating {
     var path: String {
         return "Module/\(targetName.typeName)/Cakefile.rb"
     }
+    
+    var isDependentOnCore: Bool {
+        return targetName.typeName != "Core"
+    }
 }
 
 extension TargetCakefile {
@@ -133,7 +137,7 @@ extension TargetCakefile {
                 target.language = :swift
                 target.include_files = ["Module/#{target.name}/#{target.name}/**/*.*"]
                 target.exclude_files << "**/Info.plist"
-        
+                \((isDependentOnCore ? "target.linked_targets = [module_target(:core)]" : "").br)
                 unit_tests_for target do |test_target|
                     test_target.name = "#{target.name}Tests"
                     test_target.include_files = ["Module/#{target.name}/#{target.name}Tests/**/*.*"]
