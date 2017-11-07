@@ -20,7 +20,7 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
-                    expect(fileHandlerMock.paths.count) == 31
+                    expect(fileHandlerMock.paths.count) == 32
                     
                     // Cakefile
                     
@@ -73,6 +73,10 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.paths["Module/Test2/Test2Tests/Info.plist"]) == 1
                     expect(fileHandlerMock.contents["Module/Test2/Test2Tests/Info.plist"]) == ModuleInfoPList(moduleName: "Test2", isTest: true).description
 
+                    // .gitignore
+                    
+                    expect(fileHandlerMock.paths[".gitignore"]) == 1
+                    expect(fileHandlerMock.contents[".gitignore"]) == RootGitIgnore().description
 
                     // App
                     

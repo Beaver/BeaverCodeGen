@@ -10,6 +10,7 @@
 		190955AB1FA6BB3900885F3E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955A31FA6BB2E00885F3E /* Core.framework */; };
 		190955C61FA6BCDE00885F3E /* ModuleOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955B11FA6BCCC00885F3E /* ModuleOne.framework */; };
 		190955C71FA6BCDE00885F3E /* ModuleTwo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190955BE1FA6BCD400885F3E /* ModuleTwo.framework */; };
+		197D10471FB15C9900096A25 /* Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D10461FB15C9900096A25 /* Git.swift */; };
 		1998F3881FAB76D0000728FB /* BeaverCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1998F36D1FAB76D0000728FB /* BeaverCodeGen.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1998F3891FAB76D0000728FB /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998F36F1FAB76D0000728FB /* FileHandler.swift */; };
 		1998F38A1FAB76D0000728FB /* Generating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998F3701FAB76D0000728FB /* Generating.swift */; };
@@ -87,6 +88,7 @@
 		190955A31FA6BB2E00885F3E /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190955B11FA6BCCC00885F3E /* ModuleOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190955BE1FA6BCD400885F3E /* ModuleTwo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleTwo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		197D10461FB15C9900096A25 /* Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Git.swift; sourceTree = "<group>"; };
 		1998F36D1FAB76D0000728FB /* BeaverCodeGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaverCodeGen.h; sourceTree = "<group>"; };
 		1998F36F1FAB76D0000728FB /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		1998F3701FAB76D0000728FB /* Generating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generating.swift; sourceTree = "<group>"; };
@@ -219,7 +221,6 @@
 				1998F36E1FAB76D0000728FB /* Core */,
 				1998F3741FAB76D0000728FB /* Generator */,
 				1998F3801FAB76D0000728FB /* Info.plist */,
-				1998F3811FAB76D0000728FB /* Model */,
 				1998F3821FAB76D0000728FB /* SwiftModel */,
 			);
 			path = BeaverCodeGen;
@@ -251,15 +252,9 @@
 				1998F37D1FAB76D0000728FB /* Reducer.swift */,
 				1998F37E1FAB76D0000728FB /* State.swift */,
 				1998F37F1FAB76D0000728FB /* ViewController.swift */,
+				197D10461FB15C9900096A25 /* Git.swift */,
 			);
 			path = Generator;
-			sourceTree = "<group>";
-		};
-		1998F3811FAB76D0000728FB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		1998F3821FAB76D0000728FB /* SwiftModel */ = {
@@ -301,8 +296,8 @@
 			isa = PBXGroup;
 			children = (
 				1998F3A21FAB7701000728FB /* App */,
-				1998F3A71FAB7701000728FB /* Cakefile */,
 				1998F3A81FAB7701000728FB /* Module */,
+				1998F3A71FAB7701000728FB /* Cakefile */,
 				1998F3BD1FAB7701000728FB /* Podfile */,
 			);
 			path = GeneratedCode;
@@ -866,6 +861,7 @@
 				1998F38C1FAB76D0000728FB /* String+Generator.swift in Sources */,
 				1998F3981FAB76D0000728FB /* ViewController.swift in Sources */,
 				1998F39C1FAB76D0000728FB /* SwiftKind.swift in Sources */,
+				197D10471FB15C9900096A25 /* Git.swift in Sources */,
 				1998F38A1FAB76D0000728FB /* Generating.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

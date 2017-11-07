@@ -53,6 +53,7 @@ private extension ProjectGenetator {
             AppDelegate(),
             RootCakefile(),
             RootPodfile(),
+            RootGitIgnore(),
             AppInfoPList(isTest: false),
             AppInfoPList(isTest: true)
         ]
