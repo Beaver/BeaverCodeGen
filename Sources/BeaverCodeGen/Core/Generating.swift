@@ -1,6 +1,8 @@
-public protocol Generating: CustomStringConvertible {
+public protocol PathRepresentable {
     var path: String { get }
-    
+}
+
+public protocol Generating: CustomStringConvertible, PathRepresentable {
     func generate(in fileHandler: FileHandling)
     func byInserting(module moduleName: String, in fileHanlder: FileHandling) -> Self
 }

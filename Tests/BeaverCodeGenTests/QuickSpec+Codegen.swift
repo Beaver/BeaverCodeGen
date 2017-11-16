@@ -10,7 +10,9 @@ protocol FilePathRepresentable {
 extension QuickSpec {
     enum CoreType: String, FilePathRepresentable {
         case moduleOneState = "ModuleOneState"
+        case moduleOneAction = "ModuleOneAction"
         case appState = "AppState"
+        case appAction = "AppAction"
         
         var filePath: String {
             return "GeneratedCode/Module/Core/Core/\(rawValue).swift"
@@ -31,7 +33,6 @@ extension QuickSpec {
     enum AppType: String, FilePathRepresentable {
         case route = "Route"
         case presenter = "Presenter"
-        case action = "Action"
         case appDelegate = "Delegate"
         case reducer = "Reducer"
         

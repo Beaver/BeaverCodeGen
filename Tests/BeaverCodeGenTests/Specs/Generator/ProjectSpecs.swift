@@ -20,7 +20,7 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
-                    expect(fileHandlerMock.paths.count) == 32
+                    expect(fileHandlerMock.paths.count) == 34
                     
                     // Cakefile
                     
@@ -81,10 +81,10 @@ final class ProjectSpecs: QuickSpec {
                     // App
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/AppState.swift"]) == 1
-                    expect(fileHandlerMock.contents["Module/Core/Core/AppState.swift"]) == BeaverCodeGen.AppState(moduleNames: moduleNames).description
+                    expect(fileHandlerMock.contents["Module/Core/Core/AppState.swift"]) == AppState(moduleNames: moduleNames).description
                     
-                    expect(fileHandlerMock.paths["App/AppAction.swift"]) == 1
-                    expect(fileHandlerMock.contents["App/AppAction.swift"]) == BeaverCodeGen.AppAction().description
+                    expect(fileHandlerMock.paths["Module/Core/Core/AppAction.swift"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Core/AppAction.swift"]) == CoreAppAction().description
                     
                     expect(fileHandlerMock.paths["App/AppReducer.swift"]) == 1
                     expect(fileHandlerMock.contents["App/AppReducer.swift"]) == BeaverCodeGen.AppReducer(moduleNames: moduleNames).description
@@ -93,7 +93,7 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["App/AppPresenter.swift"]) == BeaverCodeGen.AppPresenter(moduleNames: moduleNames).description
                     
                     expect(fileHandlerMock.paths["App/AppDelegate.swift"]) == 1
-                    expect(fileHandlerMock.contents["App/AppDelegate.swift"]) == BeaverCodeGen.AppDelegate().description
+                    expect(fileHandlerMock.contents["App/AppDelegate.swift"]) == AppDelegate().description
 
                     // Test1 Module
 
@@ -101,8 +101,11 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["Module/Core/Core/Test1State.swift"]) == ModuleState(moduleName: "Test1").description
 
                     expect(fileHandlerMock.paths["Module/Test1/Test1/Test1Action.swift"]) == 1
-                    expect(fileHandlerMock.contents["Module/Test1/Test1/Test1Action.swift"]) == ModuleAction(moduleName: "Test1").description
+                    expect(fileHandlerMock.contents["Module/Test1/Test1/Test1Action.swift"]) == ModuleUIAction(moduleName: "Test1").description
 
+                    expect(fileHandlerMock.paths["Module/Core/Core/Test1Action.swift"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Core/Test1Action.swift"]) == ModuleRoutingAction(moduleName: "Test1").description
+                    
                     expect(fileHandlerMock.paths["Module/Test1/Test1/Test1Reducer.swift"]) == 1
                     expect(fileHandlerMock.contents["Module/Test1/Test1/Test1Reducer.swift"]) == ModuleReducer(moduleName: "Test1").description
 
@@ -118,8 +121,11 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["Module/Core/Core/Test2State.swift"]) == ModuleState(moduleName: "Test2").description
                     
                     expect(fileHandlerMock.paths["Module/Test2/Test2/Test2Action.swift"]) == 1
-                    expect(fileHandlerMock.contents["Module/Test2/Test2/Test2Action.swift"]) == ModuleAction(moduleName: "Test2").description
-                    
+                    expect(fileHandlerMock.contents["Module/Test2/Test2/Test2Action.swift"]) == ModuleUIAction(moduleName: "Test2").description
+                   
+                    expect(fileHandlerMock.paths["Module/Core/Core/Test2Action.swift"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Core/Test2Action.swift"]) == ModuleRoutingAction(moduleName: "Test2").description
+
                     expect(fileHandlerMock.paths["Module/Test2/Test2/Test2Reducer.swift"]) == 1
                     expect(fileHandlerMock.contents["Module/Test2/Test2/Test2Reducer.swift"]) == ModuleReducer(moduleName: "Test2").description
                     
@@ -142,10 +148,10 @@ final class ProjectSpecs: QuickSpec {
                     // App
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/AppState.swift"]) >= 2
-                    expect(fileHandlerMock.contents["Module/Core/Core/AppState.swift"]) == BeaverCodeGen.AppState(moduleNames: moduleNames).description
+                    expect(fileHandlerMock.contents["Module/Core/Core/AppState.swift"]) == AppState(moduleNames: moduleNames).description
                     
-                    expect(fileHandlerMock.paths["App/AppAction.swift"]) == 1
-                    expect(fileHandlerMock.contents["App/AppAction.swift"]) == BeaverCodeGen.AppAction().description
+                    expect(fileHandlerMock.paths["Module/Core/Core/AppAction.swift"]) == 1
+                    expect(fileHandlerMock.contents["Module/Core/Core/AppAction.swift"]) == CoreAppAction().description
                     
                     expect(fileHandlerMock.paths["App/AppReducer.swift"]) >= 2
                     expect(fileHandlerMock.contents["App/AppReducer.swift"]) == BeaverCodeGen.AppReducer(moduleNames: moduleNames).description
@@ -154,7 +160,7 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["App/AppPresenter.swift"]) == BeaverCodeGen.AppPresenter(moduleNames: moduleNames).description
                     
                     expect(fileHandlerMock.paths["App/AppDelegate.swift"]) == 1
-                    expect(fileHandlerMock.contents["App/AppDelegate.swift"]) == BeaverCodeGen.AppDelegate().description
+                    expect(fileHandlerMock.contents["App/AppDelegate.swift"]) == AppDelegate().description
                     
                     // Test1 Module
                     
@@ -178,7 +184,7 @@ final class ProjectSpecs: QuickSpec {
                     expect(fileHandlerMock.contents["Module/Core/Core/Test3State.swift"]) == ModuleState(moduleName: "Test3").description
                     
                     expect(fileHandlerMock.paths["Module/Test3/Test3/Test3Action.swift"]) == 1
-                    expect(fileHandlerMock.contents["Module/Test3/Test3/Test3Action.swift"]) == ModuleAction(moduleName: "Test3").description
+                    expect(fileHandlerMock.contents["Module/Test3/Test3/Test3Action.swift"]) == ModuleUIAction(moduleName: "Test3").description
                     
                     expect(fileHandlerMock.paths["Module/Test3/Test3/Test3Reducer.swift"]) == 1
                     expect(fileHandlerMock.contents["Module/Test3/Test3/Test3Reducer.swift"]) == ModuleReducer(moduleName: "Test3").description
@@ -195,15 +201,16 @@ final class ProjectSpecs: QuickSpec {
                 it("generates the code and stores it on the file system") {
                     generator.generate(in: fileHandlerMock)
                     
-                    let actionTest = ModuleAction.ActionType.routing(EnumCase(name: "ActionTest"))
+                    let actionTest = EnumCase(name: "ActionTest")
                     _ = generator.byInserting(action: actionTest,
+                                              ofType: ModuleRoutingAction.self,
                                               toModule: "Test2",
                                               in: fileHandlerMock)
                     
                     // App
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/AppState.swift"]) == 1
-                    expect(fileHandlerMock.paths["App/AppAction.swift"]) == 1
+                    expect(fileHandlerMock.paths["Module/Core/Core/AppAction.swift"]) == 1
                     expect(fileHandlerMock.paths["App/AppReducer.swift"]) == 1
                     expect(fileHandlerMock.paths["App/AppPresenter.swift"]) == 1
                     expect(fileHandlerMock.paths["App/AppDelegate.swift"]) == 1
@@ -219,8 +226,8 @@ final class ProjectSpecs: QuickSpec {
                     // Test2 Module
                     
                     expect(fileHandlerMock.paths["Module/Core/Core/Test2State.swift"]) == 1
-                    expect(fileHandlerMock.paths["Module/Test2/Test2/Test2Action.swift"]) >= 2
-                    expect(fileHandlerMock.contents["Module/Test2/Test2/Test2Action.swift"]) == ModuleAction(moduleName: "Test2", actions: [actionTest]).description
+                    expect(fileHandlerMock.paths["Module/Core/Core/Test2Action.swift"]) >= 2
+                    expect(fileHandlerMock.contents["Module/Core/Core/Test2Action.swift"]) == ModuleRoutingAction(moduleName: "Test2", actions: [actionTest]).description
                     expect(fileHandlerMock.paths["Module/Test2/Test2/Test2Reducer.swift"]) == 1
                     expect(fileHandlerMock.paths["Module/Test2/Test2/Test2Presenter.swift"]) == 1
                     expect(fileHandlerMock.paths["Module/Test2/Test2/Test2ViewController.swift"]) == 1

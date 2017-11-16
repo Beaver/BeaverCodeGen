@@ -1,4 +1,4 @@
-enum SwiftKind {
+public enum SwiftKind {
     case `enum`
     case enumcase
     case enumelement
@@ -17,7 +17,7 @@ enum SwiftKind {
 }
 
 extension SwiftKind: Decodable {
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(String.self)
         switch value {
         case "source.lang.swift.decl.enum":
@@ -92,7 +92,7 @@ extension SwiftKind {
 }
 
 extension SwiftKind: Equatable {
-    static func ==(lhs: SwiftKind, rhs: SwiftKind) -> Bool {
+    public static func ==(lhs: SwiftKind, rhs: SwiftKind) -> Bool {
         return lhs.name == rhs.name
     }
 }

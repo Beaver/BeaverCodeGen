@@ -160,17 +160,45 @@ extension NSString {
             return line.byteRange.location + byteDiff
         }
 
-        func lineAndCharacter(forCharacterOffset offset: Int) -> (line: Int, character: Int)? {
+        func lineAndCharacter(forCharacterOffset offset: Int, expandingTabsToWidth tabWidth: Int) -> (line: Int, character: Int)? {
+            assert(tabWidth > 0)
+
             let index = lines.index(where: { NSLocationInRange(offset, $0.range) })
             return index.map {
                 let line = lines[$0]
-                return (line: line.index, character: offset - line.range.location + 1)
+
+                let prefixLength = offset - line.range.location
+                let character: Int
+
+                if tabWidth == 1 {
+                    character = prefixLength
+                } else {
+#if swift(>=3.2)
+                    character = line.content.prefix(prefixLength).reduce(0) { sum, character in
+                        if character == "\t" {
+                            return sum - (sum % tabWidth) + tabWidth
+                        } else {
+                            return sum + 1
+                        }
+                    }
+#else
+                    character = line.content.characters.prefix(prefixLength).reduce(0) { sum, character in
+                        if character == "\t" {
+                            return sum - (sum % tabWidth) + tabWidth
+                        } else {
+                            return sum + 1
+                        }
+                    }
+#endif
+                }
+
+                return (line: line.index, character: character + 1)
             }
         }
 
-        func lineAndCharacter(forByteOffset offset: Int) -> (line: Int, character: Int)? {
+        func lineAndCharacter(forByteOffset offset: Int, expandingTabsToWidth tabWidth: Int) -> (line: Int, character: Int)? {
             let characterOffset = location(fromByteOffset: offset)
-            return lineAndCharacter(forCharacterOffset: characterOffset)
+            return lineAndCharacter(forCharacterOffset: characterOffset, expandingTabsToWidth: tabWidth)
         }
     }
 
@@ -195,18 +223,20 @@ extension NSString {
     Returns line number and character for utf16 based offset.
 
     - parameter offset: utf16 based index.
+    - parameter tabWidth: the width in spaces to expand tabs to.
     */
-    public func lineAndCharacter(forCharacterOffset offset: Int) -> (line: Int, character: Int)? {
-        return cacheContainer.lineAndCharacter(forCharacterOffset: offset)
+    public func lineAndCharacter(forCharacterOffset offset: Int, expandingTabsToWidth tabWidth: Int = 1) -> (line: Int, character: Int)? {
+        return cacheContainer.lineAndCharacter(forCharacterOffset: offset, expandingTabsToWidth: tabWidth)
     }
 
     /**
     Returns line number and character for byte offset.
 
     - parameter offset: byte offset.
+    - parameter tabWidth: the width in spaces to expand tabs to.
     */
-    public func lineAndCharacter(forByteOffset offset: Int) -> (line: Int, character: Int)? {
-        return cacheContainer.lineAndCharacter(forByteOffset: offset)
+    public func lineAndCharacter(forByteOffset offset: Int, expandingTabsToWidth tabWidth: Int = 1) -> (line: Int, character: Int)? {
+        return cacheContainer.lineAndCharacter(forByteOffset: offset, expandingTabsToWidth: tabWidth)
     }
 
     /**
@@ -395,7 +425,11 @@ extension String {
     }
 
     internal func capitalizingFirstLetter() -> String {
+#if swift(>=3.2)
+        return String(prefix(1)).capitalized + String(dropFirst())
+#else
         return String(characters.prefix(1)).capitalized + String(characters.dropFirst())
+#endif
     }
 
 #if !os(Linux)
@@ -534,20 +568,28 @@ extension String {
             let lineLeadingWhitespace = line.countOfLeadingCharacters(in: .whitespacesAndNewlines)
             let lineLeadingCharacters = line.countOfLeadingCharacters(in: commentLinePrefixCharacterSet)
             // Is this prefix smaller than our last and not entirely whitespace?
+#if swift(>=3.2)
+            if lineLeadingCharacters < minLeadingCharacters && lineLeadingWhitespace != line.count {
+                minLeadingCharacters = lineLeadingCharacters
+            }
+#else
             if lineLeadingCharacters < minLeadingCharacters && lineLeadingWhitespace != line.characters.count {
                 minLeadingCharacters = lineLeadingCharacters
             }
+#endif
         }
 
         return lineComponents.map { line in
-            if line.characters.count >= minLeadingCharacters {
 #if swift(>=3.2)
+            if line.count >= minLeadingCharacters {
                 return String(line[line.index(line.startIndex, offsetBy: minLeadingCharacters)...])
+            }
 #else
+            if line.characters.count >= minLeadingCharacters {
                 let range: Range = line.index(line.startIndex, offsetBy: minLeadingCharacters)..<line.endIndex
                 return line.substring(with: range)
-#endif
             }
+#endif
             return line
         }.joined(separator: "\n")
     }

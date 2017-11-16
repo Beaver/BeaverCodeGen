@@ -1,6 +1,6 @@
 import Foundation
 
-enum SwiftTypeName {
+public enum SwiftTypeName {
     case beaverAction
     case moduleAction(moduleName: String)
     case moduleUIAction(moduleName: String)
@@ -24,7 +24,7 @@ enum SwiftTypeName {
 }
 
 extension SwiftTypeName: Decodable {
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let name: String = try {
             if let values = try? decoder.container(keyedBy: CodingKeys.self) {
                 return try values.decode(String.self, forKey: .name)
@@ -158,11 +158,11 @@ extension SwiftTypeName {
 }
 
 extension SwiftTypeName: Hashable {
-    static func ==(lhs: SwiftTypeName, rhs: SwiftTypeName) -> Bool {
+    public static func ==(lhs: SwiftTypeName, rhs: SwiftTypeName) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     
-    var hashValue: Int {
+    public var hashValue: Int {
         return name.hashValue
     }
 }

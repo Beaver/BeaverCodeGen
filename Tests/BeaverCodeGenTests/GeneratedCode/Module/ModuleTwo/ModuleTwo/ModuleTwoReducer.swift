@@ -1,4 +1,5 @@
 import Beaver
+import Core
 
 public struct ModuleTwoReducer: Beaver.ChildReducing {
     public typealias ActionType = ModuleTwoAction

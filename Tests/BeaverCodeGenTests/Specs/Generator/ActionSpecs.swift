@@ -6,19 +6,58 @@ import Nimble
 final class ActionSpecs: QuickSpec {
     override func spec() {
         describe("Action") {
-            describe("ModuleAction") {
-                var generator: BeaverCodeGen.ModuleAction!
+            describe("ModuleRoutingAction") {
+                var generator: ModuleRoutingAction!
 
                 beforeEach {
-                    generator = BeaverCodeGen.ModuleAction(moduleName: "ModuleOne")
+                    generator = ModuleRoutingAction(moduleName: "ModuleOne")
                 }
 
                 describe("description") {
                     it("should return a string containing the action's code") {
                         let code = generator.description
 
-                        self.printDiff(code: code, expected: self.expectedCode(ModuleOneType.action))
+                        self.printDiff(code: code, expected: self.expectedCode(CoreType.moduleOneAction))
 
+                        expect(code) == self.expectedCode(CoreType.moduleOneAction)
+                    }
+                }
+                
+                describe("byInserting(action:in:)") {
+                    var fileHandlerMock: FileHandlerMock!
+                    let filePath = "Module/Core/Core/ModuleOneAction.swift"
+                    
+                    beforeEach {
+                        fileHandlerMock = FileHandlerMock()
+                    }
+                    
+                    it("should rewrite the action file with one more action") {
+                        fileHandlerMock.contents[filePath] = generator.description
+                        generator = generator.byInserting(action: EnumCase(name: "Test"), in: fileHandlerMock)
+                        expect(fileHandlerMock.contents[filePath]) == generator.description
+                    }
+                    
+                    afterEach {
+                        if let code = fileHandlerMock.contents[filePath] {
+                            self.printDiff(code: code, expected: generator.description)
+                        }
+                    }
+                }
+            }
+            
+            describe("ModuleUIAction") {
+                var generator: ModuleUIAction!
+                
+                beforeEach {
+                    generator = ModuleUIAction(moduleName: "ModuleOne")
+                }
+                
+                describe("description") {
+                    it("should return a string containing the action's code") {
+                        let code = generator.description
+                        
+                        self.printDiff(code: code, expected: self.expectedCode(ModuleOneType.action))
+                        
                         expect(code) == self.expectedCode(ModuleOneType.action)
                     }
                 }
@@ -31,15 +70,9 @@ final class ActionSpecs: QuickSpec {
                         fileHandlerMock = FileHandlerMock()
                     }
                     
-                    it("should rewrite the action file with one more ui action") {
+                    it("should rewrite the action file with one more action") {
                         fileHandlerMock.contents[filePath] = generator.description
-                        generator = generator.byInserting(action: .ui(EnumCase(name: "Test")), in: fileHandlerMock)
-                        expect(fileHandlerMock.contents[filePath]) == generator.description
-                    }
-                    
-                    it("should rewrite the action file with one more routing action") {
-                        fileHandlerMock.contents[filePath] = generator.description
-                        generator = generator.byInserting(action: .routing(EnumCase(name: "Test")), in: fileHandlerMock)
+                        generator = generator.byInserting(action: EnumCase(name: "Test"), in: fileHandlerMock)
                         expect(fileHandlerMock.contents[filePath]) == generator.description
                     }
                     
@@ -51,26 +84,26 @@ final class ActionSpecs: QuickSpec {
                 }
             }
             
-            describe("AppAction") {
-                var generator: BeaverCodeGen.AppAction!
+            describe("CoreAppAction") {
+                var generator: CoreAppAction!
 
                 beforeEach {
-                    generator = BeaverCodeGen.AppAction()
+                    generator = CoreAppAction()
                 }
                 
                 describe("description") {
                     it("should return a string containing the action's code") {
                         let code = generator.description
                         
-                        self.printDiff(code: code, expected: self.expectedCode(AppType.action))
+                        self.printDiff(code: code, expected: self.expectedCode(CoreType.appAction))
                         
-                        expect(code) == self.expectedCode(AppType.action)
+                        expect(code) == self.expectedCode(CoreType.appAction)
                     }
                 }
                 
                 describe("insert(action:)") {
                     var fileHandlerMock: FileHandlerMock!
-                    let filePath = "App/AppAction.swift"
+                    let filePath = "Module/Core/Core/AppAction.swift"
                     
                     beforeEach {
                         fileHandlerMock = FileHandlerMock()

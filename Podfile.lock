@@ -1,13 +1,13 @@
 PODS:
   - Beaver (0.1.0)
   - Diff (0.5.3)
-  - Nimble (7.0.1)
-  - Quick (1.1.0)
-  - SourceKittenFramework (0.18.1):
+  - Nimble (7.0.2)
+  - Quick (1.2.0)
+  - SourceKittenFramework (0.18.4):
     - SWXMLHash (~> 4.1)
-    - Yams (~> 0.3)
-  - SWXMLHash (4.2.3)
-  - Yams (0.3.6)
+    - Yams (~> 0.4.1)
+  - SWXMLHash (4.2.5)
+  - Yams (0.4.1)
 
 DEPENDENCIES:
   - Beaver (from `git@github.com:Beaver/Beaver.git`)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: 06fa2a5bde275ee620aeca383f080a86c1569245
+    :commit: 584885829f2e35def63a5c8f53ecc30d58ef8434
     :git: git@github.com:Beaver/Beaver.git
   Diff:
     :commit: 674b1adf077bededca10518d2548ae4401bf8025
@@ -34,12 +34,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Beaver: 84f7a1e4cc56ca0008db4c4685dbbec6e051f190
   Diff: f10fccf868e33f7c0e03379a0425aa42def4884f
-  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
-  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  SourceKittenFramework: 7c508d6deb5df1c9d7b50d44199dda0c0abe6a51
-  SWXMLHash: 6ab10e1cb4567d88cd3634be0bf331a7839945dd
-  Yams: 33b90105277731bc2035a309a718b51fb655005c
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SourceKittenFramework: 3e20d940daa6f743feca0b2c39dba06f06c5d4a4
+  SWXMLHash: eb16013c6f654853980822e0a778c9d66e017dde
+  Yams: 094d06e3cebc61eaa068ef86beff09e0db4d6c7b
 
-PODFILE CHECKSUM: c8f4bd58555cffdd840644b434f1bca23902b03d
+PODFILE CHECKSUM: 01007a66c94cf8580f52c1f4517d4b3a09501996
 
 COCOAPODS: 1.4.0.beta.1

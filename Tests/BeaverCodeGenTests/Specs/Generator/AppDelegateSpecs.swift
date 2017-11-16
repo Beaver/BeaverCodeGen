@@ -8,7 +8,7 @@ final class AppDelegateSpecs: QuickSpec {
         describe("AppDelegate") {
             describe("description") {
                 it("should return a string containing the AppDelegate code") {
-                    let code = BeaverCodeGen.AppDelegate().description
+                    let code = AppDelegate().description
                     
                     self.printDiff(code: code, expected: self.expectedCode(AppType.appDelegate))
                     

@@ -9,11 +9,11 @@ A sweet and swifty [Yaml](http://yaml.org/) parser built on
 
 ## Installation
 
-Building Yams on macOS requires Xcode 8.x or a Swift 3.x toolchain with the
-Swift Package Manager.
+Building Yams on macOS requires Xcode 8.x/9.x or a Swift 3.x/4.x toolchain with
+the Swift Package Manager.
 
-Building Yams on Linux requires a Swift 3.x compiler and Swift Package Manager
-to be installed.
+Building Yams on Linux requires a Swift 3.x/4.x compiler and Swift Package
+Manager to be installed.
 
 ### Swift Package Manager
 
@@ -27,11 +27,6 @@ Add `pod 'Yams'` to your `Podfile`.
 ### Carthage
 
 Add `github "jpsim/Yams"` to your `Cartfile`.
-
-## Credit
-
-This library was initially based on
-[Chris Eidhof's gist](https://gist.github.com/chriseidhof/4c5a49d4b81a0c2a37a1).
 
 ## License
 

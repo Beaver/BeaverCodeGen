@@ -8,7 +8,7 @@ final class StateSpecs: QuickSpec {
         describe("State") {
             describe("ModuleState") {
                 it("should return a string containing the State's code") {
-                    let code = BeaverCodeGen.ModuleState(moduleName: "ModuleOne").description
+                    let code = ModuleState(moduleName: "ModuleOne").description
                     
                     self.printDiff(code: code, expected: self.expectedCode(CoreType.moduleOneState))
                     
@@ -17,10 +17,10 @@ final class StateSpecs: QuickSpec {
             }
             
             describe("AppState") {
-                var generator: BeaverCodeGen.AppState!
+                var generator: AppState!
                 
                 beforeEach {
-                    generator = BeaverCodeGen.AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
+                    generator = AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
                 }
 
                 describe("description") {
@@ -43,7 +43,7 @@ final class StateSpecs: QuickSpec {
 
                     context("when inserting a second or more module") {
                         beforeEach {
-                            generator = BeaverCodeGen.AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
+                            generator = AppState(moduleNames: ["ModuleOne", "ModuleTwo"])
                         }
                         
                         it("should rewrite the state file with one more module") {
@@ -55,7 +55,7 @@ final class StateSpecs: QuickSpec {
                     
                     context("when inserting the first module") {
                         beforeEach {
-                            generator = BeaverCodeGen.AppState(moduleNames: [])
+                            generator = AppState(moduleNames: [])
                         }
                         
                         it("should rewrite the state file with one module") {

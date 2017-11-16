@@ -1,0 +1,6 @@
+framework module Pods_BeaverCodeGen_BeaverCodeGenTests_Core {
+  umbrella header "Pods-BeaverCodeGen-BeaverCodeGenTests-Core-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,4 +1,4 @@
-protocol SwiftIndexable {
+public protocol SwiftIndexable {
     var parent: SwiftIndexable? { get }
     
     var typeName: SwiftTypeName? { get }

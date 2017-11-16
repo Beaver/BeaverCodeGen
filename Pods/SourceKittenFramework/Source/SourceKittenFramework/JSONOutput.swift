@@ -20,7 +20,21 @@ public func toJSON(_ object: Any) -> String {
         return "[\n\n]"
     }
     do {
-        let prettyJSONData = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+        let options: JSONSerialization.WritingOptions
+#if swift(>=3.2)
+    #if os(Linux)
+        options = [.prettyPrinted, .sortedKeys]
+    #else
+        if #available(macOS 10.13, *) {
+            options = [.prettyPrinted, .sortedKeys]
+        } else {
+            options = .prettyPrinted
+        }
+    #endif
+#else
+        options = .prettyPrinted
+#endif
+        let prettyJSONData = try JSONSerialization.data(withJSONObject: object, options: options)
         if let jsonString = String(data: prettyJSONData, encoding: .utf8) {
             return jsonString
         }
@@ -63,7 +77,7 @@ public func toNSDictionary(_ dictionary: [String: SourceKitRepresentable]) -> NS
 #if !os(Linux)
 
 public func declarationsToJSON(_ decl: [String: [SourceDeclaration]]) -> String {
-    let keyValueToDictionary: ((String, [SourceDeclaration])) -> [String:Any] = { [$0.0: toOutputDictionary($0.1)] }
+    let keyValueToDictionary: ((String, [SourceDeclaration])) -> [String: Any] = { [$0.0: toOutputDictionary($0.1)] }
     let dictionaries: [[String: Any]] = decl.map(keyValueToDictionary).sorted { $0.keys.first! < $1.keys.first! }
     return toJSON(dictionaries)
 }

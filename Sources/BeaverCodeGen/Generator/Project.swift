@@ -28,10 +28,11 @@ public struct ProjectGenetator: SwiftGenerating {
         return ProjectGenetator(name: name, moduleNames: moduleNames + [moduleName])
     }
     
-    public func byInserting(action: ModuleAction.ActionType,
-                            toModule moduleName: String,
-                            in fileHandler: FileHandling) -> ProjectGenetator {
-        let moduleAction = ModuleAction(moduleName: moduleName, actions: [])
+    public func byInserting<ActionType: ModuleActionGenerating & ActionInserting>(action: EnumCase,
+                                                                                  ofType type: ActionType.Type,
+                                                                                  toModule moduleName: String,
+                                                                                  in fileHandler: FileHandling) -> ProjectGenetator {
+        let moduleAction = ActionType(moduleName: moduleName, actions: [])
         _ = moduleAction.byInserting(action: action, in: fileHandler)
         return self
     }
@@ -46,7 +47,7 @@ extension ProjectGenetator: CustomStringConvertible {
 private extension ProjectGenetator {
     var appGenerators: [Generating] {
         return [
-            AppAction(),
+            CoreAppAction(),
             AppState(moduleNames: moduleNames),
             AppReducer(moduleNames: moduleNames),
             AppPresenter(moduleNames: moduleNames),
@@ -62,7 +63,8 @@ private extension ProjectGenetator {
     func modulesGenerators(_ moduleNames: [String]) -> [Generating] {
         return moduleNames.reduce([SwiftGenerating]()) { generators, moduleName in
             return generators + [
-                ModuleAction(moduleName: moduleName),
+                ModuleUIAction(moduleName: moduleName),
+                ModuleRoutingAction(moduleName: moduleName),
                 ModuleState(moduleName: moduleName),
                 ModuleReducer(moduleName: moduleName),
                 ViewController(moduleName: moduleName),
