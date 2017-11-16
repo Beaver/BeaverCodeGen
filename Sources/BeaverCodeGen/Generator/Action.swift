@@ -87,17 +87,17 @@ extension ModuleUIAction: ActionInserting {
 
 // MARK: - Module Routing Action
 
-struct ModuleRoutingAction: ModuleActionGenerating {
-    let objectType: ObjectType = .action
-    let framework = "Core"
-    let moduleName: String
+public struct ModuleRoutingAction: ModuleActionGenerating {
+    public let objectType: ObjectType = .action
+    public let framework = "Core"
+    public let moduleName: String
     
     var actions: [EnumCase]
     let defaultActions: [EnumCase] = [EnumCase(name: "Start"),
                                       EnumCase(name: "Stop")]
     
-    init(moduleName: String,
-         actions: [EnumCase] = []) {
+    public init(moduleName: String,
+                actions: [EnumCase] = []) {
         self.moduleName = moduleName
         self.actions = actions
     }
@@ -106,7 +106,7 @@ struct ModuleRoutingAction: ModuleActionGenerating {
 // MARK: - Generation methods
 
 extension ModuleRoutingAction {
-    var name: String {
+    public var name: String {
         return moduleName
     }
     
@@ -132,11 +132,11 @@ extension ModuleRoutingAction {
 // MARK: - ActionInserting
 
 extension ModuleRoutingAction: ActionInserting {
-    func copy(byAddingAction action: EnumCase) -> ModuleRoutingAction {
+    public func copy(byAddingAction action: EnumCase) -> ModuleRoutingAction {
         return ModuleRoutingAction(moduleName: moduleName, actions: actions + [action])
     }
     
-    func isMatchingActionToInsert(_ index: SwiftIndexable) -> Bool {
+    public func isMatchingActionToInsert(_ index: SwiftIndexable) -> Bool {
         return index.typeName == .moduleRoutingAction(moduleName: self.moduleName) && index.doesInherit(from: [.moduleAction(moduleName: moduleName)])
     }
 }
