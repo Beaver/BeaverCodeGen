@@ -76,7 +76,7 @@ extension AppReducer {
         
                 switch envelop.action {
                 case AppAction.start(let startAction):
-                    return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
+                    return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
         \(moduleNames.count > 0 ? .br + moduleActionCase(moduleNames).indented(count: 2).br : "")
                 default: break
                 }
