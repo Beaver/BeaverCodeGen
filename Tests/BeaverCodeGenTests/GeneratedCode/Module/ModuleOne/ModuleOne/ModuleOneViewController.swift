@@ -3,7 +3,7 @@ import Core
 
 #if os(iOS)
 
-final class ModuleOneViewController: Beaver.ViewController<ModuleOneState, AppState> {
+final class ModuleOneViewController: Beaver.ViewController<ModuleOneState, AppState, ModuleOneUIAction> {
 
     override func viewDidLoad() {
         super.viewDidLoad()

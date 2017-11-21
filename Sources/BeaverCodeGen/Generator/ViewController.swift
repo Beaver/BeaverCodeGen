@@ -15,7 +15,7 @@ extension ViewController {
         
         #if os(iOS)
         
-        final class \(moduleName.typeName)ViewController: Beaver.ViewController<\(moduleName.typeName)State, AppState> {
+        final class \(moduleName.typeName)ViewController: Beaver.ViewController<\(moduleName.typeName)State, AppState, \(moduleName.typeName)UIAction> {
 
             override func viewDidLoad() {
                 super.viewDidLoad()
