@@ -95,7 +95,7 @@ private extension QuickSpec {
     }
 
     func line(ofChar at: Int, in str: String) -> String {
-        if str.characters.count <= at {
+        if str.count <= at {
             return ""
         }
         let index = str.index(str.startIndex, offsetBy: at)
@@ -104,7 +104,7 @@ private extension QuickSpec {
     }
 
     func diffIndicator(ofChar at: Int, in str: String) -> String {
-        if str.characters.count <= at {
+        if str.count <= at {
             return ""
         }
         let index = str.index(str.startIndex, offsetBy: at)

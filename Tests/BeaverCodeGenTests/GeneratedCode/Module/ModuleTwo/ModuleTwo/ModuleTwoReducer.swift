@@ -12,8 +12,16 @@ public struct ModuleTwoReducer: Beaver.ChildReducing {
                        state: ModuleTwoState,
                        completion: @escaping (ModuleTwoState) -> ()) -> ModuleTwoState {
         var newState = state
-        
-        // Update the state here
+
+        switch ExhaustiveAction<ModuleTwoRoutingAction, ModuleTwoUIAction>(action) {
+        case .routing:
+            // handle routing action here
+            break
+
+        case .ui:
+            // handle ui actions here
+            break
+        }
         
         return newState
     }

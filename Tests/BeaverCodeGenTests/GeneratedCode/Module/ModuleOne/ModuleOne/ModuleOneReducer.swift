@@ -13,14 +13,14 @@ public struct ModuleOneReducer: Beaver.ChildReducing {
                        completion: @escaping (ModuleOneState) -> ()) -> ModuleOneState {
         var newState = state
 
-        switch action {
-        case ModuleOneRoutingAction.start:
+        switch ExhaustiveAction<ModuleOneRoutingAction, ModuleOneUIAction>(action) {
+        case .routing(.start):
             newState.currentScreen = .main
 
-        case ModuleOneRoutingAction.stop:
+        case .routing(.stop):
             newState.currentScreen = .none
 
-        default:
+        case .ui:
             break
         }
 

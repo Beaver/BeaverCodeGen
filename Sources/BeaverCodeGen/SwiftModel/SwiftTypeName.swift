@@ -44,13 +44,13 @@ extension SwiftTypeName: Decodable {
         case _ where name == "AppAction.stop":
             self = .appActionStop
         case ".*Action$":
-            self = .moduleAction(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Action".characters.count)]))
+            self = .moduleAction(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Action".count)]))
         case "^(Beaver\\.)?State$":
             self = .beaverState
         case _ where name == "AppState":
             self = .appState
         case ".*State$":
-            self = .moduleState(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"State".characters.count)]))
+            self = .moduleState(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"State".count)]))
         case _ where name == "==(_:_:)":
             self = .equalOperator
         case _ where name == "AppReducer":
@@ -60,15 +60,15 @@ extension SwiftTypeName: Decodable {
         case _ where name == "handle(envelop:state:completion:)":
             self = .beaverReducingHandleMethod
         case ".*Reducer$":
-            self = .moduleReducer(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Reducer".characters.count)]))
+            self = .moduleReducer(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Reducer".count)]))
         case _ where name == "ModulesContainer":
             self = .modulesContainer
         case _ where name == "AppPresenter":
             self = .appPresenter
         case ".*Presenter\\?$":
-            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter?".characters.count)]))
+            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter?".count)]))
         case ".*Presenter$":
-            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter".characters.count)]))
+            self = .modulePresenter(moduleName: String(name[..<name.index(name.endIndex, offsetBy: -"Presenter".count)]))
         case _ where name == "bootstrap(state:middlewares:)":
             self = .appPresenterBootstrapMethod
         case _ where name == "stateDidUpdate(oldState:newState:completion:)":
@@ -173,6 +173,6 @@ private func ~= (pattern: String, value: String) -> Bool {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
         fatalError("Could not build regex with pattern: \(pattern)")
     }
-    let range = NSMakeRange(0, value.characters.count)
+    let range = NSMakeRange(0, value.count)
     return regex.matches(in: value, options: .anchored, range: range).count > 0
 }

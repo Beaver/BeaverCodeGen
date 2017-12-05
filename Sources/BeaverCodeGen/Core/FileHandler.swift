@@ -79,7 +79,7 @@ extension FileHandling {
         }
         
         var index = fileContent.index(fileContent.startIndex,
-                                      offsetBy: reversed ? fileContent.characters.count - offset : offset)
+                                      offsetBy: reversed ? fileContent.count - offset : offset)
         
         if let matchingString = offsetSelector?.matchingString,
             let range = fileContent.range(of: reversed ? String(matchingString.reversed()) : matchingString,
@@ -88,11 +88,11 @@ extension FileHandling {
             
             switch offsetSelector?.insert {
             case .after?:
-                index = fileContent.index(index, offsetBy: matchingString.characters.count)
+                index = fileContent.index(index, offsetBy: matchingString.count)
 
             case .over?:
                 let distance = fileContent.distance(from: fileContent.startIndex, to: index)
-                let matchingStringEnd = fileContent.index(index, offsetBy: matchingString.characters.count)
+                let matchingStringEnd = fileContent.index(index, offsetBy: matchingString.count)
                 fileContent.removeSubrange(index..<matchingStringEnd)
                 index = fileContent.index(fileContent.startIndex, offsetBy: distance)
 
@@ -110,9 +110,9 @@ extension FileHandling {
         writeFile(atPath: path, content: fileContent)
         
         if let offsetSelector = offsetSelector, offsetSelector.insert == .over {
-            return content.characters.count - min(offsetSelector.matchingString.characters.count, content.characters.count)
+            return content.count - min(offsetSelector.matchingString.count, content.count)
         } else {
-            return content.characters.count
+            return content.count
         }
     }
 }
@@ -129,7 +129,7 @@ public struct FileHandler: FileHandling {
     public let basePath: String
     
     public init(basePath: String) {
-        guard basePath.characters.count > 0 else {
+        guard !basePath.isEmpty else {
             fatalError("basePath can't be empty")
         }
         

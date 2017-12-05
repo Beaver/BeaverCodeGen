@@ -1,7 +1,7 @@
 PODS:
   - Beaver (0.1.0)
   - Diff (0.5.3)
-  - Nimble (7.0.2)
+  - Nimble (7.0.3)
   - Quick (1.2.0)
   - SourceKittenFramework (0.18.4):
     - SWXMLHash (~> 4.1)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: 301d6c36c6a931459e8407a388b0bb6cc831b0e6
+    :commit: 0f57934b95368cdde7cf81581a4bdbdd3306abd5
     :git: git@github.com:Beaver/Beaver.git
   Diff:
     :commit: 674b1adf077bededca10518d2548ae4401bf8025
@@ -34,7 +34,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Beaver: 84f7a1e4cc56ca0008db4c4685dbbec6e051f190
   Diff: f10fccf868e33f7c0e03379a0425aa42def4884f
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SourceKittenFramework: 3e20d940daa6f743feca0b2c39dba06f06c5d4a4
   SWXMLHash: eb16013c6f654853980822e0a778c9d66e017dde

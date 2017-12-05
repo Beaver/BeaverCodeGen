@@ -25,14 +25,14 @@ extension ModuleReducer {
                                completion: @escaping (\(moduleName.typeName)State) -> ()) -> \(moduleName.typeName)State {
                 var newState = state
         
-                switch action {
-                case \(moduleName.typeName)RoutingAction.start:
+                switch ExhaustiveAction<\(moduleName.typeName)RoutingAction, \(moduleName.typeName)UIAction>(action) {
+                case .routing(.start):
                     newState.currentScreen = .main
         
-                case \(moduleName.typeName)RoutingAction.stop:
+                case .routing(.stop):
                     newState.currentScreen = .none
         
-                default:
+                case .ui:
                     break
                 }
         

@@ -6,11 +6,11 @@ extension String {
     }
     
     func indented(count: Int) -> String {
-        let split = self.characters.split(separator: "\n", omittingEmptySubsequences: false)
+        let split = self.split(separator: "\n", omittingEmptySubsequences: false)
         
         return split.map { chars in
             let str = String(chars)
-            if str.replacingOccurrences(of: " ", with: "").characters.count == 0 {
+            if str.replacingOccurrences(of: " ", with: "").count == 0 {
                 return ""
             } else {
                 return BeaverCodeGen.tab(str, count: count)
@@ -47,14 +47,14 @@ extension String {
     }
 
     var typeName: String {
-        let first = String(characters.prefix(1)).capitalized
-        let other = String(characters.dropFirst())
+        let first = String(prefix(1)).capitalized
+        let other = String(dropFirst())
         return first + other
     }
 
     var varName: String {
-        let first = String(characters.prefix(1)).lowercased()
-        let other = String(characters.dropFirst())
+        let first = String(prefix(1)).lowercased()
+        let other = String(dropFirst())
         return first + other
     }
     
@@ -63,7 +63,7 @@ extension String {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             fatalError("Couldn't build regex with pattern: \(pattern)")
         }
-        let range = NSRange(location: 0, length: self.characters.count)
+        let range = NSRange(location: 0, length: count)
         return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "$1_$2").lowercased()
     }
 }
