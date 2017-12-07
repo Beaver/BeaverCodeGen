@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: 0f57934b95368cdde7cf81581a4bdbdd3306abd5
+    :commit: c1df572b346b072b7428501c8cef5a7e2bd584ee
     :git: git@github.com:Beaver/Beaver.git
   Diff:
     :commit: 674b1adf077bededca10518d2548ae4401bf8025

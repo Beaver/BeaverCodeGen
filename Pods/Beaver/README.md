@@ -35,7 +35,7 @@ Let's see what an App built with Beaver is made of:
 
 - The **App Presenter** subscribes to the app store and presents the modules based on the current app state.
 
-And what is a module is made of:
+What is a module made of?
 
 - The **State** is a subset of the app state. It is the data structure of the module. 
 
@@ -49,7 +49,11 @@ And what is a module is made of:
 
 - The **ViewController** subscribes to the child store state and builds the views based on the current state. It dispatches ui actions and lifecycle events.
 
-Beaver's architecture implements the *unidirectional data flow*. The flow begins with a ui event, which is dispatched to the store. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received event. The store updates the state, and propagates it thoughout the application, implying ui presentations and ui updates.
+## Unidirectional data flow 
+
+Beaver's architecture implements a strict [unidirectional data flow](https://redux.js.org/docs/basics/DataFlow.html). The flow begins with a ui action, which is dispatched to the store by the view controller. The store asks a state update to the reducer. The reducer applies the application's business logic based on the current state and the received action. The store updates the state, and propagates it throughout the application to refresh the views, or to give the presenters the opportunity to dispatch a routing action. If that's the case, the store asks a state update for this routing action to the reducer, and propagates the new state throughout the application, causing the concerned presenters to present a view.
+
+![Unidirection Data Flow](./Documentation/UnidirectionalDataFlow.png)
 
 # Project structure
 
@@ -128,19 +132,18 @@ The next step is to write our reducer. It will build the state with the data we 
 
 ```swift
 public struct HomeReducer: Beaver.ChildReducing {
-    public typealias RoutingActionType = HomeRoutingAction
-    public typealias UIActionType = HomeUIAction
+    public typealias ActionType = HomeAction
     public typealias StateType = HomeState
 
     public init() {
     }
 
-    public func handle(action: ExhaustiveAction<HomeRoutingAction, HomeUIAction>,
+    public func handle(action: HomeAction,
                        state: HomeState,
                        completion: @escaping (HomeState) -> ()) -> HomeState {
         var newState = state
 
-        switch action {
+        switch ExhaustiveAction<HomeRoutingAction, HomeUIAction>(action) {
         case .routing(.start):
             newState.movies = (0...10).map { "Movie \($0)" }
             
@@ -298,12 +301,12 @@ public struct HomeState: Beaver.State {
 Now, let's make our reducer build this new state when receiving the `.didTapOnMovieCell(title:)` action.
 
 ```swift
-public func handle(action: ExhaustiveAction<HomeRoutingAction, HomeUIAction>,
+public func handle(action: HomeAction,
                    state: HomeState,
                    completion: @escaping (HomeState) -> ()) -> HomeState {
     var newState = state
 
-    switch action {
+    switch ExhaustiveAction<HomeRoutingAction, HomeUIAction>(action) {
     case .routing(.start):
         newState.movies = (0...10).map { "Movie \($0)" }
         
@@ -357,9 +360,9 @@ extension HomePresenter {
 
 Writing an application at an early stage should be done right. In the mean time, we build applications to solve real life problems, and most often, we want to focus on these instead of architecture details. **Beaver is here to help you start your project fast, but clean** by generating for you all the boiler plate code that you need, including project's and frameworks' configurations.
 
-The most difficult part when writing an application are the data flows. They can easily be made complex because of the product needs, but also because of the way we write our code. **MVC, MVVM or VIPER don't define a clear way to handle the application's state and the way it's mutated** while the user uses the application. What usually happens is that each developer implements data flows their own way, resulting in an inconsistent codebase, making the project hard to maintain. **Beaver forces you to exhaustively handle all the cases of your flow in a unique way which can be easily understood by any developer**.
+The most difficult part when writing an application are the data flows. They can easily be made complex because of the product needs, but also because of the way we write our code. **MVC, MVVM or VIPER don't define a clear way to handle the state and the way it's mutated** while users use the application. What usually happens is that each developer implement data flows their own way, resulting in an inconsistent codebase, making the project hard to maintain. **Beaver forces you to exhaustively handle all the cases of your flow in a strict unidirectional way which can be easily understood and maintained by any developer**.
 
-While the code base is growing, developers tend to write generic code in order not to rewrite the wheel for each feature. They also tend to use singletons in order to access global states more easily. These two tendencies lead to strong coupling between classes and overdesign, making the whole system a lot less flexible. Beaver aims to solve this by providing **a project structure that gives a place for every classes**. Common classes belongs in the `Core` framework, feature business logic code belongs in the modules frameworks. Modules don't know about each others, avoiding wrong coupling. Beaver also removes the need of singletons by providing **a safe and easily accessible global state**.
+While the codebase is growing, developers tend to write generic code in order not to rewrite the wheel for each feature. They also tend to use singletons in order to access global states more easily. These two tendencies lead to strong coupling between classes and overdesign, making the whole system a lot less flexible. Beaver aims to solve this by providing **a project structure that gives a place for every classes**. Common classes belongs in the `Core` framework, feature business logic code belongs in the modules' frameworks. Modules don't know about each others, avoiding wrong coupling. Beaver also removes the need of singletons by providing **a safe and easily accessible global state**.
 
 # Command line tools
 
@@ -429,3 +432,9 @@ You can install Beaver via Carthage by adding the following line to your `Cartfi
 ```
 github "Beaver/Beaver"
 ```
+
+### TODO
+
+- [ ] Auto generate the tests.
+- [ ] Pass down a callback when dispatching in order to be aware of when the action has been entirely processed.
+- [ ] Find out how to share a state between modules without breaking modules' encapsulation.

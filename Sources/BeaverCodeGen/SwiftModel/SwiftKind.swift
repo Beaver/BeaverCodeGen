@@ -13,6 +13,7 @@ public enum SwiftKind {
     case call
     case `class`
     case argument
+    case `if`
     case unknown(value: String)
 }
 
@@ -48,6 +49,8 @@ extension SwiftKind: Decodable {
             self = .`class`
         case "source.lang.swift.expr.argument":
             self = .argument
+        case "source.lang.swift.stmt.if":
+            self = .`if`
         default:
             self = .unknown(value: value)
         }
@@ -85,6 +88,8 @@ extension SwiftKind {
             return "class"
         case .argument:
             return "argument"
+        case .`if`:
+            return "if"
         case .unknown(let value):
             return value
         }

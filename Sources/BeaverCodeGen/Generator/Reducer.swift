@@ -68,19 +68,18 @@ extension AppReducer {
             "let \($0.varName): \($0.typeName)Reducer"
         }.joined(separator: .br).indented.br : "")
             typealias StateType = AppState
-
+        
             func handle(envelop: ActionEnvelop,
                         state: AppState,
                         completion: @escaping (AppState) -> ()) -> AppState {
                 var newState = state
         
-                switch envelop.action {
-                case AppAction.start(let startAction):
-                    return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
-        \(moduleNames.count > 0 ? .br + moduleActionCase(moduleNames).indented(count: 2).br : "")
-                default: break
-                }
+                // Reduce start action
         
+                if case AppAction.start(let startAction) = envelop.action {
+                    return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
+                }
+        \(moduleNames.count > 0 ? .br + moduleActionCase(moduleNames).indented(count: 2).br : "")
                 return newState
             }
         }
@@ -91,14 +90,18 @@ extension AppReducer {
     private func moduleActionCase(_ moduleNames: [String]) -> String {
         return moduleNames.map {
             """
-            case is \($0.typeName)Action:
+            // Reduce \($0.typeName)'s actions
+            
+            if envelop.action is \($0.typeName)Action {
                 newState.\($0.varName)State = \($0.varName).handle(envelop: envelop, state: state.\($0.varName)State ?? \($0.typeName)State()) { \($0.varName)State in
                     newState.\($0.varName)State = \($0.varName)State
                     completion(newState)
                 }
+            }
             
-            case AppAction.stop(module: \($0.typeName)RoutingAction.stop):
+            if case AppAction.stop(module: \($0.typeName)RoutingAction.stop) = envelop.action {
                 newState.\($0.varName)State = nil
+            }
             """
         }.joined(separator: .br(2))
     }
@@ -129,16 +132,16 @@ extension AppReducer {
                                                      withSelector: .matching(string: .br, insert: .after),
                                                      inFileAtPath: path)
         
-        guard let handleSwitch = reducerStruct.find(recursive: true, isMatching: {
-            $0.kind == .`switch` && $0.parent?.typeName == .beaverReducingHandleMethod
+        guard let handleMethod = reducerStruct.find(recursive: true, isMatching: {
+            $0.typeName == .beaverReducingHandleMethod
         }).first as? SwiftSubstructure else {
             fatalError("Couldn't find switch in \(SwiftTypeName.beaverReducingHandleMethod.name) in \(fileHandler)")
         }
-
+        
         // Insert module action case
         _ = fileHandler.insert(content: moduleActionCase([moduleName]).indented(count: 2).br(2),
-                               atOffset: handleSwitch.offset + insertedCharacterCount,
-                               withSelector: .matching(string: "default".indented(count: 2), insert: .before),
+                               atOffset: handleMethod.offset + insertedCharacterCount,
+                               withSelector: .matching(string: "return newState".indented(count: 2), insert: .before),
                                inFileAtPath: path)
         
         return AppReducer(moduleNames: moduleNames + [moduleName])
