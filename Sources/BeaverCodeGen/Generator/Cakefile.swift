@@ -18,6 +18,8 @@ extension RootCakefile {
         MODULE_TARGETS = {}
         def module_target(name)
             if MODULE_TARGETS[name].nil?
+                module_name = name.to_s.split('_').map { |e| e.capitalize }.join
+                require "./Module/#{module_name}/Cakefile"
                 MODULE_TARGETS[name] = send("#{name}_target")
             end
             MODULE_TARGETS[name]
